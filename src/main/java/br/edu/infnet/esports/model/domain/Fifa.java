@@ -1,49 +1,49 @@
 package br.edu.infnet.esports.model.domain;
 
 public class Fifa extends Game {
-	private boolean arcade;
-	private boolean simulacao;
-	private boolean manager;
+	private int finalizacao;
+	private int marcacao;
+	private int passe;
 
 		
 	public Fifa() {
 		super("FIFA 22");
-//		super.setNome("FIFA");
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.arcade);
+		sb.append(this.finalizacao);
 		sb.append(";");
-		sb.append(this.simulacao);
+		sb.append(this.marcacao);
 		sb.append(";");
-		sb.append(this.manager);
+		sb.append(this.passe);
 		
 		return super.toString() + sb.toString();	
 	}
-	
-	public boolean isArcade() {
-		return arcade;
+
+	public int getfinalizacao() {
+		return finalizacao;
 	}
 
-	public void setArcade(boolean arcade) {
-		this.arcade = arcade;
+	public void setfinalizacao(int finalizacao) {
+		this.finalizacao = finalizacao;
 	}
 
-	public boolean isSimulacao() {
-		return simulacao;
+	public int getmarcacao() {
+		return marcacao;
 	}
 
-	public void setSimulacao(boolean simulacao) {
-		this.simulacao = simulacao;
+	public void setmarcacao(int marcacao) {
+		this.marcacao = marcacao;
 	}
 
-	public boolean isManager() {
-		return manager;
+	public int getPasse() {
+		return passe;
 	}
 
-	public void setManager(boolean manager) {
-		this.manager = manager;
+	public void setPasse(int passe) {
+		this.passe = passe;
 	}
+	 
 }

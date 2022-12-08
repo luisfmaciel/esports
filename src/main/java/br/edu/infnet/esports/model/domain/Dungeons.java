@@ -2,9 +2,9 @@ package br.edu.infnet.esports.model.domain;
 
 public class Dungeons extends Game {
 
-	private boolean rpgAcao;
-	private boolean rpgTatico;
-	private boolean roguelike;
+	private boolean dano;
+	private boolean sabedoria;
+	private boolean velocidade;
 	
 	public Dungeons() {
 		super("DUNGEONS");
@@ -13,33 +13,37 @@ public class Dungeons extends Game {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.rpgAcao);
+		sb.append(this.dano);
 		sb.append(";");
-		sb.append(this.rpgTatico);
+		sb.append(this.sabedoria);
 		sb.append(";");
-		sb.append(this.roguelike);
+		sb.append(this.velocidade);
 		
 		return super.toString() + sb.toString();	
 	}
+
+	public boolean isDano() {
+		return dano;
+	}
+
+	public void setDano(boolean dano) {
+		this.dano = dano;
+	}
+
+	public boolean isSabedoria() {
+		return sabedoria;
+	}
+
+	public void setSabedoria(boolean sabedoria) {
+		this.sabedoria = sabedoria;
+	}
+
+	public boolean isVelocidade() {
+		return velocidade;
+	}
+
+	public void setVelocidade(boolean velocidade) {
+		this.velocidade = velocidade;
+	}
 	
-	public boolean isRpgAcao() {
-		return rpgAcao;
-	}
-	public void setRpgAcao(boolean rpgAcao) {
-		this.rpgAcao = rpgAcao;
-	}
-	
-	public boolean isRpgTatico() {
-		return rpgTatico;
-	}
-	public void setRpgTatico(boolean rpgTatico) {
-		this.rpgTatico = rpgTatico;
-	}
-	
-	public boolean isRoguelike() {
-		return roguelike;
-	}
-	public void setRoguelike(boolean roguelike) {
-		this.roguelike = roguelike;
-	}
 }

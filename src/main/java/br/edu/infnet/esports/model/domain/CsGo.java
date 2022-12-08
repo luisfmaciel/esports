@@ -2,9 +2,9 @@ package br.edu.infnet.esports.model.domain;
 
 public class CsGo extends Game {
 
-	private boolean mundoAberto;
-	private boolean tiroEmPrimeiraPessoa;
-	private boolean tiroEmTerceiraPessoa;
+	private int precisao;
+	private int agressividade;
+	private int tatico;
 
 	public CsGo() {
 		super("CS:GO");
@@ -13,34 +13,36 @@ public class CsGo extends Game {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.mundoAberto);
+		sb.append(this.precisao);
 		sb.append(";");
-		sb.append(this.tiroEmPrimeiraPessoa);
+		sb.append(this.agressividade);
 		sb.append(";");
-		sb.append(this.tiroEmTerceiraPessoa);
+		sb.append(this.tatico);
 		
 		return super.toString() + sb.toString();	
 	}
-	
-	public boolean isMundoAberto() {
-		return mundoAberto;
+	public int getPrecisao() {
+		return precisao;
 	}
-	public void setMundoAberto(boolean mundoAberto) {
-		this.mundoAberto = mundoAberto;
+
+	public void setPrecisao(int precisao) {
+		this.precisao = precisao;
 	}
-	
-	public boolean isTiroEmPrimeiraPessoa() {
-		return tiroEmPrimeiraPessoa;
+
+	public int getAgressividade() {
+		return agressividade;
 	}
-	public void setTiroEmPrimeiraPessoa(boolean tiroEmPrimeiraPessoa) {
-		this.tiroEmPrimeiraPessoa = tiroEmPrimeiraPessoa;
+
+	public void setAgressividade(int agressividade) {
+		this.agressividade = agressividade;
 	}
-	
-	public boolean isTiroEmTerceiraPessoa() {
-		return tiroEmTerceiraPessoa;
+
+	public int getTatico() {
+		return tatico;
 	}
-	public void setTiroEmTerceiraPessoa(boolean tiroEmTerceiraPessoa) {
-		this.tiroEmTerceiraPessoa = tiroEmTerceiraPessoa;
+
+	public void setTatico(int tatico) {
+		this.tatico = tatico;
 	}
 
 }
