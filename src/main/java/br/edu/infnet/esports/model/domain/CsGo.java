@@ -1,5 +1,7 @@
 package br.edu.infnet.esports.model.domain;
 
+import br.edu.infnet.esports.model.auxiliar.Constante;
+
 public class CsGo extends Game {
 
 	private int precisao;
@@ -8,6 +10,20 @@ public class CsGo extends Game {
 
 	public CsGo() {
 		super("CS:GO");
+	}
+	
+	@Override
+	public String calculaNivelGamer() {
+		int precisao = this.precisao * Constante.PESO_3;
+		int agressividade = this.agressividade * Constante.PESO_2;
+		int tatico = this.tatico * Constante.PESO_1;
+		
+		int total = (precisao + agressividade + tatico) / 3;
+		
+		if(total >= 180) return "lendário";
+		else if(total >= 140 && total < 180) return "profissional";
+		else if(total >= 60 && total < 140) return "semipro";
+		else return "iniciante";
 	}
 	
 	@Override
