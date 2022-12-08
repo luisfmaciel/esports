@@ -8,8 +8,14 @@ public class CsGo extends Game {
 	private int agressividade;
 	private int tatico;
 
-	public CsGo(String plataforma, int precisao, int agressividade, int tatico) {
+	public CsGo(String plataforma, int precisao, int agressividade, int tatico) throws Exception {
 		super("CS:GO", plataforma);
+		
+		if(precisao < 0 || agressividade < 0 || tatico < 0) 
+			throw new Exception("Sua estatística deve ser maior ou igual à zero!");
+		
+		if(precisao > 0 || agressividade > 0 || tatico > 0) 
+			throw new Exception("Sua estatística deve ser menor ou igual à 100!");
 		
 		this.precisao = precisao;
 		this.agressividade = agressividade;
@@ -24,10 +30,10 @@ public class CsGo extends Game {
 		
 		int total = (precisao + agressividade + tatico) / 3;
 		
-		if(total >= 180) return "lendário";
-		else if(total >= 140 && total < 180) return "profissional";
-		else if(total >= 60 && total < 140) return "semipro";
-		else return "iniciante";
+		if(total >= 180) return Constante.LENDARIO;
+		else if(total >= 140 && total < 180) return Constante.PROFISSIONAL;
+		else if(total >= 60 && total < 140) return Constante.SEMIPRO;
+		else return Constante.INICIANTE;
 	}
 	
 	@Override

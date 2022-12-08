@@ -7,8 +7,14 @@ public class Fifa extends Game {
 	private int passe;
 
 		
-	public Fifa(String plataforma, int finalizacao, int marcacao, int passe) {
+	public Fifa(String plataforma, int finalizacao, int marcacao, int passe) throws Exception {
 		super("FIFA 22", plataforma);
+		
+		if(finalizacao < 0 || marcacao < 0 || passe < 0) 
+			throw new Exception("Sua estatística deve ser maior ou igual à zero!");
+		
+		if(finalizacao > 0 || marcacao > 0 || passe > 0) 
+			throw new Exception("Sua estatística deve ser menor ou igual à 100!");
 		
 		this.finalizacao = finalizacao;
 		this.marcacao = marcacao;
@@ -23,10 +29,10 @@ public class Fifa extends Game {
 		
 		int total = (finalizacao + marcacao + passe) / 3;
 		
-		if(total >= 180) return "lendário";
-		else if(total >= 140 && total < 180) return "profissional";
-		else if(total >= 60 && total < 140) return "semipro";
-		else return "iniciante";
+		if(total >= 180) return Constante.LENDARIO;
+		else if(total >= 140 && total < 180) return Constante.PROFISSIONAL;
+		else if(total >= 60 && total < 140) return Constante.SEMIPRO;
+		else return Constante.INICIANTE;
 	}
 	
 	@Override

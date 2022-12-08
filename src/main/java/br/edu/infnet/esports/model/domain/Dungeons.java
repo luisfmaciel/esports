@@ -8,8 +8,14 @@ public class Dungeons extends Game {
 	private int sabedoria;
 	private int velocidade;
 	
-	public Dungeons(String plataforma, int dano, int sabedoria, int velocidade) {
+	public Dungeons(String plataforma, int dano, int sabedoria, int velocidade) throws Exception {
 		super("DUNGEONS", plataforma);
+		
+		if(dano < 0 || sabedoria < 0 || velocidade < 0) 
+			throw new Exception("Sua estatística deve ser maior ou igual à zero!");
+		
+		if(dano > 0 || sabedoria > 0 || velocidade > 0) 
+			throw new Exception("Sua estatística deve ser menor ou igual à 100!");
 		
 		this.dano = dano;
 		this.sabedoria = sabedoria;
@@ -24,10 +30,10 @@ public class Dungeons extends Game {
 		
 		int total = (dano + sabedoria + velocidade) / 3;
 		
-		if(total >= 180) return "lendário";
-		else if(total >= 140 && total < 180) return "profissional";
-		else if(total >= 60 && total < 140) return "semipro";
-		else return "iniciante";
+		if(total >= 180) return Constante.LENDARIO;
+		else if(total >= 140 && total < 180) return Constante.PROFISSIONAL;
+		else if(total >= 60 && total < 140) return Constante.SEMIPRO;
+		else return Constante.INICIANTE;
 	}
 	
 	@Override
