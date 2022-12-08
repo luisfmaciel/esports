@@ -7,8 +7,12 @@ public class Fifa extends Game {
 	private int passe;
 
 		
-	public Fifa() {
-		super("FIFA 22");
+	public Fifa(String plataforma, int finalizacao, int marcacao, int passe) {
+		super("FIFA 22", plataforma);
+		
+		this.finalizacao = finalizacao;
+		this.marcacao = marcacao;
+		this.passe = passe;
 	}
 	
 	@Override
@@ -37,19 +41,19 @@ public class Fifa extends Game {
 		return super.toString() + sb.toString();	
 	}
 
-	public int getfinalizacao() {
+	public int getFinalizacao() {
 		return finalizacao;
 	}
 
-	public void setfinalizacao(int finalizacao) {
+	public void setFinalizacao(int finalizacao) {
 		this.finalizacao = finalizacao;
 	}
 
-	public int getmarcacao() {
+	public int getMarcacao() {
 		return marcacao;
 	}
 
-	public void setmarcacao(int marcacao) {
+	public void setMarcacao(int marcacao) {
 		this.marcacao = marcacao;
 	}
 

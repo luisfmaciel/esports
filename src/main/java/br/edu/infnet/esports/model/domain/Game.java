@@ -5,8 +5,9 @@ public abstract class Game {
 	private String plataforma;
 	private String nivel;
 	
-	protected Game(String nome) {
+	protected Game(String nome, String plataforma) {
 		this.nome = nome;
+		this.plataforma = plataforma;
 	}
 	
 	public abstract String calculaNivelGamer(); 

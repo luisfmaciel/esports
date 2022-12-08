@@ -8,8 +8,12 @@ public class CsGo extends Game {
 	private int agressividade;
 	private int tatico;
 
-	public CsGo() {
-		super("CS:GO");
+	public CsGo(String plataforma, int precisao, int agressividade, int tatico) {
+		super("CS:GO", plataforma);
+		
+		this.precisao = precisao;
+		this.agressividade = agressividade;
+		this.tatico = tatico;
 	}
 	
 	@Override

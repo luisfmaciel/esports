@@ -8,8 +8,12 @@ public class Dungeons extends Game {
 	private int sabedoria;
 	private int velocidade;
 	
-	public Dungeons() {
-		super("DUNGEONS");
+	public Dungeons(String plataforma, int dano, int sabedoria, int velocidade) {
+		super("DUNGEONS", plataforma);
+		
+		this.dano = dano;
+		this.sabedoria = sabedoria;
+		this.velocidade = velocidade;
 	}
 	
 	@Override
