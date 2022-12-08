@@ -1,6 +1,6 @@
 package br.edu.infnet.esports.model.domain;
 
-public class Game {
+public abstract class Game {
 	private String nome;
 	private String plataforma;
 	private String nivel;
@@ -8,6 +8,8 @@ public class Game {
 	protected Game(String nome) {
 		this.nome = nome;
 	}
+	
+	public abstract String calculaNivelGamer(); 
 	
 	@Override
 	public String toString() {
@@ -25,9 +27,6 @@ public class Game {
 	public String getNome() {
 		return nome;
 	}
-//	protected void setNome(String nome) {
-//		this.nome = nome;
-//	}
 	
 	public String getPlataforma() {
 		return plataforma;
