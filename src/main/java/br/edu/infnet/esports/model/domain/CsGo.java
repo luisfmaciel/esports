@@ -6,29 +6,41 @@ public class CsGo extends Game {
 
 	private int precisao;
 	private int agressividade;
-	private int tatico;
+	private int tatica;
 
-	public CsGo(String plataforma, int precisao, int agressividade, int tatico) throws Exception {
+	public CsGo(String plataforma, int precisao, int agressividade, int tatica) throws Exception {
 		super("CS:GO", plataforma);
 		
-		if(precisao < 0 || agressividade < 0 || tatico < 0) 
-			throw new Exception("Sua estatística deve ser maior ou igual à zero!");
+		if(precisao < 0) 
+			throw new Exception("Sua estatística de precisão deve ser maior ou igual à zero!");
 		
-		if(precisao > 0 || agressividade > 0 || tatico > 0) 
-			throw new Exception("Sua estatística deve ser menor ou igual à 100!");
+		if(precisao > 0) 
+			throw new Exception("Sua estatística de precisão deve ser menor ou igual à 100!");
+		
+		if(agressividade < 0) 
+			throw new Exception("Sua estatística de agressividade deve ser maior ou igual à zero!");
+		
+		if(agressividade > 0) 
+			throw new Exception("Sua estatística de agressividade deve ser menor ou igual à 100!");
+		
+		if(tatica < 0) 
+			throw new Exception("Sua estatística de tática deve ser maior ou igual à zero!");
+		
+		if(tatica > 0) 
+			throw new Exception("Sua estatística de tática deve ser menor ou igual à 100!");
 		
 		this.precisao = precisao;
 		this.agressividade = agressividade;
-		this.tatico = tatico;
+		this.tatica = tatica;
 	}
 	
 	@Override
 	public String calculaNivelGamer() {
 		int precisao = this.precisao * Constante.PESO_3;
 		int agressividade = this.agressividade * Constante.PESO_2;
-		int tatico = this.tatico * Constante.PESO_1;
+		int tatica = this.tatica * Constante.PESO_1;
 		
-		int total = (precisao + agressividade + tatico) / 3;
+		int total = (precisao + agressividade + tatica) / 3;
 		
 		if(total >= 180) return Constante.LENDARIO;
 		else if(total >= 140 && total < 180) return Constante.PROFISSIONAL;
@@ -43,7 +55,7 @@ public class CsGo extends Game {
 		sb.append(";");
 		sb.append(this.agressividade);
 		sb.append(";");
-		sb.append(this.tatico);
+		sb.append(this.tatica);
 		
 		return super.toString() + sb.toString();	
 	}
@@ -63,12 +75,12 @@ public class CsGo extends Game {
 		this.agressividade = agressividade;
 	}
 
-	public int getTatico() {
-		return tatico;
+	public int getTatica() {
+		return tatica;
 	}
 
-	public void setTatico(int tatico) {
-		this.tatico = tatico;
+	public void setTatica(int tatica) {
+		this.tatica = tatica;
 	}
 
 }

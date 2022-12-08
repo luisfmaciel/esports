@@ -11,11 +11,25 @@ public class Dungeons extends Game {
 	public Dungeons(String plataforma, int dano, int sabedoria, int velocidade) throws Exception {
 		super("DUNGEONS", plataforma);
 		
-		if(dano < 0 || sabedoria < 0 || velocidade < 0) 
-			throw new Exception("Sua estatística deve ser maior ou igual à zero!");
+		if(dano < 0) 
+			throw new Exception("Sua estatística de dano deve ser maior ou igual à zero!");
 		
-		if(dano > 0 || sabedoria > 0 || velocidade > 0) 
-			throw new Exception("Sua estatística deve ser menor ou igual à 100!");
+		if(dano > 0) 
+			throw new Exception("Sua estatística de dano deve ser menor ou igual à 100!");
+		
+		
+		if(sabedoria < 0) 
+			throw new Exception("Sua estatística de sabedoria deve ser maior ou igual à zero!");
+		
+		if(sabedoria > 0) 
+			throw new Exception("Sua estatística de dasabedoriano deve ser menor ou igual à 100!");
+		
+		
+		if(velocidade < 0) 
+			throw new Exception("Sua estatística de velocidade deve ser maior ou igual à zero!");
+		
+		if(velocidade > 0) 
+			throw new Exception("Sua estatística de velocidade deve ser menor ou igual à 100!");
 		
 		this.dano = dano;
 		this.sabedoria = sabedoria;

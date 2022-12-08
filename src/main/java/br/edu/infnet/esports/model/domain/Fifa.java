@@ -10,11 +10,23 @@ public class Fifa extends Game {
 	public Fifa(String plataforma, int finalizacao, int marcacao, int passe) throws Exception {
 		super("FIFA 22", plataforma);
 		
-		if(finalizacao < 0 || marcacao < 0 || passe < 0) 
-			throw new Exception("Sua estatística deve ser maior ou igual à zero!");
+		if(finalizacao < 0) 
+			throw new Exception("Sua estatística de finalização deve ser maior ou igual à zero!");
 		
-		if(finalizacao > 0 || marcacao > 0 || passe > 0) 
-			throw new Exception("Sua estatística deve ser menor ou igual à 100!");
+		if(finalizacao > 0) 
+			throw new Exception("Sua estatística de finalização deve ser menor ou igual à 100!");
+		
+		if(marcacao < 0) 
+			throw new Exception("Sua estatística de marcação deve ser maior ou igual à zero!");
+		
+		if(marcacao > 0) 
+			throw new Exception("Sua estatística de marcação deve ser menor ou igual à 100!");
+		
+		if(passe < 0) 
+			throw new Exception("Sua estatística de passe deve ser maior ou igual à zero!");
+		
+		if(passe > 0) 
+			throw new Exception("Sua estatística de passe deve ser menor ou igual à 100!");
 		
 		this.finalizacao = finalizacao;
 		this.marcacao = marcacao;
