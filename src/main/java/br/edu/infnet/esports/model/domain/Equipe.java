@@ -12,6 +12,26 @@ public class Equipe {
 	private String nivel;
 	private List<Gamer> gamers = new ArrayList<Gamer>();
 	
+	public Equipe(String nome, int limiteParticipantes, String plataforma, String nivel) throws Exception {
+		if(limiteParticipantes < 2) throw new Exception("Uma equipe deve ter no mínimo 2 gamers!");
+		
+		if(limiteParticipantes > 4) throw new Exception("Uma equipe deve ter no máximo 4 gamers!");
+		
+		this.nome = nome;
+		this.limiteParticipantes = limiteParticipantes;
+		this.plataforma = plataforma;
+		this.nivel = nivel;
+	}
+	
+	public void imprimir(){
+		System.out.println("Equipe: " + this);
+		System.out.println("Total de participantes: " + gamers.size());
+		System.out.println("Gamers: ");
+		for(Gamer gamer : gamers) {
+			System.out.println("- " + gamer.getUsername());
+		}
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.nome);
