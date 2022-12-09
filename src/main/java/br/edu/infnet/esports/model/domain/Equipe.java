@@ -8,10 +8,24 @@ public class Equipe {
 	private String nome;
 	private Game game;
 	private int limiteParticipantes;
-	private String nivel;
 	private String plataforma;
-//	private String tipo;
+	private String nivel;
 	private List<Gamer> gamers = new ArrayList<Gamer>();
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.nome);
+		sb.append(";");
+		sb.append(this.game.getNome());
+		sb.append(";");
+		sb.append(this.limiteParticipantes);
+		sb.append(";");
+		sb.append(this.plataforma);
+		sb.append(";");
+		sb.append(this.nivel);
+		
+		return sb.toString();	
+	}
 	
 	public String getNome() {
 		return nome;

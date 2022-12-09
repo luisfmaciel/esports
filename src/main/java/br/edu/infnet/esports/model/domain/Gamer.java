@@ -5,13 +5,32 @@ import java.util.List;
 
 public class Gamer {
 	
-	protected static List<Gamer> gamersTotal = new ArrayList<Gamer>();
+	private static List<Gamer> gamersTotal = new ArrayList<Gamer>();
 	
-	private String name;
+	private String nome;
 	private String email;
 	private String username;
+	private Equipe equipe;
 	private List<Game> games = new ArrayList<Game>();
-	private List<Equipe> equipes;
+	
+	
+	public Gamer(String nome, String email) {
+		this.nome = nome;
+		this.email = email;
+	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.nome);
+		sb.append(";");
+		sb.append(this.email);
+		sb.append(";");
+		sb.append(this.username);
+		sb.append(";");
+		sb.append(this.equipe.getNome());
+	
+		return sb.toString();	
+	}
 	
 	public static List<Gamer> getGamersTotal() {
 		return gamersTotal;
@@ -24,11 +43,11 @@ public class Gamer {
 		gamersTotal.add(gamer);				
 	}
 	
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	public String getEmail() {
@@ -62,12 +81,13 @@ public class Gamer {
 	public void setGames(Game game) {
 		this.games.add(game);
 	}
-	
-	public List<Equipe> getEquipes() {
-		return equipes;
+
+	public Equipe getEquipe() {
+		return equipe;
 	}
-	public void setEquipes(List<Equipe> equipes) {
-		this.equipes = equipes;
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
 	}
 	
 }
