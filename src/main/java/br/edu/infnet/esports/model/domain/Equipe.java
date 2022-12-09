@@ -15,7 +15,7 @@ public class Equipe {
 	public Equipe(String nome, int limiteParticipantes, String plataforma, String nivel) throws Exception {
 		if(limiteParticipantes < 2) throw new Exception("Uma equipe deve ter no mínimo 2 gamers!");
 		
-		if(limiteParticipantes > 4) throw new Exception("Uma equipe deve ter no máximo 4 gamers!");
+		if(limiteParticipantes > 12) throw new Exception("Uma equipe deve ter no máximo 12 gamers!");
 		
 		this.nome = nome;
 		this.limiteParticipantes = limiteParticipantes;
