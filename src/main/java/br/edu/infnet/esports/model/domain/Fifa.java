@@ -7,30 +7,8 @@ public class Fifa extends Game {
 	private int passe;
 
 		
-	public Fifa(String plataforma, int finalizacao, int marcacao, int passe) throws Exception {
-		super("FIFA 22", plataforma);
-		
-		if(finalizacao < 0) 
-			throw new Exception("Sua estatística de finalização deve ser maior ou igual à zero!");
-		
-		if(finalizacao > 100) 
-			throw new Exception("Sua estatística de finalização deve ser menor ou igual à 100!");
-		
-		if(marcacao < 0) 
-			throw new Exception("Sua estatística de marcação deve ser maior ou igual à zero!");
-		
-		if(marcacao > 100) 
-			throw new Exception("Sua estatística de marcação deve ser menor ou igual à 100!");
-		
-		if(passe < 0) 
-			throw new Exception("Sua estatística de passe deve ser maior ou igual à zero!");
-		
-		if(passe > 100) 
-			throw new Exception("Sua estatística de passe deve ser menor ou igual à 100!");
-		
-		this.finalizacao = finalizacao;
-		this.marcacao = marcacao;
-		this.passe = passe;
+	public Fifa(String plataforma) {
+		super("FIFA", plataforma);		
 	}
 	
 	@Override
@@ -63,7 +41,13 @@ public class Fifa extends Game {
 		return finalizacao;
 	}
 
-	public void setFinalizacao(int finalizacao) {
+	public void setFinalizacao(int finalizacao) throws Exception {
+		if(finalizacao < 0) 
+			throw new Exception("Sua estatística de finalização deve ser maior ou igual à zero!");
+		
+		if(finalizacao > 100) 
+			throw new Exception("Sua estatística de finalização deve ser menor ou igual à 100!");
+		
 		this.finalizacao = finalizacao;
 	}
 
@@ -71,7 +55,13 @@ public class Fifa extends Game {
 		return marcacao;
 	}
 
-	public void setMarcacao(int marcacao) {
+	public void setMarcacao(int marcacao) throws Exception {
+		if(marcacao < 0) 
+			throw new Exception("Sua estatística de marcação deve ser maior ou igual à zero!");
+		
+		if(marcacao > 100) 
+			throw new Exception("Sua estatística de marcação deve ser menor ou igual à 100!");
+		
 		this.marcacao = marcacao;
 	}
 
@@ -79,7 +69,13 @@ public class Fifa extends Game {
 		return passe;
 	}
 
-	public void setPasse(int passe) {
+	public void setPasse(int passe) throws Exception {
+		if(passe < 0) 
+			throw new Exception("Sua estatística de passe deve ser maior ou igual à zero!");
+		
+		if(passe > 100) 
+			throw new Exception("Sua estatística de passe deve ser menor ou igual à 100!");
+		
 		this.passe = passe;
 	}
 	 
