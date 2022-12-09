@@ -14,21 +14,21 @@ public class Dungeons extends Game {
 		if(dano < 0) 
 			throw new Exception("Sua estatística de dano deve ser maior ou igual à zero!");
 		
-		if(dano > 0) 
+		if(dano > 100) 
 			throw new Exception("Sua estatística de dano deve ser menor ou igual à 100!");
 		
 		
 		if(sabedoria < 0) 
 			throw new Exception("Sua estatística de sabedoria deve ser maior ou igual à zero!");
 		
-		if(sabedoria > 0) 
+		if(sabedoria > 100) 
 			throw new Exception("Sua estatística de dasabedoriano deve ser menor ou igual à 100!");
 		
 		
 		if(velocidade < 0) 
 			throw new Exception("Sua estatística de velocidade deve ser maior ou igual à zero!");
 		
-		if(velocidade > 0) 
+		if(velocidade > 100) 
 			throw new Exception("Sua estatística de velocidade deve ser menor ou igual à 100!");
 		
 		this.dano = dano;

@@ -13,19 +13,19 @@ public class Fifa extends Game {
 		if(finalizacao < 0) 
 			throw new Exception("Sua estatística de finalização deve ser maior ou igual à zero!");
 		
-		if(finalizacao > 0) 
+		if(finalizacao > 100) 
 			throw new Exception("Sua estatística de finalização deve ser menor ou igual à 100!");
 		
 		if(marcacao < 0) 
 			throw new Exception("Sua estatística de marcação deve ser maior ou igual à zero!");
 		
-		if(marcacao > 0) 
+		if(marcacao > 100) 
 			throw new Exception("Sua estatística de marcação deve ser menor ou igual à 100!");
 		
 		if(passe < 0) 
 			throw new Exception("Sua estatística de passe deve ser maior ou igual à zero!");
 		
-		if(passe > 0) 
+		if(passe > 100) 
 			throw new Exception("Sua estatística de passe deve ser menor ou igual à 100!");
 		
 		this.finalizacao = finalizacao;

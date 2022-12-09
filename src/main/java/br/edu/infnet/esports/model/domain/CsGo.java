@@ -14,19 +14,19 @@ public class CsGo extends Game {
 		if(precisao < 0) 
 			throw new Exception("Sua estatística de precisão deve ser maior ou igual à zero!");
 		
-		if(precisao > 0) 
+		if(precisao > 100) 
 			throw new Exception("Sua estatística de precisão deve ser menor ou igual à 100!");
 		
 		if(agressividade < 0) 
 			throw new Exception("Sua estatística de agressividade deve ser maior ou igual à zero!");
 		
-		if(agressividade > 0) 
+		if(agressividade > 100) 
 			throw new Exception("Sua estatística de agressividade deve ser menor ou igual à 100!");
 		
 		if(tatica < 0) 
 			throw new Exception("Sua estatística de tática deve ser maior ou igual à zero!");
 		
-		if(tatica > 0) 
+		if(tatica > 100) 
 			throw new Exception("Sua estatística de tática deve ser menor ou igual à 100!");
 		
 		this.precisao = precisao;
