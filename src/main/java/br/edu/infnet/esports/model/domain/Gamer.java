@@ -19,6 +19,16 @@ public class Gamer {
 		this.email = email;
 	}
 	
+	public Game encontraGame(String nomeGame) throws Exception {
+		Game gameEncotrado = this.games
+				.stream()
+				.filter(game -> game.getNome().equalsIgnoreCase(nomeGame))
+				.findFirst()
+				.orElseThrow(() -> new Exception("Você não possui o game: " + nomeGame));
+		
+		return gameEncotrado;
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.nome);
