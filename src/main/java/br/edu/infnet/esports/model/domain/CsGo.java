@@ -8,30 +8,8 @@ public class CsGo extends Game {
 	private int agressividade;
 	private int tatica;
 
-	public CsGo(String plataforma, int precisao, int agressividade, int tatica) throws Exception {
+	public CsGo(String plataforma) throws Exception {
 		super("CS:GO", plataforma);
-		
-		if(precisao < 0) 
-			throw new Exception("Sua estatística de precisão deve ser maior ou igual à zero!");
-		
-		if(precisao > 100) 
-			throw new Exception("Sua estatística de precisão deve ser menor ou igual à 100!");
-		
-		if(agressividade < 0) 
-			throw new Exception("Sua estatística de agressividade deve ser maior ou igual à zero!");
-		
-		if(agressividade > 100) 
-			throw new Exception("Sua estatística de agressividade deve ser menor ou igual à 100!");
-		
-		if(tatica < 0) 
-			throw new Exception("Sua estatística de tática deve ser maior ou igual à zero!");
-		
-		if(tatica > 100) 
-			throw new Exception("Sua estatística de tática deve ser menor ou igual à 100!");
-		
-		this.precisao = precisao;
-		this.agressividade = agressividade;
-		this.tatica = tatica;
 	}
 	
 	@Override
@@ -63,7 +41,13 @@ public class CsGo extends Game {
 		return precisao;
 	}
 
-	public void setPrecisao(int precisao) {
+	public void setPrecisao(int precisao) throws Exception {
+		if(precisao < 0) 
+			throw new Exception("Sua estatística de precisão deve ser maior ou igual à zero!");
+		
+		if(precisao > 100) 
+			throw new Exception("Sua estatística de precisão deve ser menor ou igual à 100!");
+		
 		this.precisao = precisao;
 	}
 
@@ -71,7 +55,13 @@ public class CsGo extends Game {
 		return agressividade;
 	}
 
-	public void setAgressividade(int agressividade) {
+	public void setAgressividade(int agressividade) throws Exception {
+		if(agressividade < 0) 
+			throw new Exception("Sua estatística de agressividade deve ser maior ou igual à zero!");
+		
+		if(agressividade > 100) 
+			throw new Exception("Sua estatística de agressividade deve ser menor ou igual à 100!");
+		
 		this.agressividade = agressividade;
 	}
 
@@ -79,7 +69,13 @@ public class CsGo extends Game {
 		return tatica;
 	}
 
-	public void setTatica(int tatica) {
+	public void setTatica(int tatica) throws Exception {
+		if(tatica < 0) 
+			throw new Exception("Sua estatística de tática deve ser maior ou igual à zero!");
+		
+		if(tatica > 100) 
+			throw new Exception("Sua estatística de tática deve ser menor ou igual à 100!");
+		
 		this.tatica = tatica;
 	}
 

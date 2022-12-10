@@ -8,32 +8,8 @@ public class Dungeons extends Game {
 	private int sabedoria;
 	private int velocidade;
 	
-	public Dungeons(String plataforma, int dano, int sabedoria, int velocidade) throws Exception {
+	public Dungeons(String plataforma) throws Exception {
 		super("DUNGEONS", plataforma);
-		
-		if(dano < 0) 
-			throw new Exception("Sua estatística de dano deve ser maior ou igual à zero!");
-		
-		if(dano > 100) 
-			throw new Exception("Sua estatística de dano deve ser menor ou igual à 100!");
-		
-		
-		if(sabedoria < 0) 
-			throw new Exception("Sua estatística de sabedoria deve ser maior ou igual à zero!");
-		
-		if(sabedoria > 100) 
-			throw new Exception("Sua estatística de dasabedoriano deve ser menor ou igual à 100!");
-		
-		
-		if(velocidade < 0) 
-			throw new Exception("Sua estatística de velocidade deve ser maior ou igual à zero!");
-		
-		if(velocidade > 100) 
-			throw new Exception("Sua estatística de velocidade deve ser menor ou igual à 100!");
-		
-		this.dano = dano;
-		this.sabedoria = sabedoria;
-		this.velocidade = velocidade;
 	}
 	
 	@Override
@@ -66,7 +42,12 @@ public class Dungeons extends Game {
 		return dano;
 	}
 
-	public void setDano(int dano) {
+	public void setDano(int dano) throws Exception {
+		if(dano < 0) 
+			throw new Exception("Sua estatística de dano deve ser maior ou igual à zero!");
+		
+		if(dano > 100) 
+			throw new Exception("Sua estatística de dano deve ser menor ou igual à 100!");
 		this.dano = dano;
 	}
 
@@ -74,7 +55,13 @@ public class Dungeons extends Game {
 		return sabedoria;
 	}
 
-	public void setSabedoria(int sabedoria) {
+	public void setSabedoria(int sabedoria) throws Exception {
+		if(sabedoria < 0) 
+			throw new Exception("Sua estatística de sabedoria deve ser maior ou igual à zero!");
+		
+		if(sabedoria > 100) 
+			throw new Exception("Sua estatística de dasabedoriano deve ser menor ou igual à 100!");
+		
 		this.sabedoria = sabedoria;
 	}
 
@@ -82,7 +69,13 @@ public class Dungeons extends Game {
 		return velocidade;
 	}
 
-	public void setVelocidade(int velocidade) {
+	public void setVelocidade(int velocidade) throws Exception {
+		if(velocidade < 0) 
+			throw new Exception("Sua estatística de velocidade deve ser maior ou igual à zero!");
+		
+		if(velocidade > 100) 
+			throw new Exception("Sua estatística de velocidade deve ser menor ou igual à 100!");
+		
 		this.velocidade = velocidade;
 	}
 	
