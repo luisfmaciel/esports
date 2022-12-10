@@ -3,9 +3,11 @@ package br.edu.infnet.esports.model.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
+
 public class Gamer {
 	
-//	private static List<Gamer> gamersTotal = new ArrayList<Gamer>();
+	private static List<Gamer> gamersTotal = new ArrayList<Gamer>();
 	
 	private String nome;
 	private String email;
@@ -13,8 +15,8 @@ public class Gamer {
 	private int titulos;
 	private List<Game> games = new ArrayList<Game>();
 	
-	public Gamer(String nome, String email, int titulos, List<Game> games) throws Exception {
-		if(titulos < 0) throw new Exception("O número de titulos deve ser maior que 0!");
+	public Gamer(String nome, String email, int titulos, List<Game> games) throws ValorLimiteUltrapassadoException, Exception {
+		if(titulos < 0) throw new ValorLimiteUltrapassadoException("O número de titulos deve ser maior que 0!");
 		
 		this.nome = nome;
 		this.setEmail(email);
@@ -43,16 +45,16 @@ public class Gamer {
 		return sb.toString();	
 	}
 	
-//	public static List<Gamer> getGamersTotal() {
-//		return gamersTotal;
-//	}
-//	
-//	public static void setGamersTotal(Gamer gamer) throws Exception {
-//		for(Gamer player : getGamersTotal()) {
-//			if(player.getEmail().equalsIgnoreCase(gamer.getEmail())) throw new Exception("Usuário já existe");
-//		}
-//		gamersTotal.add(gamer);				
-//	}
+	public static List<Gamer> getGamersTotal() {
+		return gamersTotal;
+	}
+	
+	public static void setGamersTotal(Gamer gamer) throws Exception {
+		for(Gamer player : getGamersTotal()) {
+			if(player.getEmail().equalsIgnoreCase(gamer.getEmail())) throw new Exception("Usuário já existe");
+		}
+		gamersTotal.add(gamer);				
+	}
 	
 	public String getNome() {
 		return nome;
