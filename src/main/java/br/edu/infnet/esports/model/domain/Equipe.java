@@ -3,19 +3,21 @@ package br.edu.infnet.esports.model.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
+
 public class Equipe {
 
 	private String nome;
-	private Game game;
 	private int limiteParticipantes;
 	private boolean multiPlataforma;
 	private String nivel;
+	private Game game;
 	private List<Gamer> gamers = new ArrayList<Gamer>();
 	
-	public Equipe(String nome, int limiteParticipantes, boolean multiPlataforma, String nivel) throws Exception {
-		if(limiteParticipantes < 2) throw new Exception("Uma equipe deve ter no mínimo 2 gamers!");
+	public Equipe(String nome, int limiteParticipantes, boolean multiPlataforma, String nivel) throws ValorLimiteUltrapassadoException, Exception {
+		if(limiteParticipantes < 2) throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no mínimo 2 gamers!");
 		
-		if(limiteParticipantes > 12) throw new Exception("Uma equipe deve ter no máximo 12 gamers!");
+		if(limiteParticipantes > 12) throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no máximo 12 gamers!");
 		
 		this.nome = nome;
 		this.limiteParticipantes = limiteParticipantes;
@@ -84,7 +86,7 @@ public class Equipe {
 		}
 		
 		if(!playerGame.getNivel().equalsIgnoreCase(this.nivel)) 
-			throw new Exception("Essa equipe é para jogadores com o nível: " + this.nivel.toUpperCase());
+			throw new Exception("@" + gamer.getUsername() + ", essa equipe é só para jogadores com o nível: " + this.nivel.toUpperCase());
 		
 		if(this.gamers.size() >= this.limiteParticipantes) 
 			throw new Exception("A equipe " + this.nome + " já está completa\n@" + gamer.getUsername() + ", tente outra equipe ou crie a sua própria!");
