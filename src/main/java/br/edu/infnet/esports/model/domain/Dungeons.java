@@ -13,19 +13,14 @@ public class Dungeons extends Game {
 	}
 	
 	@Override
-	public String calculaNivelGamer() {
-		int dano = this.dano * Constante.PESO_3;
-		int sabedoria = this.sabedoria * Constante.PESO_2;
-		int velocidade = this.velocidade * Constante.PESO_1;
+	public float calculaMediaEstatisticaGamer() {
+		int finalizacao = this.dano * Constante.PESO_3;
+		int marcacao= this.sabedoria * Constante.PESO_2;
+		int passe = this.velocidade * Constante.PESO_1;
 		
-		int total = (dano + sabedoria + velocidade) / 3;
-		
-		if(total >= 180) return Constante.LENDARIO;
-		else if(total >= 140 && total < 180) return Constante.PROFISSIONAL;
-		else if(total >= 60 && total < 140) return Constante.SEMIPRO;
-		else return Constante.INICIANTE;
+		return (finalizacao + marcacao + passe) / 3;
 	}
-	
+		
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

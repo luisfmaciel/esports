@@ -13,17 +13,12 @@ public class CsGo extends Game {
 	}
 	
 	@Override
-	public String calculaNivelGamer() {
-		int precisao = this.precisao * Constante.PESO_3;
-		int agressividade = this.agressividade * Constante.PESO_2;
-		int tatica = this.tatica * Constante.PESO_1;
+	public float calculaMediaEstatisticaGamer() {
+		int finalizacao = this.precisao  * Constante.PESO_3;
+		int marcacao= this.agressividade * Constante.PESO_2;
+		int passe = this.tatica * Constante.PESO_1;
 		
-		int total = (precisao + agressividade + tatica) / 3;
-		
-		if(total >= 180) return Constante.LENDARIO;
-		else if(total >= 140 && total < 180) return Constante.PROFISSIONAL;
-		else if(total >= 60 && total < 140) return Constante.SEMIPRO;
-		else return Constante.INICIANTE;
+		return (finalizacao + marcacao + passe) / 3;
 	}
 	
 	@Override

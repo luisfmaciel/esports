@@ -1,10 +1,11 @@
 package br.edu.infnet.esports.model.domain;
 import br.edu.infnet.esports.model.auxiliar.Constante;
+import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class Fifa extends Game {
-	private int finalizacao;
-	private int marcacao;
-	private int passe;
+	private float finalizacao;
+	private float marcacao;
+	private float passe;
 
 		
 	public Fifa(String plataforma) {
@@ -12,19 +13,14 @@ public class Fifa extends Game {
 	}
 	
 	@Override
-	public String calculaNivelGamer() {
-		int finalizacao = this.finalizacao * Constante.PESO_3;
-		int marcacao= this.marcacao * Constante.PESO_2;
-		int passe = this.passe * Constante.PESO_1;
+	public float calculaMediaEstatisticaGamer() {
+		float finalizacao = this.finalizacao * Constante.PESO_3;
+		float marcacao= this.marcacao * Constante.PESO_2;
+		float passe = this.passe * Constante.PESO_1;
 		
-		int total = (finalizacao + marcacao + passe) / 3;
-		
-		if(total >= 180) return Constante.LENDARIO;
-		else if(total >= 140 && total < 180) return Constante.PROFISSIONAL;
-		else if(total >= 60 && total < 140) return Constante.SEMIPRO;
-		else return Constante.INICIANTE;
+		return (finalizacao + marcacao + passe) / 3;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -37,44 +33,44 @@ public class Fifa extends Game {
 		return super.toString() + sb.toString();	
 	}
 
-	public int getFinalizacao() {
+	public float getFinalizacao() {
 		return finalizacao;
 	}
 
-	public void setFinalizacao(int finalizacao) throws Exception {
+	public void setFinalizacao(float finalizacao) throws ValorLimiteUltrapassadoException {
 		if(finalizacao < 0) 
-			throw new Exception("Sua estatística de finalização deve ser maior ou igual à zero!");
+			throw new ValorLimiteUltrapassadoException("Sua estatística de finalização deve ser maior ou igual à zero!");
 		
-		if(finalizacao > 100) 
-			throw new Exception("Sua estatística de finalização deve ser menor ou igual à 100!");
+		if(finalizacao > 10) 
+			throw new ValorLimiteUltrapassadoException("Sua estatística de finalização deve ser menor ou igual à 10!");
 		
 		this.finalizacao = finalizacao;
 	}
 
-	public int getMarcacao() {
+	public float getMarcacao() {
 		return marcacao;
 	}
 
-	public void setMarcacao(int marcacao) throws Exception {
+	public void setMarcacao(float marcacao) throws ValorLimiteUltrapassadoException {
 		if(marcacao < 0) 
-			throw new Exception("Sua estatística de marcação deve ser maior ou igual à zero!");
+			throw new ValorLimiteUltrapassadoException("Sua estatística de marcação deve ser maior ou igual à zero!");
 		
-		if(marcacao > 100) 
-			throw new Exception("Sua estatística de marcação deve ser menor ou igual à 100!");
+		if(marcacao > 10) 
+			throw new ValorLimiteUltrapassadoException("Sua estatística de marcação deve ser menor ou igual à 10!");
 		
 		this.marcacao = marcacao;
 	}
 
-	public int getPasse() {
+	public float getPasse() {
 		return passe;
 	}
 
-	public void setPasse(int passe) throws Exception {
+	public void setPasse(float passe) throws ValorLimiteUltrapassadoException {
 		if(passe < 0) 
-			throw new Exception("Sua estatística de passe deve ser maior ou igual à zero!");
+			throw new ValorLimiteUltrapassadoException("Sua estatística de passe deve ser maior ou igual à zero!");
 		
-		if(passe > 100) 
-			throw new Exception("Sua estatística de passe deve ser menor ou igual à 100!");
+		if(passe > 10) 
+			throw new ValorLimiteUltrapassadoException("Sua estatística de passe deve ser menor ou igual à 10!");
 		
 		this.passe = passe;
 	}
