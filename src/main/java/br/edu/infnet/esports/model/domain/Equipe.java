@@ -8,18 +8,18 @@ public class Equipe {
 	private String nome;
 	private Game game;
 	private int limiteParticipantes;
-	private String plataforma;
+	private boolean multiPlataforma;
 	private String nivel;
 	private List<Gamer> gamers = new ArrayList<Gamer>();
 	
-	public Equipe(String nome, int limiteParticipantes, String plataforma, String nivel) throws Exception {
+	public Equipe(String nome, int limiteParticipantes, boolean multiPlataforma, String nivel) throws Exception {
 		if(limiteParticipantes < 2) throw new Exception("Uma equipe deve ter no mínimo 2 gamers!");
 		
 		if(limiteParticipantes > 12) throw new Exception("Uma equipe deve ter no máximo 12 gamers!");
 		
 		this.nome = nome;
 		this.limiteParticipantes = limiteParticipantes;
-		this.plataforma = plataforma;
+		this.setMultiPlataforma(multiPlataforma);
 		this.nivel = nivel;
 	}
 	
@@ -28,7 +28,7 @@ public class Equipe {
 		System.out.println("Total de participantes: " + gamers.size());
 		System.out.println("Gamers: ");
 		for(Gamer gamer : gamers) {
-			System.out.println("- " + gamer.getUsername());
+			System.out.println("- @" + gamer.getUsername());
 		}
 	}
 	
@@ -38,9 +38,9 @@ public class Equipe {
 		sb.append(";");
 		sb.append(this.game.getNome());
 		sb.append(";");
-		sb.append(this.limiteParticipantes);
+		sb.append(this.game.getPlataforma());
 		sb.append(";");
-		sb.append(this.plataforma);
+		sb.append(this.limiteParticipantes);
 		sb.append(";");
 		sb.append(this.nivel);
 		
@@ -78,8 +78,10 @@ public class Equipe {
 				.findAny()
 				.orElseThrow(() -> new Exception("Você não possui o game: " + this.game.getNome()));
 		
-		if(!playerGame.getPlataforma().equalsIgnoreCase(this.plataforma)) 
-			throw new Exception("Essa equipe é só para jogadores da plataforma: " + this.plataforma.toUpperCase());
+		if(!this.multiPlataforma) {
+			if(!playerGame.getPlataforma().equalsIgnoreCase(this.game.getPlataforma())) 
+				throw new Exception("Essa equipe é só para jogadores da plataforma: " + this.game.getPlataforma().toUpperCase());			
+		}
 		
 		if(!playerGame.getNivel().equalsIgnoreCase(this.nivel)) 
 			throw new Exception("Essa equipe é para jogadores com o nível: " + this.nivel.toUpperCase());
@@ -96,12 +98,12 @@ public class Equipe {
 	public void setNivel(String nivel) {
 		this.nivel = nivel;
 	}
-	
-	public String getPlataforma() {
-		return plataforma;
+
+	public boolean isMultiPlataforma() {
+		return multiPlataforma;
 	}
-	public void setPlataforma(String plataforma) {
-		this.plataforma = plataforma;
+
+	public void setMultiPlataforma(boolean multiPlataforma) {
+		this.multiPlataforma = multiPlataforma;
 	}
-	
 }
