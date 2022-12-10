@@ -5,17 +5,21 @@ import java.util.List;
 
 public class Gamer {
 	
-	private static List<Gamer> gamersTotal = new ArrayList<Gamer>();
+//	private static List<Gamer> gamersTotal = new ArrayList<Gamer>();
 	
 	private String nome;
 	private String email;
 	private String username;
-	private Equipe equipe;
+	private int titulos;
 	private List<Game> games = new ArrayList<Game>();
 	
-	
-	public Gamer(String nome) {
+	public Gamer(String nome, String email, int titulos, List<Game> games) throws Exception {
+		if(titulos < 0) throw new Exception("O número de titulos deve ser maior que 0!");
+		
 		this.nome = nome;
+		this.setEmail(email);
+		this.titulos = titulos;
+		this.games = games;
 	}
 	
 	public Game encontraGame(String nomeGame) throws Exception {
@@ -34,33 +38,30 @@ public class Gamer {
 		sb.append(";");
 		sb.append(this.username);
 		sb.append(";");
-		sb.append(this.equipe.getNome());
+		sb.append(this.games);
 	
 		return sb.toString();	
 	}
 	
-	public static List<Gamer> getGamersTotal() {
-		return gamersTotal;
-	}
-	
-	public static void setGamersTotal(Gamer gamer) throws Exception {
-		for(Gamer player : getGamersTotal()) {
-			if(player.getEmail().equalsIgnoreCase(gamer.getEmail())) throw new Exception("Usuário já existe");
-		}
-		gamersTotal.add(gamer);				
-	}
+//	public static List<Gamer> getGamersTotal() {
+//		return gamersTotal;
+//	}
+//	
+//	public static void setGamersTotal(Gamer gamer) throws Exception {
+//		for(Gamer player : getGamersTotal()) {
+//			if(player.getEmail().equalsIgnoreCase(gamer.getEmail())) throw new Exception("Usuário já existe");
+//		}
+//		gamersTotal.add(gamer);				
+//	}
 	
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	public void setEmail(String email) throws Exception {
+	private void setEmail(String email) throws Exception {
 		
 		if(email.isBlank()) throw new Exception("E-mail inválido");
 
@@ -85,16 +86,12 @@ public class Gamer {
 	public List<Game> getGames() {
 		return games;
 	}
-	public void setGames(Game game) {
-		this.games.add(game);
+	public void setGames(List<Game> games) {
+		this.games = games;
 	}
 
-	public Equipe getEquipe() {
-		return equipe;
+	public int getTitulos() {
+		return titulos;
 	}
 
-	public void setEquipe(Equipe equipe) {
-		this.equipe = equipe;
-	}
-	
 }
