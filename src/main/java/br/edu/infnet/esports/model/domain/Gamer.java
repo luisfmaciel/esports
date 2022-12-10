@@ -14,19 +14,16 @@ public class Gamer {
 	private List<Game> games = new ArrayList<Game>();
 	
 	
-	public Gamer(String nome, String email) {
+	public Gamer(String nome) {
 		this.nome = nome;
-		this.email = email;
 	}
 	
 	public Game encontraGame(String nomeGame) throws Exception {
-		Game gameEncotrado = this.games
+		return this.games
 				.stream()
 				.filter(game -> game.getNome().equalsIgnoreCase(nomeGame))
 				.findFirst()
 				.orElseThrow(() -> new Exception("Você não possui o game: " + nomeGame));
-		
-		return gameEncotrado;
 	}
 	
 	public String toString() {
