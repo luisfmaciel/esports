@@ -3,19 +3,19 @@ package br.edu.infnet.esports.model.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
+import br.edu.infnet.esports.model.exceptions.GameNaoEncontradoException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class Gamer {
-	
-	private static List<Gamer> gamersTotal = new ArrayList<Gamer>();
-	
+		
 	private String nome;
 	private String email;
 	private String username;
 	private int titulos;
 	private List<Game> games = new ArrayList<Game>();
 	
-	public Gamer(String nome, String email, int titulos, List<Game> games) throws ValorLimiteUltrapassadoException, Exception {
+	public Gamer(String nome, String email, int titulos, List<Game> games) throws ValorLimiteUltrapassadoException, EmailInvalidoException {
 		if(titulos < 0) throw new ValorLimiteUltrapassadoException("O número de titulos deve ser maior que 0!");
 		
 		this.nome = nome;
@@ -24,12 +24,12 @@ public class Gamer {
 		this.games = games;
 	}
 	
-	public Game encontraGame(String nomeGame) throws Exception {
+	public Game encontraGame(String nomeGame) throws GameNaoEncontradoException {
 		return this.games
 				.stream()
 				.filter(game -> game.getNome().equalsIgnoreCase(nomeGame))
 				.findFirst()
-				.orElseThrow(() -> new Exception("Você não possui o game: " + nomeGame));
+				.orElseThrow(() -> new GameNaoEncontradoException("@" + this.username + ", você não possui o game: " + nomeGame));
 	}
 	
 	public String toString() {
@@ -45,17 +45,6 @@ public class Gamer {
 		return sb.toString();	
 	}
 	
-	public static List<Gamer> getGamersTotal() {
-		return gamersTotal;
-	}
-	
-	public static void setGamersTotal(Gamer gamer) throws Exception {
-		for(Gamer player : getGamersTotal()) {
-			if(player.getEmail().equalsIgnoreCase(gamer.getEmail())) throw new Exception("Usuário já existe");
-		}
-		gamersTotal.add(gamer);				
-	}
-	
 	public String getNome() {
 		return nome;
 	}
@@ -63,15 +52,15 @@ public class Gamer {
 	public String getEmail() {
 		return email;
 	}
-	private void setEmail(String email) throws Exception {
+	private void setEmail(String email) throws EmailInvalidoException {
 		
-		if(email.isBlank()) throw new Exception("E-mail inválido");
+		if(email.isBlank()) throw new EmailInvalidoException("E-mail inválido");
 
 		String username = email.substring(0, email.indexOf("@"));
 		String dominio = email.substring(email.indexOf("@")+1);
 		
-		if(!dominio.equalsIgnoreCase("esports.com")) throw new Exception("O domínio deve ser igual a \"esports.com\"");
-		if(!email.contains("@") || username.isEmpty() || username.isBlank()) throw new Exception("E-mail inválido");
+		if(!dominio.equalsIgnoreCase("esports.com")) throw new EmailInvalidoException("O domínio deve ser igual a \"esports.com\"");
+		if(!email.contains("@") || username.isEmpty() || username.isBlank()) throw new EmailInvalidoException("E-mail inválido");
 		
 		setUsername(username);
 		

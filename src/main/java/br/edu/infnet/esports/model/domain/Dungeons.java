@@ -1,24 +1,25 @@
 package br.edu.infnet.esports.model.domain;
 
 import br.edu.infnet.esports.model.auxiliar.Constante;
+import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class Dungeons extends Game {
 
-	private int dano;
-	private int sabedoria;
-	private int velocidade;
+	private float dano;
+	private float sabedoria;
+	private float velocidade;
 	
-	public Dungeons(String plataforma) throws Exception {
+	public Dungeons(String plataforma) {
 		super("DUNGEONS", plataforma);
 	}
 	
 	@Override
 	public float calculaMediaEstatisticaGamer() {
-		int finalizacao = this.dano * Constante.PESO_3;
-		int marcacao= this.sabedoria * Constante.PESO_2;
-		int passe = this.velocidade * Constante.PESO_1;
+		float dano = this.dano * Constante.PESO_3;
+		float sabedoria= this.sabedoria * Constante.PESO_2;
+		float velocidade = this.velocidade * Constante.PESO_1;
 		
-		return (finalizacao + marcacao + passe) / 3;
+		return (dano + sabedoria + velocidade) / 3;
 	}
 		
 	@Override
@@ -33,43 +34,43 @@ public class Dungeons extends Game {
 		return super.toString() + sb.toString();	
 	}
 	
-	public int getDano() {
+	public float getDano() {
 		return dano;
 	}
 
-	public void setDano(int dano) throws Exception {
+	public void setDano(float dano) throws ValorLimiteUltrapassadoException {
 		if(dano < 0) 
-			throw new Exception("Sua estatística de dano deve ser maior ou igual à zero!");
+			throw new ValorLimiteUltrapassadoException("Sua estatística de dano deve ser maior ou igual à zero!");
 		
 		if(dano > 100) 
-			throw new Exception("Sua estatística de dano deve ser menor ou igual à 100!");
+			throw new ValorLimiteUltrapassadoException("Sua estatística de dano deve ser menor ou igual à 100!");
 		this.dano = dano;
 	}
 
-	public int getSabedoria() {
+	public float getSabedoria() {
 		return sabedoria;
 	}
 
-	public void setSabedoria(int sabedoria) throws Exception {
+	public void setSabedoria(float sabedoria) throws ValorLimiteUltrapassadoException {
 		if(sabedoria < 0) 
-			throw new Exception("Sua estatística de sabedoria deve ser maior ou igual à zero!");
+			throw new ValorLimiteUltrapassadoException("Sua estatística de sabedoria deve ser maior ou igual à zero!");
 		
 		if(sabedoria > 100) 
-			throw new Exception("Sua estatística de dasabedoriano deve ser menor ou igual à 100!");
+			throw new ValorLimiteUltrapassadoException("Sua estatística de dasabedoriano deve ser menor ou igual à 100!");
 		
 		this.sabedoria = sabedoria;
 	}
 
-	public int getVelocidade() {
+	public float getVelocidade() {
 		return velocidade;
 	}
 
-	public void setVelocidade(int velocidade) throws Exception {
+	public void setVelocidade(float velocidade) throws ValorLimiteUltrapassadoException {
 		if(velocidade < 0) 
-			throw new Exception("Sua estatística de velocidade deve ser maior ou igual à zero!");
+			throw new ValorLimiteUltrapassadoException("Sua estatística de velocidade deve ser maior ou igual à zero!");
 		
 		if(velocidade > 100) 
-			throw new Exception("Sua estatística de velocidade deve ser menor ou igual à 100!");
+			throw new ValorLimiteUltrapassadoException("Sua estatística de velocidade deve ser menor ou igual à 100!");
 		
 		this.velocidade = velocidade;
 	}

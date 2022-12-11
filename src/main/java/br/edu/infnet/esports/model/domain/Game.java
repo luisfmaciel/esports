@@ -5,7 +5,7 @@ import br.edu.infnet.esports.model.auxiliar.Constante;
 public abstract class Game {
 	private String nome;
 	private String plataforma;
-	private String nivel;
+	private String nivel = Constante.INICIANTE;
 	private float mediaEstatistica;
 	
 	protected Game(String nome, String plataforma) {
@@ -43,9 +43,6 @@ public abstract class Game {
 	
 	public String getPlataforma() {
 		return plataforma;
-	}
-	public void setPlataforma(String plataforma) {
-		this.plataforma = plataforma;
 	}
 	
 	public String getNivel() {
