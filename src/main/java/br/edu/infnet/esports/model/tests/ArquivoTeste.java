@@ -8,9 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.infnet.esports.model.auxiliar.Constante;
-import br.edu.infnet.esports.model.domain.CsGo;
-import br.edu.infnet.esports.model.domain.Dungeons;
 import br.edu.infnet.esports.model.domain.Equipe;
 import br.edu.infnet.esports.model.domain.Fifa;
 import br.edu.infnet.esports.model.domain.Game;
@@ -36,22 +33,19 @@ public class ArquivoTeste {
 			BufferedWriter escrita = new BufferedWriter(fileW);
 			
 			String linha = leitura.readLine();
-			System.out.println(linha);
-			
-			
-			List<Game> meusGames = new ArrayList<Game>();
+
 			List<Gamer> gamers = new ArrayList<Gamer>();
-		
-//			meusGames.add(new Fifa(Constante.PLATAFORMA_PS5));
-//			meusGames.add(new CsGo(Constante.PLATAFORMA_PC));
-//			meusGames.add(new Dungeons(Constante.PLATAFORMA_PS5));
-			
+
 			Equipe equipe = null;
 			Gamer gamer = null;
+			
 			Fifa fifa = null;
 			
+			int count = 0;
+	
 			while(linha != null) {
 				String[] campos = linha.split(";");
+				
 				switch (campos[0].toUpperCase()) {
 				case "E": {
 					try {
@@ -72,23 +66,18 @@ public class ArquivoTeste {
 						fifa.setFinalizacao(Float.valueOf(campos[5]));
 						fifa.setMarcacao(Float.valueOf(campos[6]));
 						fifa.setPasse(Float.valueOf(campos[7]));
-						fifa.setNivel(fifa.calculaNivelGamer(gamer.getTitulos()));
 						fifa.setMediaEstatistica(Float.valueOf(campos[4]));
-						
-						meusGames.add(fifa);
+						fifa.setNivel(fifa.calculaNivelGamer(Integer.valueOf(campos[8])));
 					} catch (ValorLimiteUltrapassadoException e) {
 						System.out.println("[ERRO] " + e.getMessage());
 					}
 					break;
 				}
-				case "C": {
-					break;
-				}
-				case "D": {
-					break;
-				}
 				case "G": {
 					try {
+						List<Game> meusGames = new ArrayList<Game>();
+						meusGames.add(fifa);
+						
 						gamer = new Gamer(campos[1], campos[2], Integer.valueOf(campos[3]), meusGames);
 						gamers.add(gamer);
 					} catch (NumberFormatException | ValorLimiteUltrapassadoException | EmailInvalidoException e) {

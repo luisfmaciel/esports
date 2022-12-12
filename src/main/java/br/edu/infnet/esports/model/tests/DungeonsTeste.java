@@ -1,71 +1,53 @@
 package br.edu.infnet.esports.model.tests;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.domain.Dungeons;
-import br.edu.infnet.esports.model.domain.Game;
-import br.edu.infnet.esports.model.domain.Gamer;
-import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
-import br.edu.infnet.esports.model.exceptions.GameNaoEncontradoException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class DungeonsTeste {
 
 	public static void main(String[] args) {
-		List<Game> meusGames = new ArrayList<Game>();
 		Dungeons dungeons = new Dungeons(Constante.PLATAFORMA_PS5);
-		meusGames.add(dungeons);
 		
 		try {
-			Gamer gamerLuis = new Gamer("Luis", "luisinho@esports.com", 11, meusGames);
+			dungeons.setDano(9);
+			dungeons.setSabedoria(7);
+			dungeons.setVelocidade(8);
+			dungeons.setMediaEstatistica(dungeons.calculaMediaEstatisticaGamer());
+			dungeons.setNivel(dungeons.calculaNivelGamer(9));
 			
-			Dungeons dungeonsGamerLuis = (Dungeons) gamerLuis.encontraGame(Constante.GAME_DUNGEONS);
-			dungeonsGamerLuis.setDano(9);
-			dungeonsGamerLuis.setSabedoria(7);
-			dungeonsGamerLuis.setVelocidade(8);
-			dungeonsGamerLuis.setMediaEstatistica(dungeonsGamerLuis.calculaMediaEstatisticaGamer());
-			dungeonsGamerLuis.setNivel(dungeonsGamerLuis.calculaNivelGamer(gamerLuis.getTitulos()));
+			System.out.println(dungeons);
+			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", dungeons.calculaMediaEstatisticaGamer()));
 			
-			System.out.println(dungeonsGamerLuis);
-			System.out.println("Média das estatísticas do gamer @" + gamerLuis.getUsername() + ": " + String.format("%.2f", dungeonsGamerLuis.calculaMediaEstatisticaGamer()));
-			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException | GameNaoEncontradoException e) {
+		} catch (ValorLimiteUltrapassadoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
 		try {
-			Gamer gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", 2, meusGames);
+			dungeons.setDano(5);
+			dungeons.setSabedoria(2);
+			dungeons.setVelocidade(4);
+			dungeons.setMediaEstatistica(dungeons.calculaMediaEstatisticaGamer());
+			dungeons.setNivel(dungeons.calculaNivelGamer(4));
 			
-			Dungeons dungeonsGamerFelipe = (Dungeons) gamerFelipe.encontraGame(Constante.GAME_DUNGEONS);
-			dungeonsGamerFelipe.setDano(5);
-			dungeonsGamerFelipe.setSabedoria(4);
-			dungeonsGamerFelipe.setVelocidade(3);
-			dungeonsGamerFelipe.setMediaEstatistica(dungeonsGamerFelipe.calculaMediaEstatisticaGamer());
-			dungeonsGamerFelipe.setNivel(dungeonsGamerFelipe.calculaNivelGamer(gamerFelipe.getTitulos()));
+			System.out.println(dungeons);
+			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", dungeons.calculaMediaEstatisticaGamer()));
 			
-			System.out.println(dungeonsGamerFelipe);
-			System.out.println("Média das estatísticas do gamer @" + gamerFelipe.getUsername() + ": " + String.format("%.2f", dungeonsGamerFelipe.calculaMediaEstatisticaGamer()));
-			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException | GameNaoEncontradoException e) {
+		} catch (ValorLimiteUltrapassadoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
 		try {
-			Gamer gamerBarbosa = new Gamer("Barbosa", "barbosinha@esports.com", 0, meusGames);
+			dungeons.setDano(1);
+			dungeons.setSabedoria(0);
+			dungeons.setVelocidade(1);
+			dungeons.setMediaEstatistica(dungeons.calculaMediaEstatisticaGamer());
+			dungeons.setNivel(dungeons.calculaNivelGamer(0));
 			
-			Dungeons dungeonsGamerBarbosa = (Dungeons) gamerBarbosa.encontraGame(Constante.GAME_DUNGEONS);
-			dungeonsGamerBarbosa.setDano(2);
-			dungeonsGamerBarbosa.setSabedoria(3);
-			dungeonsGamerBarbosa.setVelocidade(1);
-			dungeonsGamerBarbosa.setMediaEstatistica(dungeonsGamerBarbosa.calculaMediaEstatisticaGamer());
-			dungeonsGamerBarbosa.setNivel(dungeonsGamerBarbosa.calculaNivelGamer(gamerBarbosa.getTitulos()));
+			System.out.println(dungeons);
+			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", dungeons.calculaMediaEstatisticaGamer()));
 			
-			System.out.println(dungeonsGamerBarbosa);
-			System.out.println("Média das estatísticas do gamer @" + gamerBarbosa.getUsername() + ": " + String.format("%.2f", dungeonsGamerBarbosa.calculaMediaEstatisticaGamer()));
-			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException | GameNaoEncontradoException e) {
+		} catch (ValorLimiteUltrapassadoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 	}

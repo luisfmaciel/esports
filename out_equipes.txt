@@ -1,1 +1,1 @@
-Futiba;FIFA;PS5;profissional;4;2
+Futiba;FIFA;true;profissional;4;3

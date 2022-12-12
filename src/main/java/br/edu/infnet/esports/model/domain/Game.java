@@ -5,12 +5,13 @@ import br.edu.infnet.esports.model.auxiliar.Constante;
 public abstract class Game {
 	private String nome;
 	private String plataforma;
-	private String nivel = Constante.INICIANTE;
+	private String nivel;
 	private float mediaEstatistica;
 	
 	protected Game(String nome, String plataforma) {
 		this.nome = nome;
 		this.plataforma = plataforma;
+		this.nivel = Constante.INICIANTE;
 	}
 	
 	public abstract float calculaMediaEstatisticaGamer();

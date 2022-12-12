@@ -1,71 +1,54 @@
 package br.edu.infnet.esports.model.tests;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.domain.Fifa;
-import br.edu.infnet.esports.model.domain.Game;
-import br.edu.infnet.esports.model.domain.Gamer;
-import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
-import br.edu.infnet.esports.model.exceptions.GameNaoEncontradoException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class FifaTeste {
 
 	public static void main(String[] args) {
-		List<Game> meusGames = new ArrayList<Game>();
 		Fifa fifa = new Fifa(Constante.PLATAFORMA_PS5);
-		meusGames.add(fifa);
 		
 		try {
-			Gamer gamerLuis = new Gamer("Luis", "luisinho@esports.com", 8, meusGames);
+			fifa.setFinalizacao(9);
+			fifa.setMarcacao(7);
+			fifa.setPasse(8);
+			fifa.setMediaEstatistica(fifa.calculaMediaEstatisticaGamer());
+			fifa.setNivel(fifa.calculaNivelGamer(9));
 			
-			Fifa fifaGamerLuis = (Fifa) gamerLuis.encontraGame(Constante.GAME_FIFA);
-			fifaGamerLuis.setFinalizacao(9);
-			fifaGamerLuis.setMarcacao(7);
-			fifaGamerLuis.setPasse(8);
-			fifaGamerLuis.setMediaEstatistica(fifaGamerLuis.calculaMediaEstatisticaGamer());
-			fifaGamerLuis.setNivel(fifaGamerLuis.calculaNivelGamer(gamerLuis.getTitulos()));
+			System.out.println(fifa);
+			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", fifa.calculaMediaEstatisticaGamer()));
 			
-			System.out.println(fifaGamerLuis);
-			System.out.println("Média das estatísticas do gamer @" + gamerLuis.getUsername() + ": " + String.format("%.2f", fifaGamerLuis.calculaMediaEstatisticaGamer()));
-			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException | GameNaoEncontradoException e) {
+		} catch (ValorLimiteUltrapassadoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
 		try {
-			Gamer gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", 1, meusGames);
+			fifa.setFinalizacao(5);
+			fifa.setMarcacao(2);
+			fifa.setPasse(4);
+			fifa.setMediaEstatistica(fifa.calculaMediaEstatisticaGamer());
+			fifa.setNivel(fifa.calculaNivelGamer(4));
 			
-			Fifa fifaGamerFelipe = (Fifa) gamerFelipe.encontraGame(Constante.GAME_FIFA);
-			fifaGamerFelipe.setFinalizacao(5);
-			fifaGamerFelipe.setMarcacao(2);
-			fifaGamerFelipe.setPasse(4);
-			fifaGamerFelipe.setMediaEstatistica(fifaGamerFelipe.calculaMediaEstatisticaGamer());
-			fifaGamerFelipe.setNivel(fifaGamerFelipe.calculaNivelGamer(gamerFelipe.getTitulos()));
-		
-			System.out.println(fifaGamerFelipe);
-			System.out.println("Média das estatísticas do gamer @" + gamerFelipe.getUsername() + ": " + String.format("%.2f", fifaGamerFelipe.calculaMediaEstatisticaGamer()));
+			System.out.println(fifa);
+			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", fifa.calculaMediaEstatisticaGamer()));
 			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException | GameNaoEncontradoException e) {
+			
+		} catch (ValorLimiteUltrapassadoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
 		try {
-			Gamer gamerBarbosa = new Gamer("Barbosa", "barbosinha@esports.com", 0, meusGames);
+			fifa.setFinalizacao(1);
+			fifa.setMarcacao(0);
+			fifa.setPasse(1);
+			fifa.setMediaEstatistica(fifa.calculaMediaEstatisticaGamer());
+			fifa.setNivel(fifa.calculaNivelGamer(0));
 			
-			Fifa fifaGamerBarbosa = (Fifa) gamerBarbosa.encontraGame(Constante.GAME_FIFA);
-			fifaGamerBarbosa.setFinalizacao(1);
-			fifaGamerBarbosa.setMarcacao(0);
-			fifaGamerBarbosa.setPasse(1);
-			fifaGamerBarbosa.setMediaEstatistica(fifaGamerBarbosa.calculaMediaEstatisticaGamer());
-			fifaGamerBarbosa.setNivel(fifaGamerBarbosa.calculaNivelGamer(gamerBarbosa.getTitulos()));
+			System.out.println(fifa);
+			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", fifa.calculaMediaEstatisticaGamer()));
 			
-			System.out.println(fifaGamerBarbosa);
-			System.out.println("Média das estatísticas do gamer @" + gamerBarbosa.getUsername() + ": " + String.format("%.2f", fifaGamerBarbosa.calculaMediaEstatisticaGamer()));
-			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException | GameNaoEncontradoException e) {
+		} catch (ValorLimiteUltrapassadoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 

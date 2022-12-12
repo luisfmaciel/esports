@@ -1,6 +1,5 @@
 package br.edu.infnet.esports.model.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
@@ -13,7 +12,7 @@ public class Gamer {
 	private String email;
 	private String username;
 	private int titulos;
-	private List<Game> games = new ArrayList<Game>();
+	private List<Game> games;
 	
 	public Gamer(String nome, String email, int titulos, List<Game> games) throws ValorLimiteUltrapassadoException, EmailInvalidoException {
 		if(titulos < 0) throw new ValorLimiteUltrapassadoException("O número de titulos deve ser maior que 0!");
