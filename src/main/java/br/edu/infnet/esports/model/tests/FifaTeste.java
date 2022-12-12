@@ -25,8 +25,8 @@ public class FifaTeste {
 			fifaGamerLuis.setFinalizacao(9);
 			fifaGamerLuis.setMarcacao(7);
 			fifaGamerLuis.setPasse(8);
-			fifaGamerLuis.setNivel(fifaGamerLuis.calculaNivelGamer(fifaGamerLuis.calculaMediaEstatisticaGamer(), gamerLuis.getTitulos()));
 			fifaGamerLuis.setMediaEstatistica(fifaGamerLuis.calculaMediaEstatisticaGamer());
+			fifaGamerLuis.setNivel(fifaGamerLuis.calculaNivelGamer(gamerLuis.getTitulos()));
 			
 			System.out.println(fifaGamerLuis);
 			System.out.println("Média das estatísticas do gamer @" + gamerLuis.getUsername() + ": " + String.format("%.2f", fifaGamerLuis.calculaMediaEstatisticaGamer()));
@@ -42,9 +42,9 @@ public class FifaTeste {
 			fifaGamerFelipe.setFinalizacao(5);
 			fifaGamerFelipe.setMarcacao(2);
 			fifaGamerFelipe.setPasse(4);
-			fifaGamerFelipe.setNivel(fifaGamerFelipe.calculaNivelGamer(fifaGamerFelipe.calculaMediaEstatisticaGamer(), gamerFelipe.getTitulos()));
 			fifaGamerFelipe.setMediaEstatistica(fifaGamerFelipe.calculaMediaEstatisticaGamer());
-			
+			fifaGamerFelipe.setNivel(fifaGamerFelipe.calculaNivelGamer(gamerFelipe.getTitulos()));
+		
 			System.out.println(fifaGamerFelipe);
 			System.out.println("Média das estatísticas do gamer @" + gamerFelipe.getUsername() + ": " + String.format("%.2f", fifaGamerFelipe.calculaMediaEstatisticaGamer()));
 			
@@ -59,8 +59,8 @@ public class FifaTeste {
 			fifaGamerBarbosa.setFinalizacao(1);
 			fifaGamerBarbosa.setMarcacao(0);
 			fifaGamerBarbosa.setPasse(1);
-			fifaGamerBarbosa.setNivel(fifaGamerBarbosa.calculaNivelGamer(fifaGamerBarbosa.calculaMediaEstatisticaGamer(), gamerBarbosa.getTitulos()));
 			fifaGamerBarbosa.setMediaEstatistica(fifaGamerBarbosa.calculaMediaEstatisticaGamer());
+			fifaGamerBarbosa.setNivel(fifaGamerBarbosa.calculaNivelGamer(gamerBarbosa.getTitulos()));
 			
 			System.out.println(fifaGamerBarbosa);
 			System.out.println("Média das estatísticas do gamer @" + gamerBarbosa.getUsername() + ": " + String.format("%.2f", fifaGamerBarbosa.calculaMediaEstatisticaGamer()));

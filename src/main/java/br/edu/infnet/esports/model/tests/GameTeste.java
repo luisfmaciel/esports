@@ -24,8 +24,8 @@ public class GameTeste {
 			fifaGamerLuis.setFinalizacao(9);
 			fifaGamerLuis.setMarcacao(7);
 			fifaGamerLuis.setPasse(8);
-			fifaGamerLuis.setNivel(fifaGamerLuis.calculaNivelGamer(fifaGamerLuis.calculaMediaEstatisticaGamer(), gamerLuis1.getTitulos()));
 			fifaGamerLuis.setMediaEstatistica(fifaGamerLuis.calculaMediaEstatisticaGamer());
+			fifaGamerLuis.setNivel(fifaGamerLuis.calculaNivelGamer(gamerLuis1.getTitulos()));
 			
 			System.out.println(fifaGamerLuis);
 			
@@ -43,8 +43,8 @@ public class GameTeste {
 			dungeonsGamerLuis.setDano(3);
 			dungeonsGamerLuis.setSabedoria(1);
 			dungeonsGamerLuis.setVelocidade(2);
-			dungeonsGamerLuis.setNivel(dungeonsGamerLuis.calculaNivelGamer(dungeonsGamerLuis.calculaMediaEstatisticaGamer(), gamerLuis2.getTitulos()));
 			dungeonsGamerLuis.setMediaEstatistica(dungeonsGamerLuis.calculaMediaEstatisticaGamer());
+			dungeonsGamerLuis.setNivel(dungeonsGamerLuis.calculaNivelGamer(gamerLuis2.getTitulos()));
 			
 			System.out.println(dungeonsGamerLuis);
 			
@@ -62,8 +62,8 @@ public class GameTeste {
 			csgoGamerLuis.setPrecisao(6);
 			csgoGamerLuis.setAgressividade(4);
 			csgoGamerLuis.setTatica(5);
-			csgoGamerLuis.setNivel(csgoGamerLuis.calculaNivelGamer(csgoGamerLuis.calculaMediaEstatisticaGamer(), gamerLuis3.getTitulos()));
 			csgoGamerLuis.setMediaEstatistica(csgoGamerLuis.calculaMediaEstatisticaGamer());
+			csgoGamerLuis.setNivel(csgoGamerLuis.calculaNivelGamer(gamerLuis3.getTitulos()));
 			
 			System.out.println(csgoGamerLuis);
 			

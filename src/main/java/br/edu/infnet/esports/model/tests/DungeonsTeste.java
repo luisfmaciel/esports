@@ -25,8 +25,8 @@ public class DungeonsTeste {
 			dungeonsGamerLuis.setDano(9);
 			dungeonsGamerLuis.setSabedoria(7);
 			dungeonsGamerLuis.setVelocidade(8);
-			dungeonsGamerLuis.setNivel(dungeonsGamerLuis.calculaNivelGamer(dungeonsGamerLuis.calculaMediaEstatisticaGamer(), gamerLuis.getTitulos()));
 			dungeonsGamerLuis.setMediaEstatistica(dungeonsGamerLuis.calculaMediaEstatisticaGamer());
+			dungeonsGamerLuis.setNivel(dungeonsGamerLuis.calculaNivelGamer(gamerLuis.getTitulos()));
 			
 			System.out.println(dungeonsGamerLuis);
 			System.out.println("Média das estatísticas do gamer @" + gamerLuis.getUsername() + ": " + String.format("%.2f", dungeonsGamerLuis.calculaMediaEstatisticaGamer()));
@@ -42,8 +42,8 @@ public class DungeonsTeste {
 			dungeonsGamerFelipe.setDano(5);
 			dungeonsGamerFelipe.setSabedoria(4);
 			dungeonsGamerFelipe.setVelocidade(3);
-			dungeonsGamerFelipe.setNivel(dungeonsGamerFelipe.calculaNivelGamer(dungeonsGamerFelipe.calculaMediaEstatisticaGamer(), gamerFelipe.getTitulos()));
 			dungeonsGamerFelipe.setMediaEstatistica(dungeonsGamerFelipe.calculaMediaEstatisticaGamer());
+			dungeonsGamerFelipe.setNivel(dungeonsGamerFelipe.calculaNivelGamer(gamerFelipe.getTitulos()));
 			
 			System.out.println(dungeonsGamerFelipe);
 			System.out.println("Média das estatísticas do gamer @" + gamerFelipe.getUsername() + ": " + String.format("%.2f", dungeonsGamerFelipe.calculaMediaEstatisticaGamer()));
@@ -59,8 +59,8 @@ public class DungeonsTeste {
 			dungeonsGamerBarbosa.setDano(2);
 			dungeonsGamerBarbosa.setSabedoria(3);
 			dungeonsGamerBarbosa.setVelocidade(1);
-			dungeonsGamerBarbosa.setNivel(dungeonsGamerBarbosa.calculaNivelGamer(dungeonsGamerBarbosa.calculaMediaEstatisticaGamer(), gamerBarbosa.getTitulos()));
 			dungeonsGamerBarbosa.setMediaEstatistica(dungeonsGamerBarbosa.calculaMediaEstatisticaGamer());
+			dungeonsGamerBarbosa.setNivel(dungeonsGamerBarbosa.calculaNivelGamer(gamerBarbosa.getTitulos()));
 			
 			System.out.println(dungeonsGamerBarbosa);
 			System.out.println("Média das estatísticas do gamer @" + gamerBarbosa.getUsername() + ": " + String.format("%.2f", dungeonsGamerBarbosa.calculaMediaEstatisticaGamer()));

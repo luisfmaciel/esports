@@ -16,9 +16,9 @@ public class Equipe {
 	private boolean multiPlataforma;
 	private String nivel;
 	private Game game;
-	private List<Gamer> gamers = new ArrayList<Gamer>();
+	private List<Gamer> gamers;
 	
-	public Equipe(String nome, int limiteParticipantes, boolean multiPlataforma, String nivel) throws ValorLimiteUltrapassadoException {
+	public Equipe(String nome, int limiteParticipantes, boolean multiPlataforma, String nivel, Game game) throws ValorLimiteUltrapassadoException {
 		if(limiteParticipantes < 2) throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no mínimo 2 gamers!");
 		
 		if(limiteParticipantes > 12) throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no máximo 12 gamers!");
@@ -27,6 +27,7 @@ public class Equipe {
 		this.limiteParticipantes = limiteParticipantes;
 		this.setMultiPlataforma(multiPlataforma);
 		this.nivel = nivel;
+		this.game = game;
 	}
 	
 	public void imprimir(){
@@ -36,6 +37,21 @@ public class Equipe {
 		for(Gamer gamer : gamers) {
 			System.out.println("- @" + gamer.getUsername());
 		}
+	}
+	
+	public String obterLinha() {
+		return this.getNome() 
+				+ ";" 
+				+ this.getGame().getNome() 
+				+ ";" 
+				+ (this.multiPlataforma ?  this.multiPlataforma : this.getGame().getPlataforma()) 
+				+ ";" 
+				+ this.getGame().getNivel() 
+				+ ";" 
+				+ this.limiteParticipantes
+				+ ";"
+				+ this.getGamers().size() 
+				+ "\r\n";
 	}
 	
 	public String toString() {
@@ -72,30 +88,32 @@ public class Equipe {
 	public List<Gamer> getGamers() {
 		return gamers;
 	}
-	public void setGamers(Gamer gamer) throws 
+	public void setGamers(List<Gamer> gamers) throws 
 		GameNaoEncontradoException,
 		EquipeCompletaException, 
 		NivelDiferenteNivelException, 
 		PlatformaDiferenteException 
 	{		
-		Game playerGame = gamer.getGames()
-				.stream()
-				.filter(game -> game.getNome().equalsIgnoreCase(this.game.getNome()))
-				.findAny()
-				.orElseThrow(() -> new GameNaoEncontradoException("@" + gamer.getUsername() + ", você não possui o game: " + this.game.getNome()));
-		
-		if(!this.multiPlataforma) {
-			if(!playerGame.getPlataforma().equalsIgnoreCase(this.game.getPlataforma())) 
-				throw new PlatformaDiferenteException("Essa equipe é só para jogadores da plataforma: " + this.game.getPlataforma().toUpperCase());			
+		for(Gamer gamer : gamers) {
+			Game playerGame = gamer.getGames()
+					.stream()
+					.filter(game -> game.getNome().equalsIgnoreCase(this.game.getNome()))
+					.findAny()
+					.orElseThrow(() -> new GameNaoEncontradoException("@" + gamer.getUsername() + ", você não possui o game: " + this.game.getNome()));
+			
+			if(!this.multiPlataforma) {
+				if(!playerGame.getPlataforma().equalsIgnoreCase(this.game.getPlataforma())) 
+					throw new PlatformaDiferenteException("Essa equipe é só para jogadores da plataforma: " + this.game.getPlataforma().toUpperCase());			
+			}
+			
+			if(!playerGame.getNivel().equalsIgnoreCase(this.nivel)) 
+				throw new NivelDiferenteNivelException("@" + gamer.getUsername() + ", essa equipe é só para jogadores com o nível: " + this.nivel.toUpperCase());
+			
+			if(gamers.size() >= this.limiteParticipantes) 
+				throw new EquipeCompletaException("Essa equipe tem um limite de " + this.getLimiteParticipantes() + " participantes!\nTente outra equipe ou crie a sua própria!");
+			
+			this.gamers = gamers;
 		}
-		
-		if(!playerGame.getNivel().equalsIgnoreCase(this.nivel)) 
-			throw new NivelDiferenteNivelException("@" + gamer.getUsername() + ", essa equipe é só para jogadores com o nível: " + this.nivel.toUpperCase());
-		
-		if(this.gamers.size() >= this.limiteParticipantes) 
-			throw new EquipeCompletaException("A equipe " + this.nome + " já está completa\n@" + gamer.getUsername() + ", tente outra equipe ou crie a sua própria!");
-		
-		this.gamers.add(gamer);
 	}
 	
 	public String getNivel() {

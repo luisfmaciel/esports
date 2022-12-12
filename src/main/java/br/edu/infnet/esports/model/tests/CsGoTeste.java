@@ -25,8 +25,8 @@ public class CsGoTeste {
 			csGoGamerLuis.setPrecisao(9);
 			csGoGamerLuis.setAgressividade(7);
 			csGoGamerLuis.setTatica(8);
-			csGoGamerLuis.setNivel(csGoGamerLuis.calculaNivelGamer(csGoGamerLuis.calculaMediaEstatisticaGamer(), gamerLuis.getTitulos()));
 			csGoGamerLuis.setMediaEstatistica(csGoGamerLuis.calculaMediaEstatisticaGamer());
+			csGoGamerLuis.setNivel(csGoGamerLuis.calculaNivelGamer(gamerLuis.getTitulos()));
 			
 			System.out.println(csGoGamerLuis);
 			System.out.println("Média das estatísticas do gamer @" + gamerLuis.getUsername() + ": " + String.format("%.2f", csGoGamerLuis.calculaMediaEstatisticaGamer()));
@@ -42,8 +42,8 @@ public class CsGoTeste {
 			csGoGamerFelipe.setPrecisao(5);
 			csGoGamerFelipe.setAgressividade(4);
 			csGoGamerFelipe.setTatica(3);
-			csGoGamerFelipe.setNivel(csGoGamerFelipe.calculaNivelGamer(csGoGamerFelipe.calculaMediaEstatisticaGamer(), gamerFelipe.getTitulos()));
 			csGoGamerFelipe.setMediaEstatistica(csGoGamerFelipe.calculaMediaEstatisticaGamer());
+			csGoGamerFelipe.setNivel(csGoGamerFelipe.calculaNivelGamer(gamerFelipe.getTitulos()));
 			
 			System.out.println(csGoGamerFelipe);
 			System.out.println("Média das estatísticas do gamer @" + gamerFelipe.getUsername() + ": " + String.format("%.2f", csGoGamerFelipe.calculaMediaEstatisticaGamer()));
@@ -59,8 +59,8 @@ public class CsGoTeste {
 			csGoGamerBarbosa.setPrecisao(2);
 			csGoGamerBarbosa.setAgressividade(3);
 			csGoGamerBarbosa.setTatica(1);
-			csGoGamerBarbosa.setNivel(csGoGamerBarbosa.calculaNivelGamer(csGoGamerBarbosa.calculaMediaEstatisticaGamer(), gamerBarbosa.getTitulos()));
 			csGoGamerBarbosa.setMediaEstatistica(csGoGamerBarbosa.calculaMediaEstatisticaGamer());
+			csGoGamerBarbosa.setNivel(csGoGamerBarbosa.calculaNivelGamer(gamerBarbosa.getTitulos()));
 			
 			System.out.println(csGoGamerBarbosa);
 			System.out.println("Média das estatísticas do gamer @" + gamerBarbosa.getUsername() + ": " + String.format("%.2f", csGoGamerBarbosa.calculaMediaEstatisticaGamer()));
