@@ -1,0 +1,5 @@
+G;Luis;luisinho@esports.com;8;
+F;FIFA;PS5;profissional;16.33;9.0;7.0;8.0;
+G;Felipe;felipinho@esports.com;7;
+F;FIFA;PS5;iniciante;4.33;3.0;1.0;2.0;
+E;Futiba;4;false;profissional;
