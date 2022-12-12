@@ -40,8 +40,6 @@ public class ArquivoTeste {
 			Gamer gamer = null;
 			
 			Fifa fifa = null;
-			
-			int count = 0;
 	
 			while(linha != null) {
 				String[] campos = linha.split(";");

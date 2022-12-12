@@ -1,6 +1,5 @@
 package br.edu.infnet.esports.model.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.infnet.esports.model.exceptions.EquipeCompletaException;
