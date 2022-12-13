@@ -1,7 +1,11 @@
+C;CSGO;PC;profissional;14.33;8.0;6.0;7.0;7;
+G;Hugo;huguinho@esports.com;7;
 F;FIFA;PS5;profissional;16.33;9.0;7.0;8.0;8;
 G;Luis;luisinho@esports.com;8;
 F;FIFA;Xbox One;profissional;14.33;8.0;6.0;7.0;9;
 G;Felipe;felipinho@esports.com;9;
+D;DUNGEONS;PC;profissional;15.33;7.0;9.0;8.0;7;
+G;Freitas;freitinhas@esports.com;7;
 F;FIFA;PC;profissional;15.33;7.0;9.0;8.0;7;
-G;Felipe;felipinho@esports.com;7;
+G;Barbosa;barbosinha@esports.com;7;
 E;Futiba;4;true;profissional;

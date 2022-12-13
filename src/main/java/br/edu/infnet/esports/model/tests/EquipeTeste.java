@@ -30,10 +30,6 @@ public class EquipeTeste {
 		gamesBarbosa.add(new Fifa(Constante.PLATAFORMA_XBOXONE));
 		gamesBarbosa.add(new Dungeons(Constante.PLATAFORMA_PS5));
 		gamesBarbosa.add(new CsGo(Constante.PLATAFORMA_PC));
-		
-		List<Gamer> gamersFifa = new ArrayList<Gamer>();
-		List<Gamer> gamersCsGo = new ArrayList<Gamer>();
-		List<Gamer> gamersDungeons = new ArrayList<Gamer>();
 
 		try {
 			Gamer gamerLuis1 = new Gamer("Luis", "luis@esports.com", 8, gamesLuis);
@@ -45,8 +41,7 @@ public class EquipeTeste {
 			fifaGamerLuis.setNivel(fifaGamerLuis.calculaNivelGamer(gamerLuis1.getTitulos()));
 			
 			Equipe equipeFutiba = new Equipe("Futiba", 4, true, Constante.PROFISSIONAL, new Fifa(Constante.PLATAFORMA_PS5));
-			gamersFifa.add(gamerLuis1);
-			equipeFutiba.setGamers(gamersFifa);
+			equipeFutiba.setGamers(gamerLuis1);
 			
 			equipeFutiba.imprimir();
 			System.out.println(equipeFutiba);
@@ -78,9 +73,8 @@ public class EquipeTeste {
 			dungeonsGamerFelipe.setNivel(dungeonsGamerFelipe.calculaNivelGamer(gamerFelipe.getTitulos()));
 			
 			Equipe equipeDragons = new Equipe("Dragons", 14, true, Constante.INICIANTE, new Dungeons(Constante.PLATAFORMA_PS5));
-			gamersDungeons.add(gamerLuis2);
-			gamersDungeons.add(gamerFelipe);
-			equipeDragons.setGamers(gamersDungeons);
+			equipeDragons.setGamers(gamerLuis2);
+			equipeDragons.setGamers(gamerFelipe);
 			
 			equipeDragons.imprimir();
 			
@@ -119,11 +113,9 @@ public class EquipeTeste {
 			csgoGamerBarbosa.setNivel(csgoGamerBarbosa.calculaNivelGamer(gamerBarbosa3.getTitulos()));
 
 			Equipe equipeGranada = new Equipe("Granada", 2, false, Constante.LENDARIO, new CsGo(Constante.PLATAFORMA_PC));
-			gamersCsGo.add(gamerLuis3);
-			gamersCsGo.add(gamerFelipe3);
-			gamersCsGo.add(gamerBarbosa3);
-			
-			equipeGranada.setGamers(gamersCsGo);
+			equipeGranada.setGamers(gamerLuis3);
+			equipeGranada.setGamers(gamerFelipe3);
+			equipeGranada.setGamers(gamerBarbosa3);
 			
 			equipeGranada.imprimir();
 			

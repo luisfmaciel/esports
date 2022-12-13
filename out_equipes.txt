@@ -1,1 +1,1 @@
-Futiba;FIFA;true;profissional;4;3
+Futiba;FIFA;true;iniciante;4;3

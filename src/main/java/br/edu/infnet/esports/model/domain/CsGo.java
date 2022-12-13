@@ -37,7 +37,7 @@ public class CsGo extends Game {
 		return precisao;
 	}
 
-	public void setPrecisao(int precisao) throws ValorLimiteUltrapassadoException {
+	public void setPrecisao(float precisao) throws ValorLimiteUltrapassadoException {
 		if(precisao < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de precisão deve ser maior ou igual à zero!");
 		
@@ -51,7 +51,7 @@ public class CsGo extends Game {
 		return agressividade;
 	}
 
-	public void setAgressividade(int agressividade) throws ValorLimiteUltrapassadoException {
+	public void setAgressividade(float agressividade) throws ValorLimiteUltrapassadoException {
 		if(agressividade < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de agressividade deve ser maior ou igual à zero!");
 		
@@ -65,7 +65,7 @@ public class CsGo extends Game {
 		return tatica;
 	}
 
-	public void setTatica(int tatica) throws ValorLimiteUltrapassadoException {
+	public void setTatica(float tatica) throws ValorLimiteUltrapassadoException {
 		if(tatica < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de tática deve ser maior ou igual à zero!");
 		

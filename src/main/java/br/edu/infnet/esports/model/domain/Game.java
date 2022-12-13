@@ -17,9 +17,9 @@ public abstract class Game {
 	public abstract float calculaMediaEstatisticaGamer();
 	
 	public String calculaNivelGamer(int titulos) {
-		if(mediaEstatistica >= 18 || titulos >= 10) return Constante.LENDARIO;
-		else if((mediaEstatistica >= 14 && mediaEstatistica < 18) || (titulos >= 6 && titulos < 10)) return Constante.PROFISSIONAL;
-		else if((mediaEstatistica >= 6 && mediaEstatistica < 14)  || (titulos >= 3 && titulos < 6) ) return Constante.SEMIPRO;
+		if(this.mediaEstatistica >= 18 || titulos >= 10) return Constante.LENDARIO;
+		else if((this.mediaEstatistica >= 14 && this.mediaEstatistica < 18) || (titulos >= 6 && titulos < 10)) return Constante.PROFISSIONAL;
+		else if((this.mediaEstatistica >= 6 && this.mediaEstatistica < 14)  || (titulos >= 3 && titulos < 6) ) return Constante.SEMIPRO;
 		else return Constante.INICIANTE;
 	}
 	
