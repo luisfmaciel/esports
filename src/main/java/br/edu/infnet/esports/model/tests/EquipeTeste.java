@@ -18,35 +18,30 @@ public class EquipeTeste {
 		List<Game> gamesLuis = new ArrayList<Game>();
 		List<Game> gamesFelipe = new ArrayList<Game>();
 		List<Game> gamesBarbosa = new ArrayList<Game>();
-	
-		gamesLuis.add(new Fifa(Constante.PLATAFORMA_PS5));
-		gamesLuis.add(new CsGo(Constante.PLATAFORMA_PC));
-		gamesLuis.add(new Dungeons(Constante.PLATAFORMA_PS5));
 		
-		gamesFelipe.add(new Fifa(Constante.PLATAFORMA_XBOXONE));
-		gamesFelipe.add(new CsGo(Constante.PLATAFORMA_PS4));
-		gamesFelipe.add(new Dungeons(Constante.PLATAFORMA_PS5));
+		Gamer gamerLuis = null;
+		Gamer gamerFelipe = null;
+		Gamer gamerBarbosa = null;
 		
-		gamesBarbosa.add(new Fifa(Constante.PLATAFORMA_XBOXONE));
-		gamesBarbosa.add(new Dungeons(Constante.PLATAFORMA_PS5));
-		gamesBarbosa.add(new CsGo(Constante.PLATAFORMA_PC));
+		Equipe equipeFutiba = null;
 
 		try {
-			Gamer gamerLuis1 = new Gamer("Luis", "luis@esports.com", gamesLuis);
-			Fifa fifaGamerLuis = (Fifa) gamerLuis1.encontraGame(Constante.GAME_FIFA);
-			fifaGamerLuis.setFinalizacao(9);
-			fifaGamerLuis.setMarcacao(7);
-			fifaGamerLuis.setPasse(8);
-			fifaGamerLuis.setTitulos(8);
-			fifaGamerLuis.setMediaEstatistica(fifaGamerLuis.calculaMediaEstatisticaGamer());
-			fifaGamerLuis.setNivel(fifaGamerLuis.identificaNivelGamer());
+			Fifa fifaLuis = new Fifa(Constante.PLATAFORMA_PS5);
+			fifaLuis.setFinalizacao(9);
+			fifaLuis.setMarcacao(7);
+			fifaLuis.setPasse(8);
+			fifaLuis.setTitulos(8);
+			fifaLuis.setMediaEstatistica(fifaLuis.calculaMediaEstatisticaGamer());
+			fifaLuis.setNivel(fifaLuis.identificaNivelGamer());
 			
-			Equipe equipeFutiba = new Equipe("Futiba", 4, true, Constante.PROFISSIONAL, new Fifa(Constante.PLATAFORMA_PS5));
-			equipeFutiba.setGamers(gamerLuis1);
+			gamesLuis.add(fifaLuis);
+			
+			gamerLuis = new Gamer("Luis", "luisinho@esports.com", gamesLuis);
+	
+			equipeFutiba = new Equipe("Futiba", 2, true, Constante.PROFISSIONAL, new Fifa(Constante.PLATAFORMA_PS5));
+			equipeFutiba.setGamers(gamerLuis);
 			
 			equipeFutiba.imprimir();
-			System.out.println(equipeFutiba);
-			
 		} catch (ValorLimiteUltrapassadoException 
 				| EmailInvalidoException 
 				| GameNaoEncontradoException 
@@ -57,29 +52,20 @@ public class EquipeTeste {
 		}
 		
 		try {
-			Gamer gamerLuis2 = new Gamer("Luis", "luisinho@esports.com", gamesLuis);
-			Dungeons dungeonsGamerLuis = (Dungeons) gamerLuis2.encontraGame(Constante.GAME_DUNGEONS);
-			dungeonsGamerLuis.setDano(3);
-			dungeonsGamerLuis.setSabedoria(1);
-			dungeonsGamerLuis.setVelocidade(2);
-			dungeonsGamerLuis.setTitulos(1);
-			dungeonsGamerLuis.setMediaEstatistica(dungeonsGamerLuis.calculaMediaEstatisticaGamer());
-			dungeonsGamerLuis.setNivel(dungeonsGamerLuis.identificaNivelGamer());
+			Fifa fifaFelipe = new Fifa(Constante.PLATAFORMA_PC);
+			fifaFelipe.setFinalizacao(3);
+			fifaFelipe.setMarcacao(1);
+			fifaFelipe.setPasse(2);
+			fifaFelipe.setTitulos(1);
+			fifaFelipe.setMediaEstatistica(fifaFelipe.calculaMediaEstatisticaGamer());
+			fifaFelipe.setNivel(fifaFelipe.identificaNivelGamer());
+			gamesFelipe.add(fifaFelipe);
 
-			Gamer gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", gamesFelipe);
-			Dungeons dungeonsGamerFelipe = (Dungeons) gamerFelipe.encontraGame(Constante.GAME_DUNGEONS);
-			dungeonsGamerFelipe.setDano(2);
-			dungeonsGamerFelipe.setSabedoria(2);
-			dungeonsGamerFelipe.setVelocidade(1);
-			dungeonsGamerFelipe.setTitulos(0);
-			dungeonsGamerFelipe.setMediaEstatistica(dungeonsGamerFelipe.calculaMediaEstatisticaGamer());
-			dungeonsGamerFelipe.setNivel(dungeonsGamerFelipe.identificaNivelGamer());
+			gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", gamesFelipe);
+
+			equipeFutiba.setGamers(gamerFelipe);
 			
-			Equipe equipeDragons = new Equipe("Dragons", 14, true, Constante.INICIANTE, new Dungeons(Constante.PLATAFORMA_PS5));
-			equipeDragons.setGamers(gamerLuis2);
-			equipeDragons.setGamers(gamerFelipe);
-			
-			equipeDragons.imprimir();
+			equipeFutiba.imprimir();
 			
 		} catch (ValorLimiteUltrapassadoException 
 				| EmailInvalidoException 
@@ -91,39 +77,20 @@ public class EquipeTeste {
 		}
 		
 		try {
-			Gamer gamerLuis3 = new Gamer("Luis", "luisinho@esports.com", gamesLuis);
-			CsGo csgoGamerLuis = (CsGo) gamerLuis3.encontraGame(Constante.GAME_CSGO);
-			csgoGamerLuis.setPrecisao(9);
-			csgoGamerLuis.setAgressividade(7);
-			csgoGamerLuis.setTatica(8);
-			csgoGamerLuis.setTitulos(11);
-			csgoGamerLuis.setMediaEstatistica(csgoGamerLuis.calculaMediaEstatisticaGamer());
-			csgoGamerLuis.setNivel(csgoGamerLuis.identificaNivelGamer());
+			Fifa fifaBarbosa = new Fifa(Constante.PLATAFORMA_XBOXONE);
+			fifaBarbosa.setFinalizacao(9);
+			fifaBarbosa.setMarcacao(7);
+			fifaBarbosa.setPasse(8);
+			fifaBarbosa.setTitulos(11);
+			fifaBarbosa.setMediaEstatistica(fifaBarbosa.calculaMediaEstatisticaGamer());
+			fifaBarbosa.setNivel(fifaBarbosa.identificaNivelGamer());
+			gamesBarbosa.add(fifaBarbosa);
 			
-			Gamer gamerFelipe3 = new Gamer("Felipe", "felipinho@esports.com",  gamesFelipe);
-			CsGo csGoGamerFelipe = (CsGo) gamerFelipe3.encontraGame(Constante.GAME_CSGO);
-			csGoGamerFelipe.setPrecisao(9);
-			csGoGamerFelipe.setAgressividade(7);
-			csGoGamerFelipe.setTatica(8);
-			csGoGamerFelipe.setTitulos(12);
-			csGoGamerFelipe.setMediaEstatistica(csGoGamerFelipe.calculaMediaEstatisticaGamer());
-			csGoGamerFelipe.setNivel(csGoGamerFelipe.identificaNivelGamer());
+			gamerBarbosa = new Gamer("Barbosa", "barbosinha@esports.com", gamesBarbosa);
 			
-			Gamer gamerBarbosa3 = new Gamer("Barbosa", "barbosinha@esports.com", gamesBarbosa);
-			CsGo csgoGamerBarbosa = (CsGo) gamerBarbosa3.encontraGame(Constante.GAME_CSGO);
-			csgoGamerBarbosa.setPrecisao(9);
-			csgoGamerBarbosa.setAgressividade(7);
-			csgoGamerBarbosa.setTatica(8);
-			csgoGamerBarbosa.setTitulos(8);
-			csgoGamerBarbosa.setMediaEstatistica(csgoGamerBarbosa.calculaMediaEstatisticaGamer());
-			csgoGamerBarbosa.setNivel(csgoGamerBarbosa.identificaNivelGamer());
-
-			Equipe equipeGranada = new Equipe("Granada", 2, false, Constante.LENDARIO, new CsGo(Constante.PLATAFORMA_PC));
-			equipeGranada.setGamers(gamerLuis3);
-			equipeGranada.setGamers(gamerFelipe3);
-			equipeGranada.setGamers(gamerBarbosa3);
+			equipeFutiba.setGamers(gamerBarbosa);
 			
-			equipeGranada.imprimir();
+			equipeFutiba.imprimir();
 			
 		} catch (ValorLimiteUltrapassadoException 
 				| EmailInvalidoException 
