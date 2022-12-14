@@ -44,7 +44,7 @@ public class Equipe {
 				+ ";" 
 				+ this.getGame().getNome() 
 				+ ";" 
-				+ (this.multiPlataforma ?  this.multiPlataforma : this.getGame().getPlataforma()) 
+				+ (this.multiPlataforma ?  "Multiplataforma" : this.getGame().getPlataforma()) 
 				+ ";" 
 				+ this.getGame().getNivel() 
 				+ ";" 
