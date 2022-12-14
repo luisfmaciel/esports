@@ -18,7 +18,7 @@ import br.edu.infnet.esports.model.domain.Gamer;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 import br.edu.infnet.esports.model.exceptions.EquipeCompletaException;
 import br.edu.infnet.esports.model.exceptions.GameNaoEncontradoException;
-import br.edu.infnet.esports.model.exceptions.NivelDiferenteNivelException;
+import br.edu.infnet.esports.model.exceptions.NivelDiferenteException;
 import br.edu.infnet.esports.model.exceptions.PlatformaDiferenteException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
@@ -58,7 +58,7 @@ public class ArquivoTeste {
 							} catch (ValorLimiteUltrapassadoException 
 									| GameNaoEncontradoException 
 									| EquipeCompletaException 
-									| NivelDiferenteNivelException 
+									| NivelDiferenteException 
 									| PlatformaDiferenteException e) {
 								System.out.println("[ERRO] " + e.getMessage());
 							}

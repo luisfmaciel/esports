@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.edu.infnet.esports.model.exceptions.EquipeCompletaException;
 import br.edu.infnet.esports.model.exceptions.GameNaoEncontradoException;
-import br.edu.infnet.esports.model.exceptions.NivelDiferenteNivelException;
+import br.edu.infnet.esports.model.exceptions.NivelDiferenteException;
 import br.edu.infnet.esports.model.exceptions.PlatformaDiferenteException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
@@ -91,7 +91,7 @@ public class Equipe {
 	public void setGamers(Gamer gamer) throws 
 		GameNaoEncontradoException,
 		EquipeCompletaException, 
-		NivelDiferenteNivelException, 
+		NivelDiferenteException, 
 		PlatformaDiferenteException 
 	{		
 		
@@ -107,7 +107,7 @@ public class Equipe {
 		}
 		
 		if(!playerGame.getNivel().equalsIgnoreCase(this.nivel)) 
-			throw new NivelDiferenteNivelException("@" + gamer.getUsername() + ", essa equipe é só para jogadores com o nível: " + this.nivel.toUpperCase());
+			throw new NivelDiferenteException("@" + gamer.getUsername() + ", essa equipe é só para jogadores com o nível: " + this.nivel.toUpperCase());
 		
 		if(gamers.size() >= this.limiteParticipantes) 
 			throw new EquipeCompletaException("Essa equipe tem um limite de " + this.getLimiteParticipantes() + " participantes!\nTente outra equipe ou crie a sua própria!");
