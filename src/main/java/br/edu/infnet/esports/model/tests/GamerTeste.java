@@ -17,11 +17,11 @@ public class GamerTeste {
 			
 			gamesLuis.add(new Fifa(Constante.PLATAFORMA_PS5));
 			
-			Gamer gamerLuis = new Gamer("Luis", "luisinho@esports.com", 9, gamesLuis);
+			Gamer gamerLuis = new Gamer("Luis", "luisinho@esports.com", gamesLuis);
 			
 			System.out.println(gamerLuis);
 			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException e) {
+		} catch (EmailInvalidoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
@@ -31,11 +31,11 @@ public class GamerTeste {
 			gamesFelipe.add(new Fifa(Constante.PLATAFORMA_PS5));
 			gamesFelipe.add(new CsGo(Constante.PLATAFORMA_PC));
 			
-			Gamer gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", -1, gamesFelipe);
+			Gamer gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", gamesFelipe);
 			
 			System.out.println(gamerFelipe);
 			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException e) {
+		} catch (EmailInvalidoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
@@ -46,11 +46,11 @@ public class GamerTeste {
 			gamesBarbosa.add(new Fifa(Constante.PLATAFORMA_PS5));
 			gamesBarbosa.add(new CsGo(Constante.PLATAFORMA_PC));
 			
-			Gamer gamerBarbosa= new Gamer("Barbosa", "barbosinha@hotmail.com", 4, gamesBarbosa);
+			Gamer gamerBarbosa= new Gamer("Barbosa", "barbosinha@hotmail.com", gamesBarbosa);
 			
 			System.out.println(gamerBarbosa);
 			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException e) {
+		} catch (EmailInvalidoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		

@@ -11,15 +11,11 @@ public class Gamer {
 	private String nome;
 	private String email;
 	private String username;
-	private int titulos;
 	private List<Game> games;
 	
-	public Gamer(String nome, String email, int titulos, List<Game> games) throws ValorLimiteUltrapassadoException, EmailInvalidoException {
-		if(titulos < 0) throw new ValorLimiteUltrapassadoException("O número de titulos deve ser maior que 0!");
-		
+	public Gamer(String nome, String email, List<Game> games) throws  EmailInvalidoException {
 		this.nome = nome;
 		this.setEmail(email);
-		this.titulos = titulos;
 		this.games = games;
 	}
 	
@@ -79,9 +75,4 @@ public class Gamer {
 	public void setGames(List<Game> games) {
 		this.games = games;
 	}
-
-	public int getTitulos() {
-		return titulos;
-	}
-
 }

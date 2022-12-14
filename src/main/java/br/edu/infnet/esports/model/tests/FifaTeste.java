@@ -13,8 +13,9 @@ public class FifaTeste {
 			fifa.setFinalizacao(9);
 			fifa.setMarcacao(7);
 			fifa.setPasse(8);
+			fifa.setTitulos(9);
 			fifa.setMediaEstatistica(fifa.calculaMediaEstatisticaGamer());
-			fifa.setNivel(fifa.calculaNivelGamer(9));
+			fifa.setNivel(fifa.identificaNivelGamer());
 			
 			System.out.println(fifa);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", fifa.calculaMediaEstatisticaGamer()));
@@ -27,8 +28,9 @@ public class FifaTeste {
 			fifa.setFinalizacao(5);
 			fifa.setMarcacao(2);
 			fifa.setPasse(4);
+			fifa.setTitulos(4);
 			fifa.setMediaEstatistica(fifa.calculaMediaEstatisticaGamer());
-			fifa.setNivel(fifa.calculaNivelGamer(4));
+			fifa.setNivel(fifa.identificaNivelGamer());
 			
 			System.out.println(fifa);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", fifa.calculaMediaEstatisticaGamer()));
@@ -42,8 +44,9 @@ public class FifaTeste {
 			fifa.setFinalizacao(1);
 			fifa.setMarcacao(0);
 			fifa.setPasse(1);
+			fifa.setTitulos(0);
 			fifa.setMediaEstatistica(fifa.calculaMediaEstatisticaGamer());
-			fifa.setNivel(fifa.calculaNivelGamer(0));
+			fifa.setNivel(fifa.identificaNivelGamer());
 			
 			System.out.println(fifa);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", fifa.calculaMediaEstatisticaGamer()));

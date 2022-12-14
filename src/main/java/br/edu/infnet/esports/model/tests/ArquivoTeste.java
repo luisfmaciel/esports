@@ -71,8 +71,9 @@ public class ArquivoTeste {
 							((Fifa) game).setFinalizacao(Float.valueOf(campos[5]));
 							((Fifa) game).setMarcacao(Float.valueOf(campos[6]));
 							((Fifa) game).setPasse(Float.valueOf(campos[7]));
+							((Fifa) game).setTitulos(Integer.valueOf(campos[8]));
 							game.setMediaEstatistica(Float.valueOf(campos[4]));
-							game.setNivel(game.calculaNivelGamer(Integer.valueOf(campos[8])));
+							game.setNivel(game.identificaNivelGamer());
 						} catch (ValorLimiteUltrapassadoException e) {
 							System.out.println("[ERRO] " + e.getMessage());
 						}
@@ -84,8 +85,9 @@ public class ArquivoTeste {
 							((Dungeons) game).setDano(Float.valueOf(campos[5]));
 							((Dungeons) game).setSabedoria(Float.valueOf(campos[6]));
 							((Dungeons) game).setVelocidade(Float.valueOf(campos[7]));
+							((Dungeons) game).setTitulos(Integer.valueOf(campos[8]));
 							game.setMediaEstatistica(Float.valueOf(campos[4]));
-							game.setNivel(game.calculaNivelGamer(Integer.valueOf(campos[8])));
+							game.setNivel(game.identificaNivelGamer());
 						} catch (ValorLimiteUltrapassadoException e) {
 							System.out.println("[ERRO] " + e.getMessage());
 						}
@@ -97,8 +99,9 @@ public class ArquivoTeste {
 							((CsGo) game).setPrecisao(Float.valueOf(campos[5]));
 							((CsGo) game).setAgressividade(Float.valueOf(campos[6]));
 							((CsGo) game).setTatica(Float.valueOf(campos[7]));
+							((CsGo) game).setTitulos(Integer.valueOf(campos[8]));
 							game.setMediaEstatistica(Float.valueOf(campos[4]));
-							game.setNivel(game.calculaNivelGamer(Integer.valueOf(campos[8])));
+							game.setNivel(game.identificaNivelGamer());
 						} catch (ValorLimiteUltrapassadoException e) {
 							System.out.println("[ERRO] " + e.getMessage());
 						}
@@ -109,9 +112,9 @@ public class ArquivoTeste {
 							List<Game> meusGames = new ArrayList<Game>();
 							meusGames.add(game);
 							
-							gamer = new Gamer(campos[1], campos[2], Integer.valueOf(campos[3]), meusGames);
+							gamer = new Gamer(campos[1], campos[2], meusGames);
 							gamers.add(gamer);
-						} catch (NumberFormatException | ValorLimiteUltrapassadoException | EmailInvalidoException e) {
+						} catch (NumberFormatException | EmailInvalidoException e) {
 							System.out.println("[ERRO] " + e.getMessage());
 						} 
 						break;

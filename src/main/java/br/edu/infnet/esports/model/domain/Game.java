@@ -1,11 +1,13 @@
 package br.edu.infnet.esports.model.domain;
 
 import br.edu.infnet.esports.model.auxiliar.Constante;
+import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public abstract class Game {
 	private String nome;
 	private String plataforma;
 	private String nivel;
+	private int titulos;
 	private float mediaEstatistica;
 	
 	protected Game(String nome, String plataforma) {
@@ -16,10 +18,10 @@ public abstract class Game {
 	
 	public abstract float calculaMediaEstatisticaGamer();
 	
-	public String calculaNivelGamer(int titulos) {
-		if(this.mediaEstatistica >= 18 || titulos >= 10) return Constante.LENDARIO;
-		else if((this.mediaEstatistica >= 14 && this.mediaEstatistica < 18) || (titulos >= 6 && titulos < 10)) return Constante.PROFISSIONAL;
-		else if((this.mediaEstatistica >= 6 && this.mediaEstatistica < 14)  || (titulos >= 3 && titulos < 6) ) return Constante.SEMIPRO;
+	public String identificaNivelGamer() {
+		if(this.mediaEstatistica >= 18 || this.titulos >= 10) return Constante.LENDARIO;
+		else if((this.mediaEstatistica >= 14 && this.mediaEstatistica < 18) || (this.titulos >= 6 && this.titulos < 10)) return Constante.PROFISSIONAL;
+		else if((this.mediaEstatistica >= 6 && this.mediaEstatistica < 14)  || (this.titulos >= 3 && this.titulos < 6) ) return Constante.SEMIPRO;
 		else return Constante.INICIANTE;
 	}
 	
@@ -59,6 +61,15 @@ public abstract class Game {
 
 	public void setMediaEstatistica(float mediaEstatistica) {
 		this.mediaEstatistica = mediaEstatistica;
+	}
+
+	public int getTitulos() {
+		return titulos;
+	}
+
+	public void setTitulos(int titulos) throws ValorLimiteUltrapassadoException {
+		if(titulos < 0) throw new ValorLimiteUltrapassadoException("O número de titulos deve ser maior que 0!");
+		this.titulos = titulos;
 	}
 	
 }

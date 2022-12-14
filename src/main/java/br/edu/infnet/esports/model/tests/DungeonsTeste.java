@@ -13,8 +13,9 @@ public class DungeonsTeste {
 			dungeons.setDano(9);
 			dungeons.setSabedoria(7);
 			dungeons.setVelocidade(8);
+			dungeons.setTitulos(9);
 			dungeons.setMediaEstatistica(dungeons.calculaMediaEstatisticaGamer());
-			dungeons.setNivel(dungeons.calculaNivelGamer(9));
+			dungeons.setNivel(dungeons.identificaNivelGamer());
 			
 			System.out.println(dungeons);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", dungeons.calculaMediaEstatisticaGamer()));
@@ -27,8 +28,9 @@ public class DungeonsTeste {
 			dungeons.setDano(5);
 			dungeons.setSabedoria(2);
 			dungeons.setVelocidade(4);
+			dungeons.setTitulos(4);
 			dungeons.setMediaEstatistica(dungeons.calculaMediaEstatisticaGamer());
-			dungeons.setNivel(dungeons.calculaNivelGamer(4));
+			dungeons.setNivel(dungeons.identificaNivelGamer());
 			
 			System.out.println(dungeons);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", dungeons.calculaMediaEstatisticaGamer()));
@@ -41,8 +43,9 @@ public class DungeonsTeste {
 			dungeons.setDano(1);
 			dungeons.setSabedoria(0);
 			dungeons.setVelocidade(1);
+			dungeons.setTitulos(0);
 			dungeons.setMediaEstatistica(dungeons.calculaMediaEstatisticaGamer());
-			dungeons.setNivel(dungeons.calculaNivelGamer(0));
+			dungeons.setNivel(dungeons.identificaNivelGamer());
 			
 			System.out.println(dungeons);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", dungeons.calculaMediaEstatisticaGamer()));

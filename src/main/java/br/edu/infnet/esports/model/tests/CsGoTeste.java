@@ -13,8 +13,9 @@ public class CsGoTeste {
 			csGo.setPrecisao(9);
 			csGo.setAgressividade(7);
 			csGo.setTatica(8);
+			csGo.setTitulos(9);
 			csGo.setMediaEstatistica(csGo.calculaMediaEstatisticaGamer());
-			csGo.setNivel(csGo.calculaNivelGamer(9));
+			csGo.setNivel(csGo.identificaNivelGamer());
 			
 			System.out.println(csGo);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", csGo.calculaMediaEstatisticaGamer()));
@@ -27,8 +28,9 @@ public class CsGoTeste {
 			csGo.setPrecisao(5);
 			csGo.setAgressividade(4);
 			csGo.setTatica(3);
+			csGo.setTitulos(4);
 			csGo.setMediaEstatistica(csGo.calculaMediaEstatisticaGamer());
-			csGo.setNivel(csGo.calculaNivelGamer(4));
+			csGo.setNivel(csGo.identificaNivelGamer());
 			
 			System.out.println(csGo);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", csGo.calculaMediaEstatisticaGamer()));
@@ -40,8 +42,9 @@ public class CsGoTeste {
 			csGo.setPrecisao(2);
 			csGo.setAgressividade(3);
 			csGo.setTatica(-1);
+			csGo.setTitulos(1);
 			csGo.setMediaEstatistica(csGo.calculaMediaEstatisticaGamer());
-			csGo.setNivel(csGo.calculaNivelGamer(1));
+			csGo.setNivel(csGo.identificaNivelGamer());
 			
 			System.out.println(csGo);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", csGo.calculaMediaEstatisticaGamer()));

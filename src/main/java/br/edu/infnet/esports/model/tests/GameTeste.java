@@ -18,14 +18,15 @@ public class GameTeste {
 			Fifa fifa = new Fifa(Constante.PLATAFORMA_PS5);
 			gamesLuis.add(fifa);
 			
-			Gamer gamerLuis1 = new Gamer("Luis", "luis@esports.com", 8, gamesLuis);
+			Gamer gamerLuis1 = new Gamer("Luis", "luis@esports.com", gamesLuis);
 			
 			Fifa fifaGamerLuis = (Fifa) gamerLuis1.encontraGame(Constante.GAME_FIFA);
 			fifaGamerLuis.setFinalizacao(9);
 			fifaGamerLuis.setMarcacao(7);
 			fifaGamerLuis.setPasse(8);
+			fifaGamerLuis.setTitulos(8);
 			fifaGamerLuis.setMediaEstatistica(fifaGamerLuis.calculaMediaEstatisticaGamer());
-			fifaGamerLuis.setNivel(fifaGamerLuis.calculaNivelGamer(gamerLuis1.getTitulos()));
+			fifaGamerLuis.setNivel(fifaGamerLuis.identificaNivelGamer());
 			
 			System.out.println(fifaGamerLuis);
 			
@@ -37,14 +38,15 @@ public class GameTeste {
 			Dungeons dungeons = new Dungeons(Constante.PLATAFORMA_PS5);
 			gamesLuis.add(dungeons);
 			
-			Gamer gamerLuis2 = new Gamer("Luis", "luis@esports.com", 2, gamesLuis);
+			Gamer gamerLuis2 = new Gamer("Luis", "luis@esports.com",gamesLuis);
 			
 			Dungeons dungeonsGamerLuis = (Dungeons) gamerLuis2.encontraGame(Constante.GAME_DUNGEONS);
 			dungeonsGamerLuis.setDano(3);
 			dungeonsGamerLuis.setSabedoria(1);
 			dungeonsGamerLuis.setVelocidade(2);
+			dungeonsGamerLuis.setTitulos(2);
 			dungeonsGamerLuis.setMediaEstatistica(dungeonsGamerLuis.calculaMediaEstatisticaGamer());
-			dungeonsGamerLuis.setNivel(dungeonsGamerLuis.calculaNivelGamer(gamerLuis2.getTitulos()));
+			dungeonsGamerLuis.setNivel(dungeonsGamerLuis.identificaNivelGamer());
 			
 			System.out.println(dungeonsGamerLuis);
 			
@@ -56,14 +58,15 @@ public class GameTeste {
 			CsGo fifa = new CsGo(Constante.PLATAFORMA_PC);
 			gamesLuis.add(fifa);
 			
-			Gamer gamerLuis3 = new Gamer("Luis", "luis@esports.com", 4, gamesLuis);
+			Gamer gamerLuis3 = new Gamer("Luis", "luis@esports.com", gamesLuis);
 			
 			CsGo csgoGamerLuis = (CsGo) gamerLuis3.encontraGame(Constante.GAME_CSGO);
 			csgoGamerLuis.setPrecisao(6);
 			csgoGamerLuis.setAgressividade(4);
 			csgoGamerLuis.setTatica(5);
+			csgoGamerLuis.setTitulos(4);
 			csgoGamerLuis.setMediaEstatistica(csgoGamerLuis.calculaMediaEstatisticaGamer());
-			csgoGamerLuis.setNivel(csgoGamerLuis.calculaNivelGamer(gamerLuis3.getTitulos()));
+			csgoGamerLuis.setNivel(csgoGamerLuis.identificaNivelGamer());
 			
 			System.out.println(csgoGamerLuis);
 			
