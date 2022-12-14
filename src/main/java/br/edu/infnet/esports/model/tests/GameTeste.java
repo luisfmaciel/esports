@@ -1,76 +1,57 @@
 package br.edu.infnet.esports.model.tests;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.domain.*;
-import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
-import br.edu.infnet.esports.model.exceptions.GameNaoEncontradoException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class GameTeste {
 
 	public static void main(String[] args) {
-		List<Game> gamesLuis = new ArrayList<Game>();
-		
 		try {
 			Fifa fifa = new Fifa(Constante.PLATAFORMA_PS5);
-			gamesLuis.add(fifa);
 			
-			Gamer gamerLuis1 = new Gamer("Luis", "luis@esports.com", gamesLuis);
+			fifa.setFinalizacao(9);
+			fifa.setMarcacao(7);
+			fifa.setPasse(8);
+			fifa.setTitulos(8);
+			fifa.setMediaEstatistica(fifa.calculaMediaEstatisticaGamer());
+			fifa.setNivel(fifa.identificaNivelGamer());
 			
-			Fifa fifaGamerLuis = (Fifa) gamerLuis1.encontraGame(Constante.GAME_FIFA);
-			fifaGamerLuis.setFinalizacao(9);
-			fifaGamerLuis.setMarcacao(7);
-			fifaGamerLuis.setPasse(8);
-			fifaGamerLuis.setTitulos(8);
-			fifaGamerLuis.setMediaEstatistica(fifaGamerLuis.calculaMediaEstatisticaGamer());
-			fifaGamerLuis.setNivel(fifaGamerLuis.identificaNivelGamer());
+			System.out.println(fifa);
 			
-			System.out.println(fifaGamerLuis);
-			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException | GameNaoEncontradoException e) {
+		} catch (ValorLimiteUltrapassadoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
 		try {
 			Dungeons dungeons = new Dungeons(Constante.PLATAFORMA_PS5);
-			gamesLuis.add(dungeons);
 			
-			Gamer gamerLuis2 = new Gamer("Luis", "luis@esports.com",gamesLuis);
+			dungeons.setDano(3);
+			dungeons.setSabedoria(1);
+			dungeons.setVelocidade(2);
+			dungeons.setTitulos(2);
+			dungeons.setMediaEstatistica(dungeons.calculaMediaEstatisticaGamer());
+			dungeons.setNivel(dungeons.identificaNivelGamer());
 			
-			Dungeons dungeonsGamerLuis = (Dungeons) gamerLuis2.encontraGame(Constante.GAME_DUNGEONS);
-			dungeonsGamerLuis.setDano(3);
-			dungeonsGamerLuis.setSabedoria(1);
-			dungeonsGamerLuis.setVelocidade(2);
-			dungeonsGamerLuis.setTitulos(2);
-			dungeonsGamerLuis.setMediaEstatistica(dungeonsGamerLuis.calculaMediaEstatisticaGamer());
-			dungeonsGamerLuis.setNivel(dungeonsGamerLuis.identificaNivelGamer());
+			System.out.println(dungeons);
 			
-			System.out.println(dungeonsGamerLuis);
-			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException | GameNaoEncontradoException e) {
+		} catch (ValorLimiteUltrapassadoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
 		try {
-			CsGo fifa = new CsGo(Constante.PLATAFORMA_PC);
-			gamesLuis.add(fifa);
+			CsGo csgo = new CsGo(Constante.PLATAFORMA_PC);
+
+			csgo.setPrecisao(6);
+			csgo.setAgressividade(4);
+			csgo.setTatica(5);
+			csgo.setTitulos(4);
+			csgo.setMediaEstatistica(csgo.calculaMediaEstatisticaGamer());
+			csgo.setNivel(csgo.identificaNivelGamer());
 			
-			Gamer gamerLuis3 = new Gamer("Luis", "luis@esports.com", gamesLuis);
+			System.out.println(csgo);
 			
-			CsGo csgoGamerLuis = (CsGo) gamerLuis3.encontraGame(Constante.GAME_CSGO);
-			csgoGamerLuis.setPrecisao(6);
-			csgoGamerLuis.setAgressividade(4);
-			csgoGamerLuis.setTatica(5);
-			csgoGamerLuis.setTitulos(4);
-			csgoGamerLuis.setMediaEstatistica(csgoGamerLuis.calculaMediaEstatisticaGamer());
-			csgoGamerLuis.setNivel(csgoGamerLuis.identificaNivelGamer());
-			
-			System.out.println(csgoGamerLuis);
-			
-		} catch (ValorLimiteUltrapassadoException | EmailInvalidoException | GameNaoEncontradoException e) {
+		} catch (ValorLimiteUltrapassadoException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		

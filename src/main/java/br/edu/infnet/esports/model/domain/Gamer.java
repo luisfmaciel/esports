@@ -3,8 +3,6 @@ package br.edu.infnet.esports.model.domain;
 import java.util.List;
 
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
-import br.edu.infnet.esports.model.exceptions.GameNaoEncontradoException;
-import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class Gamer {
 		
@@ -17,14 +15,6 @@ public class Gamer {
 		this.nome = nome;
 		this.setEmail(email);
 		this.games = games;
-	}
-	
-	public Game encontraGame(String nomeGame) throws GameNaoEncontradoException {
-		return this.games
-				.stream()
-				.filter(game -> game.getNome().equalsIgnoreCase(nomeGame))
-				.findFirst()
-				.orElseThrow(() -> new GameNaoEncontradoException("@" + this.username + ", você não possui o game: " + nomeGame));
 	}
 	
 	public String toString() {

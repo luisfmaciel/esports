@@ -6,7 +6,6 @@ import java.util.List;
 import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.domain.*;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
-import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class GamerTeste {
 
