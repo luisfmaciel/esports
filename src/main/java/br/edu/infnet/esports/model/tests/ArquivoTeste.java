@@ -68,11 +68,11 @@ public class ArquivoTeste {
 					case "F": {
 						try {
 							game = new Fifa(campos[2]);
-							((Fifa) game).setFinalizacao(Float.valueOf(campos[5]));
-							((Fifa) game).setMarcacao(Float.valueOf(campos[6]));
-							((Fifa) game).setPasse(Float.valueOf(campos[7]));
-							((Fifa) game).setTitulos(Integer.valueOf(campos[8]));
-							game.setMediaEstatistica(Float.valueOf(campos[4]));
+							((Fifa) game).setFinalizacao(Float.valueOf(campos[4]));
+							((Fifa) game).setMarcacao(Float.valueOf(campos[5]));
+							((Fifa) game).setPasse(Float.valueOf(campos[6]));
+							((Fifa) game).setTitulos(Integer.valueOf(campos[7]));
+							game.setMediaEstatistica(game.calculaMediaEstatisticaGamer());
 							game.setNivel(game.identificaNivelGamer());
 						} catch (ValorLimiteUltrapassadoException e) {
 							System.out.println("[ERRO] " + e.getMessage());
@@ -82,11 +82,11 @@ public class ArquivoTeste {
 					case "D": {
 						try {
 							game = new Dungeons(campos[2]);
-							((Dungeons) game).setDano(Float.valueOf(campos[5]));
-							((Dungeons) game).setSabedoria(Float.valueOf(campos[6]));
-							((Dungeons) game).setVelocidade(Float.valueOf(campos[7]));
-							((Dungeons) game).setTitulos(Integer.valueOf(campos[8]));
-							game.setMediaEstatistica(Float.valueOf(campos[4]));
+							((Dungeons) game).setDano(Float.valueOf(campos[4]));
+							((Dungeons) game).setSabedoria(Float.valueOf(campos[5]));
+							((Dungeons) game).setVelocidade(Float.valueOf(campos[6]));
+							((Dungeons) game).setTitulos(Integer.valueOf(campos[7]));
+							game.setMediaEstatistica(game.calculaMediaEstatisticaGamer());
 							game.setNivel(game.identificaNivelGamer());
 						} catch (ValorLimiteUltrapassadoException e) {
 							System.out.println("[ERRO] " + e.getMessage());
@@ -96,11 +96,11 @@ public class ArquivoTeste {
 					case "C": {
 						try {
 							game = new CsGo(campos[2]);
-							((CsGo) game).setPrecisao(Float.valueOf(campos[5]));
-							((CsGo) game).setAgressividade(Float.valueOf(campos[6]));
-							((CsGo) game).setTatica(Float.valueOf(campos[7]));
-							((CsGo) game).setTitulos(Integer.valueOf(campos[8]));
-							game.setMediaEstatistica(Float.valueOf(campos[4]));
+							((CsGo) game).setPrecisao(Float.valueOf(campos[4]));
+							((CsGo) game).setAgressividade(Float.valueOf(campos[5]));
+							((CsGo) game).setTatica(Float.valueOf(campos[6]));
+							((CsGo) game).setTitulos(Integer.valueOf(campos[7]));
+							game.setMediaEstatistica(game.calculaMediaEstatisticaGamer());
 							game.setNivel(game.identificaNivelGamer());
 						} catch (ValorLimiteUltrapassadoException e) {
 							System.out.println("[ERRO] " + e.getMessage());
