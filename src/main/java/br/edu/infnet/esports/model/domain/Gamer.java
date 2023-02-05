@@ -1,5 +1,6 @@
 package br.edu.infnet.esports.model.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
@@ -14,7 +15,7 @@ public class Gamer {
 	public Gamer(String nome, String email, List<Game> games) throws  EmailInvalidoException {
 		this.nome = nome;
 		this.setEmail(email);
-		this.games = games;
+		this.games = new ArrayList<Game>();
 	}
 	
 	public String toString() {
@@ -38,7 +39,6 @@ public class Gamer {
 		return email;
 	}
 	private void setEmail(String email) throws EmailInvalidoException {
-		
 		if(email.isBlank()) throw new EmailInvalidoException("E-mail inválido");
 
 		String username = email.substring(0, email.indexOf("@"));
