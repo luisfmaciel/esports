@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>E-sports</title>
 </head>
-<body>
+<body style="background-color: #f5f5f5;">
 	<h2>Cadastro FIFA</h2>
 </body>	
 </html>
