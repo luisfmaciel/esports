@@ -112,7 +112,7 @@ public class ArquivoTeste {
 							List<Game> meusGames = new ArrayList<Game>();
 							meusGames.add(game);
 							
-							gamer = new Gamer(campos[1], campos[2], meusGames);
+							gamer = new Gamer(campos[1], campos[2], campos[3], meusGames);
 							gamers.add(gamer);
 						} catch (NumberFormatException | EmailInvalidoException e) {
 							System.out.println("[ERRO] " + e.getMessage());

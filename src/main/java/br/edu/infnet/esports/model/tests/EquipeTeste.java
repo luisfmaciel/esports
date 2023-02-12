@@ -36,7 +36,7 @@ public class EquipeTeste {
 			
 			gamesLuis.add(fifaLuis);
 			
-			gamerLuis = new Gamer("Luis", "luisinho@esports.com", gamesLuis);
+			gamerLuis = new Gamer("Luis", "luisinho@esports.com", "luisinho@esports.com", gamesLuis);
 	
 			equipeFutiba = new Equipe("Futiba", 2, true, Constante.PROFISSIONAL, new Fifa(Constante.PLATAFORMA_PS5));
 			equipeFutiba.setGamers(gamerLuis);
@@ -61,7 +61,7 @@ public class EquipeTeste {
 			fifaFelipe.setNivel(fifaFelipe.identificaNivelGamer());
 			gamesFelipe.add(fifaFelipe);
 
-			gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", gamesFelipe);
+			gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", "felipinho@esports.com", gamesFelipe);
 
 			equipeFutiba.setGamers(gamerFelipe);
 			
@@ -86,7 +86,7 @@ public class EquipeTeste {
 			fifaBarbosa.setNivel(fifaBarbosa.identificaNivelGamer());
 			gamesBarbosa.add(fifaBarbosa);
 			
-			gamerBarbosa = new Gamer("Barbosa", "barbosinha@esports.com", gamesBarbosa);
+			gamerBarbosa = new Gamer("Barbosa", "barbosinha@esports.com", "barbosinha@esports.com", gamesBarbosa);
 			
 			equipeFutiba.setGamers(gamerBarbosa);
 			
