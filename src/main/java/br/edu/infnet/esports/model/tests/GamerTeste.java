@@ -16,7 +16,7 @@ public class GamerTeste {
 			
 			gamesLuis.add(new Fifa(Constante.PLATAFORMA_PS5));
 			
-			Gamer gamerLuis = new Gamer("Luis", "luisinho@esports.com", gamesLuis);
+			Gamer gamerLuis = new Gamer("Luis", "luisinho@esports.com", "luisinho@esports.com", gamesLuis);
 			
 			System.out.println(gamerLuis);
 			
@@ -30,7 +30,7 @@ public class GamerTeste {
 			gamesFelipe.add(new Fifa(Constante.PLATAFORMA_PS5));
 			gamesFelipe.add(new CsGo(Constante.PLATAFORMA_PC));
 			
-			Gamer gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", gamesFelipe);
+			Gamer gamerFelipe = new Gamer("Felipe", "felipinho@esports.com", "felipinho@esports.com", gamesFelipe);
 			
 			System.out.println(gamerFelipe);
 			
@@ -45,7 +45,7 @@ public class GamerTeste {
 			gamesBarbosa.add(new Fifa(Constante.PLATAFORMA_PS5));
 			gamesBarbosa.add(new CsGo(Constante.PLATAFORMA_PC));
 			
-			Gamer gamerBarbosa= new Gamer("Barbosa", "barbosinha@hotmail.com", gamesBarbosa);
+			Gamer gamerBarbosa= new Gamer("Barbosa", "barbosinha@hotmail.com", "barbosinha@hotmail.com", gamesBarbosa);
 			
 			System.out.println(gamerBarbosa);
 			
