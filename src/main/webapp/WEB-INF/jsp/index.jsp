@@ -16,6 +16,7 @@
 	<main>
 		<div class="container mt-3">
 			<h1 class="mt-2">E-sports</h1>		
+			<h2 class="mt-2">Cadastro de <a href="/usuario/lista">usuários</a></h2>
 			<h2 class="mt-2">Cadastro de <a href="/gamer/lista">gamers</a></h2>
 			<h2 class="mt-2">Cadastro de <a href="/equipe">equipes</a></h2>
 			<h2 class="mt-2">Cadastro de <a href="/game">games</a></h2>
