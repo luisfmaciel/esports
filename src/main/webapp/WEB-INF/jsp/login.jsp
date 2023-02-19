@@ -25,7 +25,7 @@
 			<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
 			<c:if test="${not empty mensagem}">
-				<div class="alert alert-danger" role="alert">This is a danger
+				<div class="alert alert-danger" role="alert">
 					<strong>Atenção</strong> ${mensagem}
 				</div>
 			</c:if>

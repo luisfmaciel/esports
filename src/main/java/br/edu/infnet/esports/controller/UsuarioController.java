@@ -1,8 +1,7 @@
 package br.edu.infnet.esports.controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,19 +12,20 @@ import br.edu.infnet.esports.model.repository.UsuarioRepository;
 
 @Controller
 public class UsuarioController {
+	
+	private String msg;
+	
 	@GetMapping(value = "/usuario")
 	public String telaCadastro() {
 		return "usuario/cadastro";
 	}
 
 	@GetMapping(value = "/usuario/lista")
-	public String telaLista() {
-		List<Usuario> lista = UsuarioRepository.obterLista();
+	public String telaLista(Model model) {
 		
-		for(Usuario usuario: lista) {
-			System.out.printf("%s - %s\n", usuario.getUsername(), usuario.getEmail());
-		}
-		
+		model.addAttribute("usuarios", UsuarioRepository.obterLista());
+		model.addAttribute("mensagem", msg);
+		msg = null;
 		return "usuario/lista";
 	}
 
@@ -42,9 +42,10 @@ public class UsuarioController {
 		usuario.setEmail(email);
 		usuario.setSenha(senha);
 		usuario.setPerfil(perfil);
-		
-		System.out.println("Inclusão realizada com sucesso: " + usuario);
+	
 		UsuarioRepository.incluir(usuario);
+		msg = "Usuário " + usuario.getNome() + " cadastrado com sucesso";
+	
 		return "redirect:/usuario/lista";
 	}
 }
