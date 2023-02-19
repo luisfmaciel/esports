@@ -1,6 +1,7 @@
 package br.edu.infnet.esports.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +18,7 @@ public class AcessoController {
 	}
 	
 	@PostMapping(value = "/login")
-	public String login(@RequestParam String email, @RequestParam String senha) throws EmailInvalidoException {
+	public String login(Model model, @RequestParam String email, @RequestParam String senha) throws EmailInvalidoException {
 
 		Usuario usuario = new Usuario();
 		usuario.setEmail(email);
@@ -26,6 +27,9 @@ public class AcessoController {
 		if(AcessoRepository.autenticar(usuario) != null) {
 			return "redirect:/home";
 		}
-		return "redirect:/login";
+		
+		model.addAttribute("mensagem", "As credencias para o email " + usuario.getEmail() + " estão incorretas!");
+		
+		return telaLogin();
 	}
 }
