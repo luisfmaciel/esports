@@ -14,25 +14,18 @@
 </head>
 <body style="background-color: #f5f5f5;">
 	<header>
-		<nav class="navbar navbar-dark bg-black px-4">
-			<span class="navbar-brand text-light mb-0 h1">E-sports</span>
-		</nav>
+		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</header>
 	<main>
 		<div class="container mt-4">
-			<form action="/usuario" method="get">
-				
-				<h3>Listagem de Usuarios</h3>
 
-				<c:if test="${not empty mensagem}">
-					<div class="alert alert-success my-2" role="alert">
-						<strong>Atenção</strong> ${mensagem}
-					</div>
-				</c:if>
+			<h3>Listagem de Usuarios</h3>
 
-				<button class="btn btn-primary" type="submit">Novo</button>
-			</form>
-			
+			<c:if test="${not empty mensagem}">
+				<div class="alert alert-success my-2" role="alert">
+					<strong>Atenção</strong> ${mensagem}
+				</div>
+			</c:if>
 
 			<c:if test="${empty usuarios}">
 				<h5>Não existem usuários cadastrados!</h5>
@@ -44,23 +37,25 @@
 				<table class="table table-striped mt-4">
 					<thead>
 						<tr>
-							<th scope="col">#</th>
+							<th scope="col">ID</th>
 							<th scope="col">Nome</th>
 							<th scope="col">Senha</th>
 							<th scope="col">E-mail</th>
 							<th scope="col">Username</th>
 							<th scope="col">Perfil</th>
+							<th scope="col"></th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="u" items="${usuarios}" varStatus="loop">
+						<c:forEach var="u" items="${usuarios}">
 							<tr>
-								<th scope="row">${loop.index+1}</th>
+								<th scope="row">${u.id}</th>
 								<td>${u.nome}</td>
 								<td>${u.senha}</td>
 								<td>${u.email}</td>
 								<td>${u.username}</td>
 								<td>${u.perfil}</td>
+								<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

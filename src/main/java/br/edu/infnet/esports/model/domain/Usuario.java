@@ -4,6 +4,7 @@ import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 
 public class Usuario {
 
+	private Integer id;
 	private String nome;
 	private String email;
 	private String username;
@@ -21,6 +22,14 @@ public class Usuario {
 		sb.append(this.perfil);
 	
 		return sb.toString();	
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	public String getNome() {
