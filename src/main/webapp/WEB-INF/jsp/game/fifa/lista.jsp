@@ -12,17 +12,11 @@
 <meta charset="ISO-8859-1">
 <title>E-sports</title>
 </head>
-<body class="text-center" style="height= 100vh; background-color: #f5f5f5;">
+<body style="background-color: #f5f5f5;">
 	<header>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</header>
-	<main>
-		<div class="container mt-3">
-			<h1 class="mt-2">Games</h1>		
-			<h2 class="mt-2">Cadastro de estatísticas<a href="/game/csgo/lista">CS:GO</a></h2>
-			<h2 class="mt-2">Cadastro de estatísticas<a href="/game/fifa/lista">FIFA</a></h2>
-			<h2 class="mt-2">Cadastro de estatísticas<a href="/game/dungeons/lista">DUNGEONS</a></h2>
-		</div>
-	</main>
+	
+	<h2>lista fifa</h2>
 </body>
 </html>

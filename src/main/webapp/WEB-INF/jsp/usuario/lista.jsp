@@ -21,11 +21,11 @@
 
 			<h3>Listagem de Usuarios</h3>
 
-			<c:if test="${not empty mensagem}">
+			<%-- <c:if test="${not empty mensagem}">
 				<div class="alert alert-success my-2" role="alert">
 					<strong>Atenção</strong> ${mensagem}
 				</div>
-			</c:if>
+			</c:if> --%>
 
 			<c:if test="${empty usuarios}">
 				<h5>Não existem usuários cadastrados!</h5>
