@@ -6,40 +6,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import br.edu.infnet.esports.model.domain.Dungeons;
-import br.edu.infnet.esports.model.repository.DungeonsRepository;
+import br.edu.infnet.esports.model.domain.CsGo;
+import br.edu.infnet.esports.model.repository.CsGoRepository;
 
 @Controller
-public class DungeonsController {
+public class CsGoController {
 	private String msg;
 	
-	@GetMapping(value = "/game/dungeons")
+	@GetMapping(value = "/game/csgo")
 	public String telaCadastro() {
-		return "game/dungeons/cadastro";
+		return "game/csgo/cadastro";
 	}
 	
-	@GetMapping(value = "/game/dungeons/lista")
+	@GetMapping(value = "/game/csgo/lista")
 	public String telaLista(Model model) {
 		
-		model.addAttribute("estatisticasDungeons", DungeonsRepository.obterLista());
+		model.addAttribute("estatisticasCsGo", CsGoRepository.obterLista());
 		model.addAttribute("mensagem", msg);
 		msg = null;
-		return "game/dungeons/lista";
+		return "game/csgo/lista";
 	}
 
-	@PostMapping(value = "/game/dungeons/incluir")
-	public String incluir(Dungeons dungeons) {
-		DungeonsRepository.incluir(dungeons);
+	@PostMapping(value = "/game/csgo/incluir")
+	public String incluir(CsGo csgo) {
+		CsGoRepository.incluir(csgo);
 		msg = "Estatísticas cadastradas com sucesso";
 		return "redirect:/";
 	}
 	
-	@GetMapping(value = "/game/dungeons/{id}/excluir" )
+	@GetMapping(value = "/game/csgo/{id}/excluir" )
 	public String excluir(@PathVariable Integer id) {
-		DungeonsRepository.excluir(id);
+		CsGoRepository.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 	
-		return "redirect:/game/dungeons/lista";
+		return "redirect:/game/csgo/lista";
 	}
 	
 }

@@ -4,7 +4,8 @@ import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class CsGo extends Game {
-
+	
+	private Integer id;
 	private float precisao;
 	private float agressividade;
 	private float tatica;
@@ -73,6 +74,14 @@ public class CsGo extends Game {
 			throw new ValorLimiteUltrapassadoException("Sua estatística de tática deve ser menor ou igual à 100!");
 		
 		this.tatica = tatica;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

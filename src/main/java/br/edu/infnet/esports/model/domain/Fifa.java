@@ -3,6 +3,7 @@ import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class Fifa extends Game {
+	private Integer id;
 	private float finalizacao;
 	private float marcacao;
 	private float passe;
@@ -73,6 +74,14 @@ public class Fifa extends Game {
 			throw new ValorLimiteUltrapassadoException("Sua estatística de passe deve ser menor ou igual à 10!");
 		
 		this.passe = passe;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	 
 }

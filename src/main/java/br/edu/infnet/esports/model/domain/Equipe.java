@@ -11,6 +11,7 @@ import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class Equipe {
 
+	private Integer id;
 	private String nome;
 	private int limiteParticipantes;
 	private boolean multiPlataforma;
@@ -129,5 +130,13 @@ public class Equipe {
 
 	public void setMultiPlataforma(boolean multiPlataforma) {
 		this.multiPlataforma = multiPlataforma;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }
