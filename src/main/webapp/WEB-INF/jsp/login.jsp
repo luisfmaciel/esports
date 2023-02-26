@@ -17,9 +17,7 @@
 </head>
 <body class="text-center vh-100" style="background-color: #f5f5f5;">
 	<header>
-		<nav class="navbar navbar-dark bg-black px-4">
-			<span class="navbar-brand text-light mb-0 h1">E-sports</span>
-		</nav>
+		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</header>
 	<main class="form-signin w-25 m-auto mt-4">
 		<form class="mt-4" action="/login" method="post">

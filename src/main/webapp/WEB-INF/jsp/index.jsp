@@ -22,6 +22,8 @@
 	<main>
 		<div class="container mt-3">
 			<h1 class="mt-2">E-sports</h1>
+			
+			[usuario: ${user.email}]
 		</div>
 	</main>
 </body>
