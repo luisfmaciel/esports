@@ -18,11 +18,11 @@
 				<li class="nav-item"><a class="nav-link" href="/game">Jogos</a></li>
 				<li class="nav-item"><a class="nav-link" href="/equipe/lista">Equipes</a></li>
 			</ul>
-			<div class="text-end">
-				<a href="/login" type="button" class="btn btn-outline-light me-2">Login</a>
-				<a href="/usuario" type="button" class="btn btn-warning">Sign-up</a>
-				<a href="#" type="button" class="btn btn-outline-success me-2">Logout</a>
-			</div>
+			<ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll text-end">
+				<li class="nav-item"><a href="/usuario"  class="nav-link"><i class="bi bi-person-circle"></i> Sign Up</a></li>
+				<li class="nav-item"><a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+				<li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+			</ul> 
 		</div>
 	</div>
 </nav>
