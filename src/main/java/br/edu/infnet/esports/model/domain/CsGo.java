@@ -5,7 +5,6 @@ import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class CsGo extends Game {
 	
-	private Integer id;
 	private float precisao;
 	private float agressividade;
 	private float tatica;
@@ -42,8 +41,8 @@ public class CsGo extends Game {
 		if(precisao < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de precisão deve ser maior ou igual à zero!");
 		
-		if(precisao > 100) 
-			throw new ValorLimiteUltrapassadoException("Sua estatística de precisão deve ser menor ou igual à 100!");
+		if(precisao > 10) 
+			throw new ValorLimiteUltrapassadoException("Sua estatística de precisão deve ser menor ou igual à 10!");
 		
 		this.precisao = precisao;
 	}
@@ -56,8 +55,8 @@ public class CsGo extends Game {
 		if(agressividade < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de agressividade deve ser maior ou igual à zero!");
 		
-		if(agressividade > 100) 
-			throw new ValorLimiteUltrapassadoException("Sua estatística de agressividade deve ser menor ou igual à 100!");
+		if(agressividade > 10) 
+			throw new ValorLimiteUltrapassadoException("Sua estatística de agressividade deve ser menor ou igual à 10!");
 		
 		this.agressividade = agressividade;
 	}
@@ -70,18 +69,9 @@ public class CsGo extends Game {
 		if(tatica < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de tática deve ser maior ou igual à zero!");
 		
-		if(tatica > 100) 
-			throw new ValorLimiteUltrapassadoException("Sua estatística de tática deve ser menor ou igual à 100!");
+		if(tatica > 10) 
+			throw new ValorLimiteUltrapassadoException("Sua estatística de tática deve ser menor ou igual à 10!");
 		
 		this.tatica = tatica;
 	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 }

@@ -18,6 +18,48 @@
 	<header>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</header>
-	<h2>Cadastro FIFA</h2>
+	<main>
+		<div class="container mt-3">
+			<form action="/game/fifa/incluir" method="post">
+				<h3>Fifa - Cadastro de estatísticas</h3>
+
+				<c:if test="${not empty mensagemError}">
+					<div class="alert alert-danger my-2" role="alert">
+						<strong>Atenção</strong> ${mensagemError}
+					</div>
+				</c:if>
+
+				<div class="w-25 mb-3">
+					<label class="mb-1">Plataforma:</label> <select class="form-select"
+						name="plataforma" aria-label="Default select example">
+						<option value="PS5">PS5</option>
+						<option value="Xbox One">Xbox One</option>
+						<option value="PC">PC</option>
+					</select>
+				</div>
+				<div class="form-floating mb-3">
+					<input type="number" name="titulos" class="form-control"
+						id="floatingInput" placeholder="Títulos"> <label
+						for="floatingInput">Títulos</label>
+				</div>
+				<div class="form-floating mb-3">
+					<input type="number" name="finalizacao" class="form-control"
+						id="floatingInput" placeholder="Finalização"> <label
+						for="floatingInput">Finalização</label>
+				</div>
+				<div class="form-floating mb-3">
+					<input type="number" name="marcacao" class="form-control"
+						id="floatingInput" placeholder="Marcação"> <label
+						for="floatingInput">Marcação</label>
+				</div>
+				<div class="form-floating mb-3">
+					<input type="number" name="passe" class="form-control"
+						id="floatingInput" placeholder="Passe"> <label
+						for="floatingInput">Passe</label>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</main>
 </body>	
 </html>

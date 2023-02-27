@@ -5,7 +5,6 @@ import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class Dungeons extends Game {
 
-	private Integer id;
 	private float dano;
 	private float sabedoria;
 	private float velocidade;
@@ -17,7 +16,7 @@ public class Dungeons extends Game {
 	@Override
 	public float calculaMediaEstatisticaGamer() {
 		float dano = this.dano * Constante.PESO_3;
-		float sabedoria= this.sabedoria * Constante.PESO_2;
+		float sabedoria = this.sabedoria * Constante.PESO_2;
 		float velocidade = this.velocidade * Constante.PESO_1;
 		
 		return (dano + sabedoria + velocidade) / 3;
@@ -43,8 +42,8 @@ public class Dungeons extends Game {
 		if(dano < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de dano deve ser maior ou igual à zero!");
 		
-		if(dano > 100) 
-			throw new ValorLimiteUltrapassadoException("Sua estatística de dano deve ser menor ou igual à 100!");
+		if(dano > 10) 
+			throw new ValorLimiteUltrapassadoException("Sua estatística de dano deve ser menor ou igual à 10!");
 		this.dano = dano;
 	}
 
@@ -56,8 +55,8 @@ public class Dungeons extends Game {
 		if(sabedoria < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de sabedoria deve ser maior ou igual à zero!");
 		
-		if(sabedoria > 100) 
-			throw new ValorLimiteUltrapassadoException("Sua estatística de dasabedoriano deve ser menor ou igual à 100!");
+		if(sabedoria > 10) 
+			throw new ValorLimiteUltrapassadoException("Sua estatística de dasabedoriano deve ser menor ou igual à 10!");
 		
 		this.sabedoria = sabedoria;
 	}
@@ -70,18 +69,9 @@ public class Dungeons extends Game {
 		if(velocidade < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de velocidade deve ser maior ou igual à zero!");
 		
-		if(velocidade > 100) 
-			throw new ValorLimiteUltrapassadoException("Sua estatística de velocidade deve ser menor ou igual à 100!");
+		if(velocidade > 10) 
+			throw new ValorLimiteUltrapassadoException("Sua estatística de velocidade deve ser menor ou igual à 10!");
 		
 		this.velocidade = velocidade;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
+	}	
 }

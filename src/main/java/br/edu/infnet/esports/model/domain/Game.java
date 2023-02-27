@@ -4,6 +4,7 @@ import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public abstract class Game {
+	private Integer id;
 	private String nome;
 	private String plataforma;
 	private String nivel;
@@ -70,6 +71,14 @@ public abstract class Game {
 	public void setTitulos(int titulos) throws ValorLimiteUltrapassadoException {
 		if(titulos < 0) throw new ValorLimiteUltrapassadoException("O número de titulos deve ser maior que 0!");
 		this.titulos = titulos;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 }
