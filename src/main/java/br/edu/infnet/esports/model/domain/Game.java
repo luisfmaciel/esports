@@ -11,6 +11,8 @@ public abstract class Game {
 	private int titulos;
 	private float mediaEstatistica;
 	
+	public Game() {}
+	
 	protected Game(String nome, String plataforma) {
 		this.nome = nome;
 		this.plataforma = plataforma;
@@ -35,7 +37,9 @@ public abstract class Game {
 		sb.append(";");
 		sb.append(this.nivel);
 		sb.append(";");
-		sb.append(String.format("%.2f", this.getMediaEstatistica()));
+		sb.append(this.titulos);
+		sb.append(";");
+		sb.append(this.getMediaEstatistica());
 		sb.append(";");
 		
 		return sb.toString();	
@@ -44,9 +48,15 @@ public abstract class Game {
 	public String getNome() {
 		return nome;
 	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	
 	public String getPlataforma() {
 		return plataforma;
+	}
+	public void setPlataforma(String plataforma) {
+		this.plataforma = plataforma;
 	}
 	
 	public String getNivel() {

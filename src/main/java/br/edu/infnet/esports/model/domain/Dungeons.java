@@ -4,10 +4,11 @@ import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class Dungeons extends Game {
-
 	private float dano;
 	private float sabedoria;
 	private float velocidade;
+	
+	public Dungeons() {}
 	
 	public Dungeons(String plataforma) {
 		super("DUNGEONS", plataforma);
@@ -73,5 +74,5 @@ public class Dungeons extends Game {
 			throw new ValorLimiteUltrapassadoException("Sua estatística de velocidade deve ser menor ou igual à 10!");
 		
 		this.velocidade = velocidade;
-	}	
+	}
 }

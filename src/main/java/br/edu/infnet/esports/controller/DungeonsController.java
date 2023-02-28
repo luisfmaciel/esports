@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import br.edu.infnet.esports.model.domain.Dungeons;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 import br.edu.infnet.esports.model.repository.DungeonsRepository;
+import br.edu.infnet.esports.model.repository.GameRepository;
 
 @Controller
 public class DungeonsController {
@@ -42,6 +43,7 @@ public class DungeonsController {
 			dungeons.setNivel(dungeons.identificaNivelGamer());
 			
 			DungeonsRepository.incluir(dungeons);
+			GameRepository.incluir(dungeons);
 			msg = "Estatísticas cadastradas com sucesso";
 
 			return "redirect:/game/dungeons/lista";

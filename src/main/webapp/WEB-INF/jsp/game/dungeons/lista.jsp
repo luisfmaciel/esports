@@ -45,6 +45,7 @@
 							<th scope="col">Dano</th>
 							<th scope="col">Sabedoria</th>
 							<th scope="col">Velocidade</th>
+							<th scope="col">Títulos</th>
 							<th scope="col">Nível</th>
 							<th scope="col">Média Estatísticas*</th>
 							<th scope="col"></th>
@@ -58,6 +59,7 @@
 								<td>${dungeons.dano}</td>
 								<td>${dungeons.sabedoria}</td>
 								<td>${dungeons.velocidade}</td>
+								<td>${dungeons.titulos}</td>
 								<td>${dungeons.nivel}</td>
 								<td>${String.format("%.2f", dungeons.mediaEstatistica)}</td>
 								<td><a href="/game/dungeons/${dungeons.id}/excluir">excluir</a></td>

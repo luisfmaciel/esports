@@ -44,6 +44,7 @@
 							<th scope="col">Finalização</th>
 							<th scope="col">Marcação</th>
 							<th scope="col">Passe</th>
+							<th scope="col">Títulos</th>
 							<th scope="col">Nível</th>
 							<th scope="col">Média Estatísticas*</th>
 							<th scope="col"></th>
@@ -57,6 +58,7 @@
 								<td>${fifa.finalizacao}</td>
 								<td>${fifa.marcacao}</td>
 								<td>${fifa.passe}</td>
+								<td>${fifa.titulos}</td>
 								<td>${fifa.nivel}</td>
 								<td>${String.format("%.2f", fifa.mediaEstatistica)}</td>
 								<td><a href="/game/fifa/${fifa.id}/excluir">excluir</a></td>

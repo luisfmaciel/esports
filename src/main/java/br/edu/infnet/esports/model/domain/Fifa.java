@@ -7,7 +7,8 @@ public class Fifa extends Game {
 	private float marcacao;
 	private float passe;
 
-		
+	public Fifa() {}
+	
 	public Fifa(String plataforma) {
 		super("FIFA", plataforma);		
 	}

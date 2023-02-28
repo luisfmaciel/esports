@@ -11,6 +11,7 @@ import br.edu.infnet.esports.model.domain.Fifa;
 import br.edu.infnet.esports.model.domain.Fifa;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 import br.edu.infnet.esports.model.repository.FifaRepository;
+import br.edu.infnet.esports.model.repository.GameRepository;
 import br.edu.infnet.esports.model.repository.FifaRepository;
 
 @Controller
@@ -44,6 +45,7 @@ public class FifaController {
 			fifa.setNivel(fifa.identificaNivelGamer());
 			
 			FifaRepository.incluir(fifa);
+			GameRepository.incluir(fifa);
 			msg = "Estatísticas cadastradas com sucesso";
 
 			return "redirect:/game/fifa/lista";

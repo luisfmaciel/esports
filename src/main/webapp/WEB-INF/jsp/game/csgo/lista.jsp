@@ -45,6 +45,7 @@
 							<th scope="col">Precisão</th>
 							<th scope="col">Agressividade</th>
 							<th scope="col">Tática</th>
+							<th scope="col">Títulos</th>
 							<th scope="col">Nível</th>
 							<th scope="col">Média Estatísticas*</th>
 							<th scope="col"></th>
@@ -58,6 +59,7 @@
 								<td>${csgo.precisao}</td>
 								<td>${csgo.agressividade}</td>
 								<td>${csgo.tatica}</td>
+								<td>${csgo.titulos}</td>
 								<td>${csgo.nivel}</td>
 								<td>${String.format("%.2f", csgo.mediaEstatistica)}</td>
 								<td><a href="/game/csgo/${csgo.id}/excluir">excluir</a></td>

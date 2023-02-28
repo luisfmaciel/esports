@@ -19,6 +19,8 @@ public class Usuario {
 		sb.append(";");
 		sb.append(this.username);
 		sb.append(";");
+		sb.append(this.senha);
+		sb.append(";");
 		sb.append(this.perfil);
 	
 		return sb.toString();	

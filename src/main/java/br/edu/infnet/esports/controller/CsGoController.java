@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import br.edu.infnet.esports.model.domain.CsGo;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 import br.edu.infnet.esports.model.repository.CsGoRepository;
+import br.edu.infnet.esports.model.repository.GameRepository;
 
 @Controller
 public class CsGoController {
@@ -42,6 +43,7 @@ public class CsGoController {
 			csgo.setNivel(csgo.identificaNivelGamer());
 			
 			CsGoRepository.incluir(csgo);
+			GameRepository.incluir(csgo);
 			msg = "Estatísticas cadastradas com sucesso";
 
 			return "redirect:/game/csgo/lista";

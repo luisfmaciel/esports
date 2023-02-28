@@ -20,62 +20,52 @@
 	</header>
 	<main>
 		<div class="container mt-4">
-			<form action="/gamer" method="get">
-				<h3>Listagem de Gamers</h3>
-				
-				<button class="btn btn-primary" type="submit">Novo</button>
-			</form>
-			<table class="table table-striped mt-4">
-			  <thead>
-			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">Nome</th>
-			      <th scope="col">E-mail</th>
-			      <th scope="col">Username</th>
-			      <th scope="col">Games</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr>
-			      <th scope="row">1</th>
-			      <td>Luis</td>
-			      <td>luis@esports.com</td>
-			      <td>@luis</td>
-			      <td> 
-			      	<div class="d-flex flex-column">
-				      	<div class="d-flex flex-column">
-				      		<span class="fw-bold">PS5</span>
-				      		<span class="ms-2">Fifa</span>
-				      		<span class="ms-2">Dungeons</span>
-				      	</div>
-				      	<div class="d-flex flex-column mt-2">
-				      		<span class="fw-bold">PC</span>
-				      		<span class="ms-2">CS:GO</span>
-				      	</div>
-				      </div>
-			      </td>
-			    </tr>
-			    <tr>
-			      <th scope="row">2</th>
-			      <td>Felipe</td>
-			      <td>felipe@esports.com</td>
-			      <td>@felipe</td>
-			      <td>
-				      <div class="d-flex flex-column">
-				      	<div class="d-flex flex-column">
-				      		<span class="fw-bold">Xbox One</span>
-				      		<span class="ms-2">Dungeons</span>
-				      		<span class="ms-2">Fifa</span>
-				      	</div>
-				      	<div class="d-flex flex-column mt-2">
-				      		<span class="fw-bold">PC</span>
-				      		<span class="ms-2">CS:GO</span>
-				      	</div>
-				      </div>
-			      </td>
-			    </tr>
-			  </tbody>
-			</table>
+
+			<h3>Listagem de Gamers</h3>
+
+			<c:if test="${empty gamers}">
+				<h5>Não existem gamers cadastrados!</h5>
+			</c:if>
+
+			<c:if test="${not empty mensagem}">
+				<div class="alert alert-success my-2" role="alert">
+					<strong>Atenção</strong> ${mensagem}
+				</div>
+			</c:if>
+
+			<a type="button" class="btn btn-primary my-2" href="/gamer">Novo</a>
+
+			<c:if test="${not empty gamers}">
+				<table class="table table-striped mt-4">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Nome</th>
+							<th scope="col">E-mail</th>
+							<th scope="col">Username</th>
+							<th scope="col">Games</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="g" items="${gamers}">
+							<tr>
+								<th scope="row">${g.id}</th>
+								<td>${g.nome}</td>
+								<td>${g.email}</td>
+								<td>@${g.username}</td>
+								<td>
+									<div class="d-flex flex-column">
+										<c:forEach var="game" items="${g.games}">
+											<span class="ms-2">${game.nome} - ${game.plataforma} - ${game.nivel}</span>
+										</c:forEach>
+									</div>
+								</td>
+								<td><a href="/gamer/${g.id}/excluir">excluir</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
 		</div>
 	</main>
 </body>

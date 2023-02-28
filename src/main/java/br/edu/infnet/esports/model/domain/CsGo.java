@@ -4,11 +4,12 @@ import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class CsGo extends Game {
-	
 	private float precisao;
 	private float agressividade;
 	private float tatica;
 
+	public CsGo() {}
+	
 	public CsGo(String plataforma) {
 		super("CS:GO", plataforma);
 	}

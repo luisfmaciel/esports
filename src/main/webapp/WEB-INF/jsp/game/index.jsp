@@ -21,9 +21,9 @@
 	<main>
 		<div class="container mt-3">
 			<h1 class="mt-2">Games</h1>		
-			<h2 class="mt-2">Cadastro de estatísticas<a href="/game/csgo/lista">CS:GO</a></h2>
-			<h2 class="mt-2">Cadastro de estatísticas<a href="/game/fifa/lista">FIFA</a></h2>
-			<h2 class="mt-2">Cadastro de estatísticas<a href="/game/dungeons/lista">DUNGEONS</a></h2>
+			<h2 class="mt-2">Estatísticas<a href="/game/csgo/lista"> CS:GO</a></h2>
+			<h2 class="mt-2">Estatísticas<a href="/game/fifa/lista"> FIFA 23</a></h2>
+			<h2 class="mt-2">Estatísticas<a href="/game/dungeons/lista"> DUNGEONS</a></h2>
 		</div>
 	</main>
 </body>
