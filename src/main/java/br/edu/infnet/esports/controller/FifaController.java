@@ -59,6 +59,7 @@ public class FifaController {
 	@GetMapping(value = "/game/fifa/{id}/excluir" )
 	public String excluir(@PathVariable Integer id) {
 		FifaRepository.excluir(id);
+		GameRepository.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 	
 		return "redirect:/game/fifa/lista";

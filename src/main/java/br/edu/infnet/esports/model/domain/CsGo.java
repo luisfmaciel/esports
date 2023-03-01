@@ -11,7 +11,7 @@ public class CsGo extends Game {
 	public CsGo() {}
 	
 	public CsGo(String plataforma) {
-		super("CS:GO", plataforma);
+		super("CSGO", plataforma);
 	}
 	
 	@Override

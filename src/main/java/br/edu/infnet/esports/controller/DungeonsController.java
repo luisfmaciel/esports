@@ -57,6 +57,7 @@ public class DungeonsController {
 	@GetMapping(value = "/game/dungeons/{id}/excluir" )
 	public String excluir(@PathVariable Integer id) {
 		DungeonsRepository.excluir(id);
+		GameRepository.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 	
 		return "redirect:/game/dungeons/lista";

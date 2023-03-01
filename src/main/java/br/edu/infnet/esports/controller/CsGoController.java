@@ -57,6 +57,7 @@ public class CsGoController {
 	@GetMapping(value = "/game/csgo/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		CsGoRepository.excluir(id);
+		GameRepository.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 
 		return "redirect:/game/csgo/lista";
