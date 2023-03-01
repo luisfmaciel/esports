@@ -12,7 +12,7 @@
 		<div class="collapse navbar-collapse" id="navbarScroll">
 			<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
 				style="-bs-scroll-height: 100px;">
-				<li class="nav-item"><a class="nav-link active"
+				<li class="nav-item"><a class="nav-link"
 					aria-current="page" href="/">Home</a></li>
 				<c:if test="${not empty user}">
 					<li class="nav-item"><a class="nav-link" href="/usuario/lista">Usuários</a></li>
