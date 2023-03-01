@@ -48,13 +48,13 @@
 				</select>
 			</div>
 			<div class="w-25 mb-3">
-					<label class="mb-1">Game:</label> <select class="form-select"
-						name="gameId" aria-label="Default select example">
-						<c:forEach var="g" items="${games}">
-							<option value="${g.id}">@${g.nome} - ${g.plataforma}</option>
-						</c:forEach>
-					</select>
-				</div>
+				<label class="mb-1">Game:</label> <select class="form-select"
+					name="gameId" aria-label="Default select example">
+					<c:forEach var="g" items="${games}">
+						<option value="${g.id}">@${g.nome} - ${g.plataforma}</option>
+					</c:forEach>
+				</select>
+			</div>
 
 			<div class="w-25 mb-3">
 				<span>Multiplataforma: </span>
@@ -82,5 +82,9 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"
+		integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

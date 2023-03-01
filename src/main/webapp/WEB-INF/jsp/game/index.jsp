@@ -14,17 +14,54 @@
 <meta charset="ISO-8859-1">
 <title>E-sports</title>
 </head>
-<body class="text-center" style="height= 100vh; background-color: #f5f5f5;">
+<body style="background-color: #f5f5f5;">
 	<header>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</header>
 	<main>
 		<div class="container mt-3">
-			<h1 class="mt-2">Games</h1>		
-			<h2 class="mt-2">Estatísticas<a href="/game/csgo/lista"> CS:GO</a></h2>
-			<h2 class="mt-2">Estatísticas<a href="/game/fifa/lista"> FIFA 23</a></h2>
-			<h2 class="mt-2">Estatísticas<a href="/game/dungeons/lista"> DUNGEONS</a></h2>
+			<h1 class="mt-2">Games</h1>
+
+			<c:if test="${empty gamesEstatisticas}">
+				<h5>Não existem estatísticas cadastradas!</h5>
+			</c:if>
+
+			<c:if test="${not empty gamesEstatisticas}">
+				<table class="table table-striped mt-4">
+					<thead>
+						<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Game</th>
+							<th scope="col">Plataforma</th>
+							<th scope="col">Títulos</th>
+							<th scope="col">Nível</th>
+							<th scope="col">Média Estatísticas*</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="game" items="${gamesEstatisticas}">
+							<tr>
+								<th scope="row">${game.id}</th>
+								<td>${game.nome.toUpperCase()}</td>
+								<td>${game.plataforma}</td>
+								<td>${game.titulos}</td>
+								<td>${game.nivel}</td>
+								<td>${String.format("%.2f", game.mediaEstatistica)}</td>
+								<td><a
+									href="/game/${game.nome.toLowerCase()}/${game.id}/excluir">excluir</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<small class="text-secondary">* Cada estatística possue um
+					peso diferente que compõe a média</small>
+			</c:if>
 		</div>
 	</main>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"
+		integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

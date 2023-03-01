@@ -56,7 +56,8 @@
 								<td>
 									<div class="d-flex flex-column">
 										<c:forEach var="game" items="${g.games}">
-											<span class="ms-2">${game.nome} - ${game.plataforma} - ${game.nivel}</span>
+											<span class="ms-2">${game.nome} - ${game.plataforma} -
+												${game.nivel}</span>
 										</c:forEach>
 									</div>
 								</td>
@@ -68,5 +69,9 @@
 			</c:if>
 		</div>
 	</main>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"
+		integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

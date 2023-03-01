@@ -21,22 +21,22 @@
 	<main>
 		<div class="container mt-4">
 			<h3>Estatísticas CS:GO</h3>
-	
-	
+
+
 			<c:if test="${empty csgoEstatisticas}">
 				<h5>Não existem estatísticas cadastradas!</h5>
 			</c:if>
-	
+
 			<c:if test="${not empty mensagem}">
 				<div class="alert alert-success my-2" role="alert">
 					<strong>Atenção</strong> ${mensagem}
 				</div>
 			</c:if>
-	
+
 			<a type="button" class="btn btn-primary my-2" href="/game/csgo">Novo</a>
-	
+
 			<c:if test="${not empty csgoEstatisticas}">
-	
+
 				<table class="table table-striped mt-4">
 					<thead>
 						<tr>
@@ -67,9 +67,14 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				<small class="text-secondary">* Cada estatística possue um peso diferente que compõe a média</small>
+				<small class="text-secondary">* Cada estatística possue um
+					peso diferente que compõe a média</small>
 			</c:if>
 		</div>
 	</main>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"
+		integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
