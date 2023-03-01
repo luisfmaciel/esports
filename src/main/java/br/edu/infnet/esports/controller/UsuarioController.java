@@ -1,5 +1,6 @@
 package br.edu.infnet.esports.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 import br.edu.infnet.esports.model.repository.UsuarioRepository;
+import br.edu.infnet.esports.model.service.UsuarioService;
 
 @Controller
 public class UsuarioController {
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	private String msg;
 	
@@ -23,8 +28,8 @@ public class UsuarioController {
 
 	@GetMapping(value = "/usuario/lista")
 	public String telaLista(Model model) {
-		
-		model.addAttribute("usuarios", UsuarioRepository.obterLista());
+	
+		model.addAttribute("usuarios", usuarioService.obterLista());
 		model.addAttribute("mensagem", msg);
 		msg = null;
 		return "usuario/lista";
@@ -44,7 +49,7 @@ public class UsuarioController {
 		usuario.setSenha(senha);
 		usuario.setPerfil(perfil);
 	
-		UsuarioRepository.incluir(usuario);
+		usuarioService.incluir(usuario);
 		msg = "Usuário " + usuario.getNome() + " cadastrado com sucesso";
 	
 		return "redirect:/";
@@ -52,7 +57,7 @@ public class UsuarioController {
 	
 	@GetMapping(value = "/usuario/{id}/excluir" )
 	public String excluir(@PathVariable Integer id) {
-		Usuario usuario = UsuarioRepository.excluir(id);
+		Usuario usuario = usuarioService.excluir(id);
 		msg = "Usuário " + usuario.getNome() + " removido com sucesso";
 	
 		return "redirect:/usuario/lista";

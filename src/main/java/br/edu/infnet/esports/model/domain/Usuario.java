@@ -11,6 +11,15 @@ public class Usuario {
 	private String senha;
 	private String perfil;
 	
+	public Usuario() {}
+
+	public Usuario(String nome, String email, String senha, String perfil) throws EmailInvalidoException {
+		this.setNome(nome);
+		this.setEmail(email);
+		this.setSenha(senha);
+		this.setPerfil(perfil);
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.nome);

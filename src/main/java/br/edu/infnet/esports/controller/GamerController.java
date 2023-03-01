@@ -3,6 +3,7 @@ package br.edu.infnet.esports.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +19,18 @@ import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 import br.edu.infnet.esports.model.repository.GameRepository;
 import br.edu.infnet.esports.model.repository.GamerRepository;
 import br.edu.infnet.esports.model.repository.UsuarioRepository;
+import br.edu.infnet.esports.model.service.UsuarioService;
 
 @Controller
 public class GamerController {
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	private String msg;
 
 	@GetMapping(value = "/gamer")
 	public String telaCadastro(Model model) {
-		model.addAttribute("usuarios", UsuarioRepository.obterLista());
+		model.addAttribute("usuarios", usuarioService.obterLista());
 		model.addAttribute("games", GameRepository.obterLista());
 		return "gamer/cadastro";
 	}
@@ -44,7 +49,7 @@ public class GamerController {
 			throws EmailInvalidoException, NumberFormatException, ValorLimiteUltrapassadoException {
 
 		List<Game> meusJogos = new ArrayList<Game>();
-		Usuario user = UsuarioRepository.obterUsuarioById(Integer.parseInt(usuarioId));
+		Usuario user = usuarioService.obterUsuarioById(Integer.parseInt(usuarioId));
 
 		for (String g : gameId.split(",")) {
 			meusJogos.add(GameRepository.obterGameById(Integer.parseInt(g)));
