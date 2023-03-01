@@ -17,9 +17,11 @@ public class Equipe {
 	private boolean multiPlataforma;
 	private String nivel;
 	private Game game;
-	private static List<Gamer> gamers = new ArrayList<Gamer>();
+	private List<Gamer> gamers = new ArrayList<Gamer>();
 	
-	public Equipe(String nome, int limiteParticipantes, boolean multiPlataforma, String nivel, Game game) throws ValorLimiteUltrapassadoException {
+	public Equipe() {}
+	
+	public Equipe(String nome, int limiteParticipantes, boolean multiPlataforma, String nivel) throws ValorLimiteUltrapassadoException {
 		if(limiteParticipantes < 2) throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no mínimo 2 gamers!");
 		
 		if(limiteParticipantes > 12) throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no máximo 12 gamers!");
@@ -28,7 +30,6 @@ public class Equipe {
 		this.limiteParticipantes = limiteParticipantes;
 		this.setMultiPlataforma(multiPlataforma);
 		this.nivel = nivel;
-		this.game = game;
 	}
 	
 	public void imprimir(){

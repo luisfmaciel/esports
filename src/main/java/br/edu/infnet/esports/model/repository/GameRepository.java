@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.edu.infnet.esports.model.domain.Game;
+import br.edu.infnet.esports.model.domain.Gamer;
 
 public class GameRepository {
 	
@@ -22,6 +23,10 @@ public class GameRepository {
 	
 	public static Game excluir(Integer key) {
 		return mapaGame.remove(key);
+	}
+	
+	public static Game obterGameById(Integer key) {
+		return mapaGame.get(key);
 	}
 	
 	public static Collection<Game> obterLista() {

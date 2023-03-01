@@ -22,6 +22,7 @@ public class Usuario {
 		sb.append(this.senha);
 		sb.append(";");
 		sb.append(this.perfil);
+		sb.append(";");
 	
 		return sb.toString();	
 	}

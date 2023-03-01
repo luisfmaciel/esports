@@ -12,7 +12,8 @@ public class Gamer extends Usuario {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.games);
-	
+		sb.append(";");
+			
 		return super.toString() + sb.toString();	
 	}
 	

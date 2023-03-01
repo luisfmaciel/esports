@@ -24,6 +24,10 @@ public class GamerRepository {
 		return mapaGamer.remove(key);
 	}
 	
+	public static Gamer obterGamerById(Integer key) {
+		return mapaGamer.get(key);
+	}
+	
 	public static Collection<Gamer> obterLista() {
 		return mapaGamer.values();
 	}

@@ -9,7 +9,7 @@ public class Constante {
 	public final static String INICIANTE = "iniciante";
 	public final static String SEMIPRO = "semipro";
 	public final static String PROFISSIONAL = "profissional";
-	public final static String LENDARIO = "lendário";
+	public final static String LENDARIO = "lendario";
 
 	public final static String GAME_FIFA = "FIFA";
 	public final static String GAME_CSGO = "CS:GO";

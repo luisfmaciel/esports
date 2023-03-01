@@ -18,8 +18,69 @@
 	<header>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</header>
-	
-	<h2>Cadastro Equipe</h2>
-	
+	<div class="container mt-3">
+		<form action="/equipe/incluir" method="post">
+			<h3>Cadastro de Equipes</h3>
+
+			<c:if test="${not empty mensagemError}">
+				<div class="alert alert-danger my-2" role="alert">
+					<strong>Atenção</strong> ${mensagemError}
+				</div>
+			</c:if>
+
+			<div class="form-floating mb-3">
+				<input type="text" name="nome" class="form-control"
+					id="floatingInput" placeholder="Nome"> <label
+					for="floatingInput">Nome</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="number" name="limiteParticipantes" class="form-control"
+					id="floatingInput" placeholder="Limite Participantes"> <label
+					for="floatingInput">Limite Participantes</label>
+			</div>
+			<div class="w-25 mb-3">
+				<label class="mb-1">Nível:</label> <select class="form-select"
+					name="nivel" aria-label="Default select example">
+					<option value="iniciante">Iniciante</option>
+					<option value="semipro">Semipro</option>
+					<option value="profissional">Profissional</option>
+					<option value="lendario">Lendário</option>
+				</select>
+			</div>
+			<div class="w-25 mb-3">
+					<label class="mb-1">Game:</label> <select class="form-select"
+						name="gameId" aria-label="Default select example">
+						<c:forEach var="g" items="${games}">
+							<option value="${g.id}">@${g.nome} - ${g.plataforma}</option>
+						</c:forEach>
+					</select>
+				</div>
+
+			<div class="w-25 mb-3">
+				<span>Multiplataforma: </span>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="multiplataforma"
+						id="flexRadioDefault1" value="true" checked> <label
+						class="form-check-label" for="flexRadioDefault1"> Sim </label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="multiplataforma"
+						id="flexRadioDefault2" value="false"> <label
+						class="form-check-label" for="flexRadioDefault2"> Não </label>
+				</div>
+			</div>
+			<div class="mb-3 form-check">
+				<span>Gamers:</span>
+				<c:forEach var="g" items="${gamers}">
+					<div>
+						<input type="checkbox" name="gamerId" value="${g.id}"
+							class="form-check-input" id="${g.id}"> <label
+							class="form-check-label" for="${g.id}">@${g.username}</label>
+					</div>
+				</c:forEach>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
 </body>
 </html>

@@ -32,9 +32,9 @@
 
 				<div class="w-25 mb-3">
 					<label class="mb-1">Usuários:</label> <select class="form-select"
-						name="usuario" aria-label="Default select example">
+						name="usuarioId" aria-label="Default select example">
 						<c:forEach var="u" items="${usuarios}">
-							<option value="${u}">@${u.username}</option>
+							<option value="${u.id}">@${u.username}</option>
 						</c:forEach>
 					</select>
 				</div>
@@ -43,11 +43,13 @@
 					<span>Meus Jogos:</span>
 					<c:forEach var="g" items="${games}">
 						<div>
-					    	<input type="checkbox" name="game" value="${g}" class="form-check-input" id="${g.id}">
-						    <label class="form-check-label" for="${g.id}">${g.nome} - ${g.plataforma} - ${g.nivel}</label>
-						</div>					
+							<input type="checkbox" name="gameId" value="${g.id}"
+								class="form-check-input" id="${g.id}"> <label
+								class="form-check-label" for="${g.id}">${g.nome} -
+								${g.plataforma} - ${g.nivel}</label>
+						</div>
 					</c:forEach>
-			  		</div>
+				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 		</div>

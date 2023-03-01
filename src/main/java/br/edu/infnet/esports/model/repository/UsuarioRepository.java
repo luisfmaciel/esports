@@ -3,6 +3,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import br.edu.infnet.esports.model.domain.Gamer;
 import br.edu.infnet.esports.model.domain.Usuario;
 
 public class UsuarioRepository {
@@ -22,6 +23,10 @@ public class UsuarioRepository {
 	
 	public static Usuario excluir(Integer key) {
 		return mapaUsuario.remove(key);
+	}
+	
+	public static Usuario obterUsuarioById(Integer key) {
+		return mapaUsuario.get(key);
 	}
 	
 	public static Collection<Usuario> obterLista() {

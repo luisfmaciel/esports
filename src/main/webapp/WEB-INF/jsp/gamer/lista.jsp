@@ -43,7 +43,7 @@
 							<th scope="col">Nome</th>
 							<th scope="col">E-mail</th>
 							<th scope="col">Username</th>
-							<th scope="col">Games</th>
+							<th scope="col">Gamers</th>
 						</tr>
 					</thead>
 					<tbody>
