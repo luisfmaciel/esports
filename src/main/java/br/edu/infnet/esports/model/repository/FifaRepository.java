@@ -3,14 +3,17 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import br.edu.infnet.esports.model.domain.Fifa;
 
+@Repository
 public class FifaRepository {
 	
 	private static Integer id = 1;
 	private static Map<Integer, Fifa> mapaFifa = new HashMap<Integer, Fifa>();
 	
-	public static boolean incluir(Fifa fifa) {
+	public boolean incluir(Fifa fifa) {
 		fifa.setId(id++);
 		try {
 			mapaFifa.put(fifa.getId(), fifa);
@@ -20,11 +23,11 @@ public class FifaRepository {
 		}
 	}
 	
-	public static Fifa excluir(Integer key) {
+	public Fifa excluir(Integer key) {
 		return mapaFifa.remove(key);
 	}
 	
-	public static Collection<Fifa> obterLista() {
+	public Collection<Fifa> obterLista() {
 		return mapaFifa.values();
 	}
 	 

@@ -3,14 +3,17 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import br.edu.infnet.esports.model.domain.Gamer;
 
+@Repository
 public class GamerRepository {
 	private static Integer id = 1;
 	private static Map<Integer, Gamer> mapaGamer = new HashMap<Integer, Gamer>();;
 	
 	
-	public static boolean incluir(Gamer gamer) {
+	public boolean incluir(Gamer gamer) {
 		gamer.setId(id++);
 		try {
 			mapaGamer.put(gamer.getId(), gamer);
@@ -20,15 +23,15 @@ public class GamerRepository {
 		}
 	}
 	
-	public static Gamer excluir(Integer key) {
+	public Gamer excluir(Integer key) {
 		return mapaGamer.remove(key);
 	}
 	
-	public static Gamer obterGamerById(Integer key) {
+	public Gamer obterGamerById(Integer key) {
 		return mapaGamer.get(key);
 	}
 	
-	public static Collection<Gamer> obterLista() {
+	public Collection<Gamer> obterLista() {
 		return mapaGamer.values();
 	}
 	

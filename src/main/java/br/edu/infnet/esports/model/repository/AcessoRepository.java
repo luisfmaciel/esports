@@ -1,11 +1,14 @@
 package br.edu.infnet.esports.model.repository;
 
+import org.springframework.stereotype.Repository;
+
 import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 
+@Repository
 public class AcessoRepository {
 	
-	public static Usuario autenticar(Usuario usuario) throws EmailInvalidoException {
+	public Usuario autenticar(Usuario usuario) throws EmailInvalidoException {
 		if(usuario.getEmail().equalsIgnoreCase(usuario.getSenha())) {
 			Usuario newUsuario = new Usuario();
 			newUsuario.setNome(usuario.getNome());
