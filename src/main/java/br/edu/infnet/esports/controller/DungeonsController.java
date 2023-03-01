@@ -11,9 +11,14 @@ import br.edu.infnet.esports.model.domain.Dungeons;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 import br.edu.infnet.esports.model.repository.DungeonsRepository;
 import br.edu.infnet.esports.model.repository.GameRepository;
+import br.edu.infnet.esports.model.service.DungeonsService;
+import br.edu.infnet.esports.model.service.GameService;
 
 @Controller
 public class DungeonsController {
+	
+	private DungeonsService dungeonsService;
+	private GameService gameService;
 	private String msg;
 	
 	@GetMapping(value = "/game/dungeons")
@@ -24,7 +29,7 @@ public class DungeonsController {
 	@GetMapping(value = "/game/dungeons/lista")
 	public String telaLista(Model model) {
 		
-		model.addAttribute("dungeonsEstatisticas", DungeonsRepository.obterLista());
+		model.addAttribute("dungeonsEstatisticas", dungeonsService.obterLista());
 		model.addAttribute("mensagem", msg);
 		msg = null;
 		return "game/dungeons/lista";
@@ -42,8 +47,8 @@ public class DungeonsController {
 			dungeons.setMediaEstatistica(dungeons.calculaMediaEstatisticaGamer());
 			dungeons.setNivel(dungeons.identificaNivelGamer());
 			
-			DungeonsRepository.incluir(dungeons);
-			GameRepository.incluir(dungeons);
+			dungeonsService.incluir(dungeons);
+			gameService.incluir(dungeons);
 			msg = "Estatísticas cadastradas com sucesso";
 
 			return "redirect:/game/dungeons/lista";
@@ -56,8 +61,8 @@ public class DungeonsController {
 	
 	@GetMapping(value = "/game/dungeons/{id}/excluir" )
 	public String excluir(@PathVariable Integer id) {
-		DungeonsRepository.excluir(id);
-		GameRepository.excluir(id);
+		dungeonsService.excluir(id);
+		gameService.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 	
 		return "redirect:/game/dungeons/lista";

@@ -8,26 +8,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.esports.model.domain.Equipe;
-import br.edu.infnet.esports.model.repository.EquipeRepository;
-import br.edu.infnet.esports.model.repository.GameRepository;
-import br.edu.infnet.esports.model.repository.GamerRepository;
+import br.edu.infnet.esports.model.service.EquipeService;
+import br.edu.infnet.esports.model.service.GameService;
+import br.edu.infnet.esports.model.service.GamerService;
 
 @Controller
 public class EquipeController {
 
+	private EquipeService equipeService;
+	private GameService gameService;
+	private GamerService gamerService;
 	private String msg;
 
 	@GetMapping(value = "/equipe")
 	public String telaCadastro(Model model) {
-		model.addAttribute("gamers", GamerRepository.obterLista());
-		model.addAttribute("games", GameRepository.obterLista());
+		model.addAttribute("gamers", gamerService.obterLista());
+		model.addAttribute("games", gameService.obterLista());
 		return "equipe/cadastro";
 	}
 
 	@GetMapping(value = "/equipe/lista")
 	public String telaLista(Model model) {
 
-		model.addAttribute("equipes", EquipeRepository.obterLista());
+		model.addAttribute("equipes", equipeService.obterLista());
 		model.addAttribute("mensagem", msg);
 		msg = null;
 		return "equipe/lista";
@@ -39,12 +42,12 @@ public class EquipeController {
 			@RequestParam String gamerId) {
 		try {
 			Equipe equipe = new Equipe(nome, limiteParticipantes, Boolean.parseBoolean(multiplataforma), nivel);
-			equipe.setGame(GameRepository.obterGameById(Integer.parseInt(gameId)));
+			equipe.setGame(gameService.obterGameById(Integer.parseInt(gameId)));
 			for(String j : gamerId.split(",")) {
-				equipe.setGamers(GamerRepository.obterGamerById(Integer.parseInt(j)));
+				equipe.setGamers(gamerService.obterGamerById(Integer.parseInt(j)));
 			}
 			
-			EquipeRepository.incluir(equipe);
+			equipeService.incluir(equipe);
 			msg = "Equipe " + equipe.getNome() + " cadastrada com sucesso";
 			return "redirect:/equipe/lista";
 		} catch (Exception e) {
@@ -55,7 +58,7 @@ public class EquipeController {
 
 	@GetMapping(value = "/equipe/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
-		Equipe equipe = EquipeRepository.excluir(id);
+		Equipe equipe = equipeService.excluir(id);
 		msg = "Equipe " + equipe.getNome() + " removida com sucesso";
 
 		return "redirect:/equipe/lista";

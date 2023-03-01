@@ -1,5 +1,6 @@
 package br.edu.infnet.esports.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +12,17 @@ import org.springframework.web.bind.support.SessionStatus;
 import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 import br.edu.infnet.esports.model.repository.AcessoRepository;
+import br.edu.infnet.esports.model.service.AcessoService;
+import br.edu.infnet.esports.model.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 @SessionAttributes("user")
 public class AcessoController {
+	
+	@Autowired
+	private AcessoService acessoService;
+	
 	@GetMapping(value = "/login")
 	public String telaLogin() {
 		return "login";
@@ -28,7 +35,7 @@ public class AcessoController {
 			Usuario usuario = new Usuario();
 			usuario.setEmail(email);
 			usuario.setSenha(senha);
-			usuario = AcessoRepository.autenticar(usuario);
+			usuario = acessoService.autenticar(usuario);
 			
 			if (usuario != null) {
 				model.addAttribute("user", usuario);

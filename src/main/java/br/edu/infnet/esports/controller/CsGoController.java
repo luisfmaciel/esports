@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.esports.model.domain.CsGo;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
-import br.edu.infnet.esports.model.repository.CsGoRepository;
-import br.edu.infnet.esports.model.repository.GameRepository;
+import br.edu.infnet.esports.model.service.CsGoService;
+import br.edu.infnet.esports.model.service.GameService;
 
 @Controller
 public class CsGoController {
+	
+	private CsGoService csgoService;
+	private GameService gameService;
 	private String msg;
 
 	@GetMapping(value = "/game/csgo")
@@ -24,7 +27,7 @@ public class CsGoController {
 	@GetMapping(value = "/game/csgo/lista")
 	public String telaLista(Model model) {
 
-		model.addAttribute("csgoEstatisticas", CsGoRepository.obterLista());
+		model.addAttribute("csgoEstatisticas", csgoService.obterLista());
 		model.addAttribute("mensagem", msg);
 		msg = null;
 		return "game/csgo/lista";
@@ -42,8 +45,8 @@ public class CsGoController {
 			csgo.setMediaEstatistica(csgo.calculaMediaEstatisticaGamer());
 			csgo.setNivel(csgo.identificaNivelGamer());
 			
-			CsGoRepository.incluir(csgo);
-			GameRepository.incluir(csgo);
+			csgoService.incluir(csgo);
+			gameService.incluir(csgo);
 			msg = "Estatísticas cadastradas com sucesso";
 
 			return "redirect:/game/csgo/lista";
@@ -56,8 +59,8 @@ public class CsGoController {
 
 	@GetMapping(value = "/game/csgo/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
-		CsGoRepository.excluir(id);
-		GameRepository.excluir(id);
+		csgoService.excluir(id);
+		gameService.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 
 		return "redirect:/game/csgo/lista";

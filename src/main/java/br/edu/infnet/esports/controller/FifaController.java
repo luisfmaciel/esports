@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.esports.model.domain.Fifa;
-import br.edu.infnet.esports.model.domain.Fifa;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
-import br.edu.infnet.esports.model.repository.FifaRepository;
-import br.edu.infnet.esports.model.repository.GameRepository;
-import br.edu.infnet.esports.model.repository.FifaRepository;
+import br.edu.infnet.esports.model.service.FifaService;
+import br.edu.infnet.esports.model.service.GameService;
 
 @Controller
 public class FifaController {
+	
+	private FifaService fifaService; 
+	private GameService gameService; 
+
 	private String msg;
 	
 	@GetMapping(value = "/game/fifa")
@@ -26,7 +28,7 @@ public class FifaController {
 	@GetMapping(value = "/game/fifa/lista")
 	public String telaLista(Model model) {
 		
-		model.addAttribute("fifaEstatisticas", FifaRepository.obterLista());
+		model.addAttribute("fifaEstatisticas", fifaService.obterLista());
 		model.addAttribute("mensagem", msg);
 		msg = null;
 		return "game/fifa/lista";
@@ -44,8 +46,8 @@ public class FifaController {
 			fifa.setMediaEstatistica(fifa.calculaMediaEstatisticaGamer());
 			fifa.setNivel(fifa.identificaNivelGamer());
 			
-			FifaRepository.incluir(fifa);
-			GameRepository.incluir(fifa);
+			fifaService.incluir(fifa);
+			gameService.incluir(fifa);
 			msg = "Estatísticas cadastradas com sucesso";
 
 			return "redirect:/game/fifa/lista";
@@ -58,8 +60,8 @@ public class FifaController {
 	
 	@GetMapping(value = "/game/fifa/{id}/excluir" )
 	public String excluir(@PathVariable Integer id) {
-		FifaRepository.excluir(id);
-		GameRepository.excluir(id);
+		fifaService.excluir(id);
+		gameService.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 	
 		return "redirect:/game/fifa/lista";

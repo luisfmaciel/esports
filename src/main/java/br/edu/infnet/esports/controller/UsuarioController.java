@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
-import br.edu.infnet.esports.model.repository.UsuarioRepository;
 import br.edu.infnet.esports.model.service.UsuarioService;
 
 @Controller
