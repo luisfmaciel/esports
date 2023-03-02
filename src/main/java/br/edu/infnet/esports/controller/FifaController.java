@@ -1,5 +1,6 @@
 package br.edu.infnet.esports.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,9 @@ import br.edu.infnet.esports.model.service.GameService;
 @Controller
 public class FifaController {
 	
+	@Autowired
 	private FifaService fifaService; 
+	@Autowired
 	private GameService gameService; 
 
 	private String msg;
@@ -58,7 +61,7 @@ public class FifaController {
 		return telaCadastro();
 	}
 	
-	@GetMapping(value = "/game/fifa/{id}/excluir" )
+	@GetMapping(value = "/game/fifa/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		fifaService.excluir(id);
 		gameService.excluir(id);

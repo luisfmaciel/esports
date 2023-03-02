@@ -1,5 +1,6 @@
 package br.edu.infnet.esports.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,16 +10,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.esports.model.domain.Dungeons;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
-import br.edu.infnet.esports.model.repository.DungeonsRepository;
-import br.edu.infnet.esports.model.repository.GameRepository;
 import br.edu.infnet.esports.model.service.DungeonsService;
 import br.edu.infnet.esports.model.service.GameService;
 
 @Controller
 public class DungeonsController {
 	
+	@Autowired
 	private DungeonsService dungeonsService;
+	@Autowired
 	private GameService gameService;
+
 	private String msg;
 	
 	@GetMapping(value = "/game/dungeons")
@@ -59,7 +61,7 @@ public class DungeonsController {
 		return telaCadastro();
 	}
 	
-	@GetMapping(value = "/game/dungeons/{id}/excluir" )
+	@GetMapping(value = "/game/dungeons/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		dungeonsService.excluir(id);
 		gameService.excluir(id);

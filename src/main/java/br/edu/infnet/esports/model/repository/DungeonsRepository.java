@@ -10,11 +10,11 @@ import br.edu.infnet.esports.model.domain.Dungeons;
 @Repository
 public class DungeonsRepository {
 	
-	private static Integer id = 1;
+//	private static Integer id = 1;
 	private static Map<Integer, Dungeons> mapaDungeons = new HashMap<Integer, Dungeons>();
 	
 	public boolean incluir(Dungeons dungeons) {
-		dungeons.setId(id++);
+//		dungeons.setId(id++);
 		try {
 			mapaDungeons.put(dungeons.getId(), dungeons);
 			return true;

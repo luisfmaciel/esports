@@ -12,21 +12,21 @@ import br.edu.infnet.esports.model.repository.GameRepository;
 public class GameService {
 	
 	@Autowired
-	private GameRepository usuarioRepository;
+	private GameRepository gameRepository;
 	
-	public boolean incluir(Game usuario) {
-		return usuarioRepository.incluir(usuario);
+	public boolean incluir(Game game) {
+		return gameRepository.incluir(game);
 	}
 	
 	public Game excluir(Integer key) {
-		return usuarioRepository.excluir(key);
+		return gameRepository.excluir(key);
 	}
 	
 	public Game obterGameById(Integer key) {
-		return usuarioRepository.obterGameById(key);
+		return gameRepository.obterGameById(key);
 	}
 	
 	public Collection<Game> obterLista() {
-		return usuarioRepository.obterLista();
+		return gameRepository.obterLista();
 	}
 }

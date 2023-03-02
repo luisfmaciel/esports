@@ -10,11 +10,11 @@ import br.edu.infnet.esports.model.domain.Fifa;
 @Repository
 public class FifaRepository {
 	
-	private static Integer id = 1;
+//	private static Integer id = 1;
 	private static Map<Integer, Fifa> mapaFifa = new HashMap<Integer, Fifa>();
 	
 	public boolean incluir(Fifa fifa) {
-		fifa.setId(id++);
+//		fifa.setId();
 		try {
 			mapaFifa.put(fifa.getId(), fifa);
 			return true;

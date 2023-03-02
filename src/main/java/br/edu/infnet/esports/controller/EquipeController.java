@@ -1,5 +1,6 @@
 package br.edu.infnet.esports.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,15 +16,20 @@ import br.edu.infnet.esports.model.service.GamerService;
 @Controller
 public class EquipeController {
 
+	@Autowired
 	private EquipeService equipeService;
+	@Autowired
 	private GameService gameService;
+	@Autowired
 	private GamerService gamerService;
+
 	private String msg;
 
 	@GetMapping(value = "/equipe")
 	public String telaCadastro(Model model) {
 		model.addAttribute("gamers", gamerService.obterLista());
 		model.addAttribute("games", gameService.obterLista());
+
 		return "equipe/cadastro";
 	}
 

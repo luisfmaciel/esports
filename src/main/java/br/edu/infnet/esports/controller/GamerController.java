@@ -25,8 +25,11 @@ public class GamerController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	@Autowired
 	private GameService gameService;
+	@Autowired
 	private GamerService gamerService;
+	
 	private String msg;
 
 	@GetMapping(value = "/gamer")

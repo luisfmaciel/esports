@@ -10,11 +10,11 @@ import br.edu.infnet.esports.model.domain.CsGo;
 @Repository
 public class CsGoRepository {
 	
-	private static Integer id = 1;
+//	private static Integer id = 1;
 	private static Map<Integer, CsGo> mapaCsGo = new HashMap<Integer, CsGo>();
 	
 	public boolean incluir(CsGo csgo) {
-		csgo.setId(id++);
+//		csgo.setId(id++);
 		try {
 			mapaCsGo.put(csgo.getId(), csgo);
 			return true;

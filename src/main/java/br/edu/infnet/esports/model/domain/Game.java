@@ -4,6 +4,7 @@ import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public abstract class Game {
+	private static int count = 1;
 	private Integer id;
 	private String nome;
 	private String plataforma;
@@ -11,12 +12,15 @@ public abstract class Game {
 	private int titulos;
 	private float mediaEstatistica;
 	
-	public Game() {}
+	public Game() {
+		this.id = count++;
+	}
 	
 	protected Game(String nome, String plataforma) {
 		this.nome = nome;
 		this.plataforma = plataforma;
 		this.nivel = Constante.INICIANTE;
+		this.id = count++;
 	}
 	
 	public abstract float calculaMediaEstatisticaGamer();
@@ -87,8 +91,8 @@ public abstract class Game {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId() {
+		this.id = count++;
 	}
 	
 }

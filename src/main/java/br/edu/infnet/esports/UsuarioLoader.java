@@ -17,7 +17,6 @@ public class UsuarioLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		Usuario usuario = new Usuario("Luis", "luis@esports.com", "123", "gamer");
-		usuario.setId(1);
 		
 		usuarioService.incluir(usuario);
 		System.out.println("Inclusão do usuário @" + usuario.getUsername() + " realizada com sucesso!");
