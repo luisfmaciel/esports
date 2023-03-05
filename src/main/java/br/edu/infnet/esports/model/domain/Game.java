@@ -91,8 +91,8 @@ public abstract class Game {
 		return id;
 	}
 
-	public void setId() {
-		this.id = count++;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 }

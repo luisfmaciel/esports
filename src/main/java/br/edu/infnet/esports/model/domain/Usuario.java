@@ -3,7 +3,7 @@ package br.edu.infnet.esports.model.domain;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 
 public class Usuario {
-
+	private static int count = 1;
 	private Integer id;
 	private String nome;
 	private String email;
@@ -11,13 +11,16 @@ public class Usuario {
 	private String senha;
 	private String perfil;
 	
-	public Usuario() {}
+	public Usuario() {
+		this.id = count++;
+	}
 
 	public Usuario(String nome, String email, String senha, String perfil) throws EmailInvalidoException {
 		this.setNome(nome);
 		this.setEmail(email);
 		this.setSenha(senha);
 		this.setPerfil(perfil);
+		this.setId(count++);
 	}
 	
 	public String toString() {

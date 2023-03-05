@@ -9,12 +9,12 @@ import br.edu.infnet.esports.model.domain.Gamer;
 
 @Repository
 public class GamerRepository {
-	private static Integer id = 1;
+//	private static Integer id = 1;
 	private static Map<Integer, Gamer> mapaGamer = new HashMap<Integer, Gamer>();;
 	
 	
 	public boolean incluir(Gamer gamer) {
-		gamer.setId(id++);
+//		gamer.setId(id++);
 		try {
 			mapaGamer.put(gamer.getId(), gamer);
 			return true;

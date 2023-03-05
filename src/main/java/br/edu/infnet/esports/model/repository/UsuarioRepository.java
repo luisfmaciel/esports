@@ -10,11 +10,11 @@ import br.edu.infnet.esports.model.domain.Usuario;
 @Repository
 public class UsuarioRepository {
 	
-	private static Integer id = 1;
+//	private static Integer id = 1;
 	private static Map<Integer, Usuario> mapaUsuario = new HashMap<Integer, Usuario>();
 	
 	public boolean incluir(Usuario usuario) {
-		usuario.setId(id++);
+//		usuario.setId(id++);
 		try {
 			mapaUsuario.put(usuario.getId(), usuario);
 			return true;

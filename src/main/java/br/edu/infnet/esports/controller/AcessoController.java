@@ -11,9 +11,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
-import br.edu.infnet.esports.model.repository.AcessoRepository;
 import br.edu.infnet.esports.model.service.AcessoService;
-import br.edu.infnet.esports.model.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller

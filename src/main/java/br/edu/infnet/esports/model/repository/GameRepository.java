@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import br.edu.infnet.esports.model.domain.Game;
-import br.edu.infnet.esports.model.domain.Gamer;
 
 @Repository
 public class GameRepository {
