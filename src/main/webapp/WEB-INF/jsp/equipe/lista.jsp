@@ -44,7 +44,7 @@
 							<th scope="col">Nível</th>
 							<th scope="col">Limite de Participantes</th>
 							<th scope="col">Multiplaforma</th>
-							<th scope="col">Games</th>
+							<th scope="col">Gamers</th>
 						</tr>
 					</thead>
 					<tbody>

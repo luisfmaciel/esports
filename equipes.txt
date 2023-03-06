@@ -8,4 +8,4 @@ D;DUNGEONS;PC;profissional;7.0;9.0;8.0;7;
 G;Freitas;freitinhas@esports.com, freitinhas@esports.com;
 F;FIFA;PC;profissional;7.0;9.0;8.0;7;
 G;Barbosa;barbosinha@esports.com, barbosinha@esports.com;
-E;Futiba;4;true;profissional;
+E;Futiba;4;true;profissional;	

@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.edu.infnet.esports.model.auxiliar.Constante;
+import br.edu.infnet.esports.model.domain.CsGo;
+import br.edu.infnet.esports.model.domain.Dungeons;
 import br.edu.infnet.esports.model.domain.Equipe;
+import br.edu.infnet.esports.model.domain.Fifa;
+import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.service.EquipeService;
 import br.edu.infnet.esports.model.service.GameService;
 import br.edu.infnet.esports.model.service.GamerService;
@@ -44,15 +49,18 @@ public class EquipeController {
 
 	@PostMapping(value = "/equipe/incluir")
 	public String incluir(Model model, @RequestParam String nome, @RequestParam int limiteParticipantes,
-			@RequestParam String gameId, @RequestParam String multiplataforma, @RequestParam String nivel,
-			@RequestParam String gamerId) {
+			@RequestParam String game, @RequestParam String plataforma, @RequestParam String multiplataforma,
+			@RequestParam String nivel, @RequestParam String gamerId) {
 		try {
 			Equipe equipe = new Equipe(nome, limiteParticipantes, Boolean.parseBoolean(multiplataforma), nivel);
-			equipe.setGame(gameService.obterGameById(Integer.parseInt(gameId)));
-			for(String j : gamerId.split(",")) {
+
+			Game gameSelecionado = Constante.GAME_CSGO.equalsIgnoreCase(game) ? new CsGo(plataforma)
+					: Constante.GAME_FIFA.equalsIgnoreCase(game) ? new Fifa(plataforma) : new Dungeons(plataforma);
+			equipe.setGame(gameSelecionado);
+			for (String j : gamerId.split(",")) {
 				equipe.setGamers(gamerService.obterGamerById(Integer.parseInt(j)));
 			}
-			
+
 			equipeService.incluir(equipe);
 			msg = "Equipe " + equipe.getNome() + " cadastrada com sucesso";
 			return "redirect:/equipe/lista";

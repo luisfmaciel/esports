@@ -46,7 +46,7 @@
 							<input type="checkbox" name="gameId" value="${g.id}"
 								class="form-check-input" id="${g.id}"> <label
 								class="form-check-label" for="${g.id}">${g.nome} -
-								${g.plataforma} - ${g.nivel}</label>
+								${g.plataforma} - ${g.nivel} - ${String.format("%.2f", g.mediaEstatistica)}</label>
 						</div>
 					</c:forEach>
 				</div>
