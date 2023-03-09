@@ -1,9 +1,20 @@
 package br.edu.infnet.esports.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 
+@Entity
+@Table(name = "TUsuario")
 public class Usuario {
 	private static int count = 1;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String email;

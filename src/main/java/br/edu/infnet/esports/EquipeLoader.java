@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.esports.model.domain.Equipe;
+import br.edu.infnet.esports.model.domain.Gamer;
 import br.edu.infnet.esports.model.service.EquipeService;
 import br.edu.infnet.esports.model.service.GameService;
 import br.edu.infnet.esports.model.service.GamerService;

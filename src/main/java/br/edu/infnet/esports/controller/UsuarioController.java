@@ -56,8 +56,8 @@ public class UsuarioController {
 	
 	@GetMapping(value = "/usuario/{id}/excluir" )
 	public String excluir(@PathVariable Integer id) {
-		Usuario usuario = usuarioService.excluir(id);
-		msg = "Usuário " + usuario.getNome() + " removido com sucesso";
+		usuarioService.excluir(id);
+		msg = "Usuário " + id + " removido com sucesso";
 	
 		return "redirect:/usuario/lista";
 	}

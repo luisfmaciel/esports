@@ -9,6 +9,7 @@ public class Gamer extends Usuario {
 	public Gamer() {
 	}
 	
+
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.games);
