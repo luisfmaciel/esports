@@ -14,15 +14,15 @@ public class DungeonsService {
 	@Autowired
 	private DungeonsRepository dungeonsRepository;
 	
-	public boolean incluir(Dungeons dungeons) {
-		return dungeonsRepository.incluir(dungeons);
+	public Dungeons incluir(Dungeons dungeons) {
+		return dungeonsRepository.save(dungeons);
 	}
 	
-	public Dungeons excluir(Integer key) {
-		return dungeonsRepository.excluir(key);
+	public void excluir(Integer key) {
+		dungeonsRepository.deleteById(key);
 	}
 	
 	public Collection<Dungeons> obterLista() {
-		return dungeonsRepository.obterLista();
+		return (Collection<Dungeons>) dungeonsRepository.findAll();
 	}
 }

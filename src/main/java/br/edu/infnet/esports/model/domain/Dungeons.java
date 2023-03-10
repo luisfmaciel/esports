@@ -1,8 +1,12 @@
 package br.edu.infnet.esports.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
+@Entity
 public class Dungeons extends Game {
 	private float dano;
 	private float sabedoria;

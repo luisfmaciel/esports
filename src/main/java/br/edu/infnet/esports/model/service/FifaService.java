@@ -14,15 +14,15 @@ public class FifaService {
 	@Autowired
 	private FifaRepository fifaRepository;
 	
-	public boolean incluir(Fifa fifa) {
-		return fifaRepository.incluir(fifa);
+	public Fifa incluir(Fifa fifa) {
+		return fifaRepository.save(fifa);
 	}
 	
-	public Fifa excluir(Integer key) {
-		return fifaRepository.excluir(key);
+	public void excluir(Integer key) {
+		fifaRepository.deleteById(key);
 	}
 	
 	public Collection<Fifa> obterLista() {
-		return fifaRepository.obterLista();
+		return (Collection<Fifa>) fifaRepository.findAll();
 	}
 }

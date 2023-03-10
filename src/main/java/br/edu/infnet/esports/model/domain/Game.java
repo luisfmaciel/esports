@@ -1,26 +1,38 @@
 package br.edu.infnet.esports.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
+@Entity
+@Table(name = "TGame")
 public abstract class Game {
-	private static int count = 1;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String plataforma;
 	private String nivel;
 	private int titulos;
 	private float mediaEstatistica;
+	@ManyToOne
+	@JoinColumn(name = "idGamer")
+	private Gamer gamer;
 	
-	public Game() {
-		this.id = count++;
-	}
+	public Game() {}
 	
 	protected Game(String nome, String plataforma) {
 		this.nome = nome;
 		this.plataforma = plataforma;
 		this.nivel = Constante.INICIANTE;
-		this.id = count++;
 	}
 	
 	public abstract float calculaMediaEstatisticaGamer();
@@ -93,6 +105,14 @@ public abstract class Game {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Gamer getGamer() {
+		return gamer;
+	}
+
+	public void setGamer(Gamer gamer) {
+		this.gamer = gamer;
 	}
 	
 }

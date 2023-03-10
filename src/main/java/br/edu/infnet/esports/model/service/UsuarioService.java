@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.esports.model.domain.Usuario;
+import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 import br.edu.infnet.esports.model.repository.UsuarioRepository;
 
 @Service
@@ -14,14 +15,15 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	public Usuario incluir(Usuario usuario) {
-//		return usuarioRepository.incluir(usuario);
-		return usuarioRepository.save(usuario);
+	public Usuario autenticar(Usuario usuario) throws EmailInvalidoException {
+		return usuarioRepository.autenticacao(usuario.getEmail(), usuario.getSenha());
+	}
 	
+	public Usuario incluir(Usuario usuario) {
+		return usuarioRepository.save(usuario);
 	}
 	
 	public void excluir(Integer key) {
-//		return usuarioRepository.excluir(key);
 		usuarioRepository.deleteById(key);
 	}
 	

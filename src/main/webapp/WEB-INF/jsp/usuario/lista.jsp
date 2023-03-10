@@ -44,6 +44,7 @@
 							<th scope="col">E-mail</th>
 							<th scope="col">Username</th>
 							<th scope="col">Perfil</th>
+							<th scope="col">Gamers</th>
 							<th scope="col"></th>
 						</tr>
 					</thead>
@@ -56,6 +57,13 @@
 								<td>${u.email}</td>
 								<td>${u.username}</td>
 								<td>${u.perfil}</td>
+								<td>
+									<div class="d-flex flex-column">
+										<c:forEach var="g" items="${u.gamers}">
+											<span class="ms-2">@${g.username}</span>
+										</c:forEach>
+									</div>
+								</td>
 								<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
 							</tr>
 						</c:forEach>

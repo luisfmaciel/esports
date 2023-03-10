@@ -22,7 +22,6 @@ public class UsuarioLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		try {
-			System.out.println("USUARIO LOADER");
 			String arq = "massa.txt";
 
 			FileReader fileR;

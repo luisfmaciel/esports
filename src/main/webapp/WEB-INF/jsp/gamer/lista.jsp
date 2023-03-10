@@ -42,6 +42,7 @@
 							<th scope="col">Nome</th>
 							<th scope="col">E-mail</th>
 							<th scope="col">Username</th>
+							<th scope="col">Usuário</th>
 							<th scope="col">Games</th>
 						</tr>
 					</thead>
@@ -52,6 +53,7 @@
 								<td>${g.nome}</td>
 								<td>${g.email}</td>
 								<td>@${g.username}</td>
+								<td>@${g.usuario.nome}</td>
 								<td>
 									<div class="d-flex flex-column">
 										<c:forEach var="game" items="${g.games}">

@@ -32,7 +32,6 @@ public class GamerLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		try {
-			System.out.println("GAMER LOADER");
 			String arq = "massa.txt";
 
 			FileReader fileR;
@@ -46,21 +45,21 @@ public class GamerLoader implements ApplicationRunner {
 				while (linha != null) {
 					String[] campos = linha.split(";");
 					meusJogos = new ArrayList<Game>();
-			
 					switch (campos[0].toUpperCase()) {
 					case "G": {
-						for(String id : campos[2].split(",")) {
-							meusJogos.add(gameService.obterGameById(Integer.parseInt(id)));
-						}
-						
-						Usuario usuario = usuarioService.obterUsuarioById(Integer.parseInt(campos[1]));
 						Gamer gamer = new Gamer();
-						gamer.setId(usuario.getId());
-						gamer.setNome(usuario.getNome());
-						gamer.setEmail(usuario.getEmail());
-						gamer.setPerfil(usuario.getPerfil());
-						gamer.setGames(meusJogos);
+						gamer.setNome(campos[1]);
+						gamer.setEmail(campos[2]);
 						
+						Usuario usuario = usuarioService.obterUsuarioById(Integer.parseInt(campos[3]));
+						
+						gamer.setUsuario(usuario);
+						
+						for(String idGame : campos[4].split(",")) {
+							meusJogos.add(gameService.obterGameById(Integer.parseInt(idGame)));
+						}
+						gamer.setGames(meusJogos);
+
 						gamerService.incluir(gamer);
 						System.out.println("Inclusão do gamer @" + gamer.getUsername() + " realizada com sucesso!");
 						break;

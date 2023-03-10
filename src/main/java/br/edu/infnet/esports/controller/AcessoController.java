@@ -13,7 +13,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
-import br.edu.infnet.esports.model.service.AcessoService;
+import br.edu.infnet.esports.model.service.UsuarioService;
 
 
 @Controller
@@ -21,7 +21,7 @@ import br.edu.infnet.esports.model.service.AcessoService;
 public class AcessoController {
 	
 	@Autowired
-	private AcessoService acessoService;
+	private UsuarioService usuarioService;
 	
 	@GetMapping(value = "/login")
 	public String telaLogin() {
@@ -35,7 +35,7 @@ public class AcessoController {
 			Usuario usuario = new Usuario();
 			usuario.setEmail(email);
 			usuario.setSenha(senha);
-			usuario = acessoService.autenticar(usuario);
+			usuario = usuarioService.autenticar(usuario);
 			
 			if (usuario != null) {
 				model.addAttribute("user", usuario);

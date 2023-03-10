@@ -14,15 +14,15 @@ public class CsGoService {
 	@Autowired
 	private CsGoRepository csgoRepository;
 	
-	public boolean incluir(CsGo csgo) {
-		return csgoRepository.incluir(csgo);
+	public CsGo incluir(CsGo csgo) {
+		return csgoRepository.save(csgo);
 	}
 	
-	public CsGo excluir(Integer key) {
-		return csgoRepository.excluir(key);
+	public void excluir(Integer key) {
+		csgoRepository.deleteById(key);
 	}
 	
 	public Collection<CsGo> obterLista() {
-		return csgoRepository.obterLista();
+		return (Collection<CsGo>) csgoRepository.findAll();
 	}
 }

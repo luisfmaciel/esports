@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.domain.Gamer;
@@ -22,14 +23,14 @@ import br.edu.infnet.esports.model.service.UsuarioService;
 
 @Controller
 public class GamerController {
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
 	@Autowired
 	private GameService gameService;
 	@Autowired
 	private GamerService gamerService;
-	
+
 	private String msg;
 
 	@GetMapping(value = "/gamer")
@@ -40,8 +41,8 @@ public class GamerController {
 	}
 
 	@GetMapping(value = "/gamer/lista")
-	public String telaLista(Model model) {
-		model.addAttribute("gamers", gamerService.obterLista());
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
+		model.addAttribute("gamers", gamerService.obterLista(usuario));
 		model.addAttribute("mensagem", msg);
 		msg = null;
 
@@ -49,21 +50,20 @@ public class GamerController {
 	}
 
 	@PostMapping(value = "/gamer/incluir")
-	public String incluir(Model model, @RequestParam String usuarioId, String gameId)
+	public String incluir(Model model, @RequestParam String nome, @RequestParam String email,
+			@RequestParam String usuarioId, @RequestParam String gameId, @SessionAttribute("user") Usuario usuario)
 			throws EmailInvalidoException, NumberFormatException, ValorLimiteUltrapassadoException {
-
 		List<Game> meusJogos = new ArrayList<Game>();
-		Usuario user = usuarioService.obterUsuarioById(Integer.parseInt(usuarioId));
+//		Usuario user = usuarioService.obterUsuarioById(Integer.parseInt(usuarioId));
 
 		for (String g : gameId.split(",")) {
 			meusJogos.add(gameService.obterGameById(Integer.parseInt(g)));
 		}
 
-		Gamer gamer = new Gamer();		
-		gamer.setNome(user.getNome());
-		gamer.setEmail(user.getEmail());
-		gamer.setSenha(user.getSenha());
-		gamer.setPerfil(user.getPerfil());
+		Gamer gamer = new Gamer();
+		gamer.setNome(nome);
+		gamer.setEmail(email);
+		gamer.setUsuario(usuario);
 		gamer.setGames(meusJogos);
 
 		gamerService.incluir(gamer);

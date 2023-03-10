@@ -28,6 +28,18 @@
 						<strong>Atenção</strong> ${mensagemError}
 					</div>
 				</c:if>
+				
+				<div class="form-floating mb-3">
+					<input type="text" name="nome" class="form-control"
+						id="floatingInput" placeholder="your name"> <label
+						for="floatingInput">Nome</label>
+				</div>
+				
+				<div class="form-floating mb-3">
+					<input type="text" name="email" class="form-control"
+						id="floatingInput" placeholder="name@example.com"> <label
+						for="floatingInput">E-mail</label>
+				</div>
 
 				<div class="w-25 mb-3">
 					<label class="mb-1">Usuários:</label> <select class="form-select"

@@ -14,19 +14,19 @@ public class GameService {
 	@Autowired
 	private GameRepository gameRepository;
 	
-	public boolean incluir(Game game) {
-		return gameRepository.incluir(game);
+	public Game incluir(Game game) {
+		return gameRepository.save(game);
 	}
 	
-	public Game excluir(Integer key) {
-		return gameRepository.excluir(key);
+	public void excluir(Integer key) {
+		gameRepository.deleteById(key);
 	}
 	
 	public Game obterGameById(Integer key) {
-		return gameRepository.obterGameById(key);
+		return gameRepository.findById(key).get();
 	}
 	
 	public Collection<Game> obterLista() {
-		return gameRepository.obterLista();
+		return (Collection<Game>) gameRepository.findAll();
 	}
 }
