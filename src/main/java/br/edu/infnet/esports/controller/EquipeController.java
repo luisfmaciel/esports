@@ -1,5 +1,8 @@
 package br.edu.infnet.esports.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,9 +35,9 @@ public class EquipeController {
 
 	@GetMapping(value = "/equipe")
 	public String telaCadastro(Model model) {
+	
 		model.addAttribute("gamers", gamerService.obterLista());
 		model.addAttribute("games", gameService.obterLista());
-
 		return "equipe/cadastro";
 	}
 
@@ -54,9 +57,10 @@ public class EquipeController {
 		try {
 			Equipe equipe = new Equipe(nome, limiteParticipantes, Boolean.parseBoolean(multiplataforma), nivel);
 
-			Game gameSelecionado = Constante.GAME_CSGO.equalsIgnoreCase(game) ? new CsGo(plataforma)
-					: Constante.GAME_FIFA.equalsIgnoreCase(game) ? new Fifa(plataforma) : new Dungeons(plataforma);
-			equipe.setGame(gameSelecionado);
+//			Game gameSelecionado = gameService.obterGameByParams(game, nivel);
+			
+//			equipe.setGame(gameService.obterGameById(Integer.parseInt(gamerId)));
+			equipe.setGame(gameService.obterGameByName(game));
 			for (String j : gamerId.split(",")) {
 				equipe.setGamers(gamerService.obterGamerById(Integer.parseInt(j)));
 			}
@@ -66,14 +70,15 @@ public class EquipeController {
 			return "redirect:/equipe/lista";
 		} catch (Exception e) {
 			model.addAttribute("mensagemError", e.getMessage());
+			System.out.println(e.getMessage());
 		}
 		return telaCadastro(model);
 	}
 
 	@GetMapping(value = "/equipe/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
-		Equipe equipe = equipeService.excluir(id);
-		msg = "Equipe " + equipe.getNome() + " removida com sucesso";
+		equipeService.excluir(id);
+		msg = "Equipe " + id + " removida com sucesso";
 
 		return "redirect:/equipe/lista";
 	}

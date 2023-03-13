@@ -14,15 +14,15 @@ public class EquipeService {
 	@Autowired
 	private EquipeRepository equipeRepository;
 	
-	public boolean incluir(Equipe equipe) {
-		return equipeRepository.incluir(equipe);
+	public Equipe incluir(Equipe equipe) {
+		return equipeRepository.save(equipe);
 	}
 	
-	public Equipe excluir(Integer key) {
-		return equipeRepository.excluir(key);
+	public void excluir(Integer key) {
+		equipeRepository.deleteById(key);
 	}
 	
 	public Collection<Equipe> obterLista() {
-		return equipeRepository.obterLista();
+		return (Collection<Equipe>) equipeRepository.findAll();
 	}
 }

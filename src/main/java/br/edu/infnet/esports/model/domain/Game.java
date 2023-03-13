@@ -1,11 +1,14 @@
 package br.edu.infnet.esports.model.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.edu.infnet.esports.model.auxiliar.Constante;
@@ -26,6 +29,9 @@ public abstract class Game {
 	@ManyToOne
 	@JoinColumn(name = "idGamer")
 	private Gamer gamer;
+	@OneToMany
+	@JoinColumn(name = "idGame")
+	private List<Equipe> equipes;	
 	
 	public Game() {}
 	
@@ -113,6 +119,14 @@ public abstract class Game {
 
 	public void setGamer(Gamer gamer) {
 		this.gamer = gamer;
+	}
+
+	public List<Equipe> getEquipes() {
+		return equipes;
+	}
+
+	public void setEquipes(List<Equipe> equipes) {
+		this.equipes = equipes;
 	}
 	
 }

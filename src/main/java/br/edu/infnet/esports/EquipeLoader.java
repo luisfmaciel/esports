@@ -21,10 +21,8 @@ public class EquipeLoader implements ApplicationRunner {
 
 	@Autowired
 	private EquipeService equipeService;
-
 	@Autowired
 	private GamerService gamerService;
-	
 	@Autowired
 	private GameService gameService;
 

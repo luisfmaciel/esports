@@ -1,6 +1,7 @@
 package br.edu.infnet.esports.model.service;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,10 @@ public class GameService {
 	
 	public Game obterGameById(Integer key) {
 		return gameRepository.findById(key).get();
+	}
+	
+	public Game obterGameByName(String nome) {
+		return gameRepository.findGameByName(nome).get(0);
 	}
 	
 	public Collection<Game> obterLista() {
