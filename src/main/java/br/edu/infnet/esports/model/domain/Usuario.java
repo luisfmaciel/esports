@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 
 @Entity
@@ -29,7 +30,7 @@ public class Usuario {
 	
 	public Usuario() {}
 
-	public Usuario(String nome, String email, String senha, String perfil) throws EmailInvalidoException {
+	public Usuario(String nome, String email, String senha, String perfil) throws EmailInvalidoException, CampoVazioException {
 		this.setNome(nome);
 		this.setEmail(email);
 		this.setSenha(senha);
@@ -64,7 +65,8 @@ public class Usuario {
 		return nome;
 	}
 	
-	public void setNome(String nome) {
+	public void setNome(String nome) throws CampoVazioException {
+		if(nome.isBlank() || nome.isEmpty()) throw new CampoVazioException("O preenchimento do campo Nome está inválido");
 		this.nome = nome;
 	}
 
@@ -72,8 +74,8 @@ public class Usuario {
 		return email;
 	}
 	
-	public void setEmail(String email) throws EmailInvalidoException {
-		if(email.isBlank()) throw new EmailInvalidoException("E-mail inválido");
+	public void setEmail(String email) throws EmailInvalidoException, CampoVazioException {
+		if(email.isBlank() || email.isEmpty()) throw new CampoVazioException("O preenchimento do campo E-mail está inválido");
 
 		String username = email.substring(0, email.indexOf("@"));
 		String dominio = email.substring(email.indexOf("@")+1);
@@ -90,7 +92,8 @@ public class Usuario {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
+	public void setSenha(String senha) throws CampoVazioException {
+		if(senha.isBlank() || senha.isEmpty()) throw new CampoVazioException("O preenchimento do campo Senha está inválido");
 		this.senha = senha;
 	}
 	
@@ -105,7 +108,8 @@ public class Usuario {
 		return perfil;
 	}
 
-	public void setPerfil(String perfil) {
+	public void setPerfil(String perfil) throws CampoVazioException {
+		if(perfil.isBlank() || perfil.isEmpty()) throw new CampoVazioException("O preenchimento do campo Perfil está inválido");
 		this.perfil = perfil;
 	}
 

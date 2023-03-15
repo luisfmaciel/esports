@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.esports.model.domain.Fifa;
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.service.FifaService;
-import br.edu.infnet.esports.model.service.GameService;
 
 @Component
 @Order(2)
@@ -20,13 +19,12 @@ public class FifaLoader implements ApplicationRunner {
 
 	@Autowired
 	private FifaService fifaService;
-	@Autowired
-	private GameService gameService;
+//	@Autowired
+//	private GameService gameService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		try {
-			System.out.println("FIFA LOADER");
 			String arq = "massa.txt";
 
 			FileReader fileR;
@@ -43,15 +41,15 @@ public class FifaLoader implements ApplicationRunner {
 					switch (campos[0].toUpperCase()) {
 					case "F": {
 						game = new Fifa(campos[1]);
-						game.setTitulos(Integer.parseInt(campos[2]));
-						((Fifa) game).setFinalizacao(Integer.parseInt(campos[3]));
-						((Fifa) game).setMarcacao(Integer.parseInt(campos[4]));
-						((Fifa) game).setPasse(Integer.parseInt(campos[5]));
+						game.setTitulos(campos[2]);
+						((Fifa) game).setFinalizacao(campos[3]);
+						((Fifa) game).setMarcacao(campos[4]);
+						((Fifa) game).setPasse(campos[5]);
 						game.setMediaEstatistica(game.calculaMediaEstatisticaGamer());
 						game.setNivel(game.identificaNivelGamer());
 						
 						fifaService.incluir((Fifa) game);
-						gameService.incluir((Fifa) game);
+//						gameService.incluir((Fifa) game);
 						System.out.println("Inclusão do game" + game.getNome() + " realizada com sucesso!");
 						break;
 					}

@@ -9,18 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.esports.model.domain.Dungeons;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 import br.edu.infnet.esports.model.service.DungeonsService;
-import br.edu.infnet.esports.model.service.GameService;
 
 @Controller
 public class DungeonsController {
 	
 	@Autowired
 	private DungeonsService dungeonsService;
-	@Autowired
-	private GameService gameService;
-
 	private String msg;
 	
 	@GetMapping(value = "/game/dungeons")
@@ -38,8 +35,8 @@ public class DungeonsController {
 	}
 
 	@PostMapping(value = "/game/dungeons/incluir")
-	public String incluir(Model model, @RequestParam String plataforma, @RequestParam int titulos,
-			@RequestParam float dano, @RequestParam float sabedoria, @RequestParam float velocidade) {
+	public String incluir(Model model, @RequestParam String plataforma, @RequestParam String titulos,
+			@RequestParam String dano, @RequestParam String sabedoria, @RequestParam String velocidade) {
 		try {
 			Dungeons dungeons = new Dungeons(plataforma);
 			dungeons.setTitulos(titulos);
@@ -50,11 +47,10 @@ public class DungeonsController {
 			dungeons.setNivel(dungeons.identificaNivelGamer());
 			
 			dungeonsService.incluir(dungeons);
-			gameService.incluir(dungeons);
 			msg = "Estatísticas cadastradas com sucesso";
 
 			return "redirect:/game/dungeons/lista";
-		} catch (ValorLimiteUltrapassadoException e) {
+		} catch (ValorLimiteUltrapassadoException | CampoVazioException e) {
 			model.addAttribute("mensagemError", e.getMessage());
 		}
 		
@@ -64,7 +60,6 @@ public class DungeonsController {
 	@GetMapping(value = "/game/dungeons/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		dungeonsService.excluir(id);
-		gameService.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 	
 		return "redirect:/game/dungeons/lista";

@@ -42,11 +42,10 @@
 				</div>
 
 				<div class="w-25 mb-3">
-					<label class="mb-1">Usuários:</label> <select class="form-select"
-						name="usuarioId" aria-label="Default select example">
-						<c:forEach var="u" items="${usuarios}">
-							<option value="${u.id}">@${u.username}</option>
-						</c:forEach>
+					<label class="mb-1">Perfil:</label> 
+					<select class="form-select"
+						name="perfil" aria-label="Default select example">
+						<option value="gamer" selected>Gamer</option>
 					</select>
 				</div>
 

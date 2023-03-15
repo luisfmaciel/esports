@@ -25,6 +25,12 @@
 		<div class="container mt-3">
 			<form action="/usuario/incluir" method="post">
 				<h3>Cadastro de Usuário</h3>
+				
+				<c:if test="${not empty mensagemError}">
+					<div class="alert alert-danger my-2" role="alert">
+						<strong>Atenção</strong> ${mensagemError}
+					</div>
+				</c:if>
 
 				<div class="form-floating mb-3">
 					<input type="text" name="nome" class="form-control"
@@ -42,9 +48,9 @@
 						for="floatingInput">Passwrod</label>
 				</div>
 				<div class="w-25 mb-3">
-					<label class="mb-1">Perfil:</label> <select class="form-select"
-						name="perfil" aria-label="Default select example">
-						<option value="gamer">Gamer</option>
+					<label class="mb-1">Perfil:</label>
+					<select class="form-select" name="perfil" aria-label="Default select example">
+						<option value="admin" selected>Administrador</option>
 					</select>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>

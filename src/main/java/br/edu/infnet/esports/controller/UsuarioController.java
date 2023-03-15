@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.esports.model.domain.Usuario;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 import br.edu.infnet.esports.model.service.UsuarioService;
 
@@ -36,22 +37,22 @@ public class UsuarioController {
 
 	@PostMapping(value = "/usuario/incluir")
 	public String incluir(
+			Model model,
 			@RequestParam String nome,
-			@RequestParam String email,
-			@RequestParam String senha,
+			@RequestParam String email, 
+			@RequestParam String senha, 
 			@RequestParam String perfil
 	) throws EmailInvalidoException {
-		Usuario usuario = new Usuario();
-		
-		usuario.setNome(nome);
-		usuario.setEmail(email);
-		usuario.setSenha(senha);
-		usuario.setPerfil(perfil);
-	
-		usuarioService.incluir(usuario);
-		msg = "Usuário " + usuario.getNome() + " cadastrado com sucesso";
-	
-		return "redirect:/";
+		try {			
+			Usuario usuario = new Usuario(nome, email, senha, perfil);
+			usuarioService.incluir(usuario);
+			msg = "Usuário " + usuario.getNome() + " cadastrado com sucesso";
+			
+			return "redirect:/";
+		} catch (EmailInvalidoException | CampoVazioException e) {
+			model.addAttribute("mensagemError", e.getMessage());
+		}
+		return telaCadastro();
 	}
 	
 	@GetMapping(value = "/usuario/{id}/excluir" )

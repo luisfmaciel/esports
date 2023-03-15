@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import br.edu.infnet.esports.model.domain.Usuario;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 import br.edu.infnet.esports.model.service.UsuarioService;
 
@@ -43,7 +44,7 @@ public class AcessoController {
 			}
 			
 			model.addAttribute("mensagem", "As credencias para o email " + email + " estão incorretas!");
-		} catch (EmailInvalidoException e) {
+		} catch (EmailInvalidoException | CampoVazioException e) {
 			model.addAttribute("mensagem", e.getMessage());
 		}
 

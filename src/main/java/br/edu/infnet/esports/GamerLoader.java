@@ -59,6 +59,7 @@ public class GamerLoader implements ApplicationRunner {
 							meusJogos.add(gameService.obterGameById(Integer.parseInt(idGame)));
 						}
 						gamer.setGames(meusJogos);
+						gamer.setPerfil(campos[5]);
 
 						gamerService.incluir(gamer);
 						System.out.println("Inclusão do gamer @" + gamer.getUsername() + " realizada com sucesso!");

@@ -3,9 +3,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import br.edu.infnet.esports.model.auxiliar.Constante;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 @Entity
+@Table(name = "TFifa")
 public class Fifa extends Game {
 	private float finalizacao;
 	private float marcacao;
@@ -42,41 +44,61 @@ public class Fifa extends Game {
 		return finalizacao;
 	}
 
-	public void setFinalizacao(float finalizacao) throws ValorLimiteUltrapassadoException {
-		if(finalizacao < 0) 
+	public void setFinalizacao(String finalizacao) throws ValorLimiteUltrapassadoException, CampoVazioException {
+		Float floatFinalizacao;
+		try {
+			floatFinalizacao = Float.parseFloat(finalizacao);
+		} catch (Exception e) {
+			throw new CampoVazioException("O preenchimento do campo Finalização está inválido");
+		} 
+		
+		if(floatFinalizacao < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de finalização deve ser maior ou igual à zero!");
 		
-		if(finalizacao > 10) 
+		if(floatFinalizacao > 10) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de finalização deve ser menor ou igual à 10!");
 		
-		this.finalizacao = finalizacao;
+		this.finalizacao = floatFinalizacao;
 	}
 
 	public float getMarcacao() {
 		return marcacao;
 	}
 
-	public void setMarcacao(float marcacao) throws ValorLimiteUltrapassadoException {
-		if(marcacao < 0) 
+	public void setMarcacao(String marcacao) throws ValorLimiteUltrapassadoException, CampoVazioException {
+		Float floatMarcacao;
+		try {
+			floatMarcacao = Float.parseFloat(marcacao);
+		} catch (Exception e) {
+			throw new CampoVazioException("O preenchimento do campo Marcação está inválido");
+		} 
+		if(floatMarcacao < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de marcação deve ser maior ou igual à zero!");
 		
-		if(marcacao > 10) 
+		if(floatMarcacao > 10) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de marcação deve ser menor ou igual à 10!");
 		
-		this.marcacao = marcacao;
+		this.marcacao = floatMarcacao;
 	}
 
 	public float getPasse() {
 		return passe;
 	}
 
-	public void setPasse(float passe) throws ValorLimiteUltrapassadoException {
-		if(passe < 0) 
+	public void setPasse(String passe) throws ValorLimiteUltrapassadoException, CampoVazioException {
+		Float floatPasse;
+		try {
+			floatPasse = Float.parseFloat(passe);
+		} catch (Exception e) {
+			throw new CampoVazioException("O preenchimento do campo Passe está inválido");
+		} 
+		
+		if(floatPasse < 0) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de passe deve ser maior ou igual à zero!");
 		
-		if(passe > 10) 
+		if(floatPasse > 10) 
 			throw new ValorLimiteUltrapassadoException("Sua estatística de passe deve ser menor ou igual à 10!");
 		
-		this.passe = passe;
+		this.passe = floatPasse;
 	}
 }

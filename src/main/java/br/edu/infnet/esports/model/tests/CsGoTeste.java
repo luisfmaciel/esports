@@ -2,6 +2,7 @@ package br.edu.infnet.esports.model.tests;
 
 import br.edu.infnet.esports.model.auxiliar.Constante;
 import br.edu.infnet.esports.model.domain.CsGo;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 public class CsGoTeste {
@@ -10,45 +11,45 @@ public class CsGoTeste {
 		CsGo csGo = new CsGo(Constante.PLATAFORMA_PS5);
 		
 		try {
-			csGo.setPrecisao(9);
-			csGo.setAgressividade(7);
-			csGo.setTatica(8);
-			csGo.setTitulos(9);
+			csGo.setPrecisao("9");
+			csGo.setAgressividade("");
+			csGo.setTatica("8");
+			csGo.setTitulos("9");
 			csGo.setMediaEstatistica(csGo.calculaMediaEstatisticaGamer());
 			csGo.setNivel(csGo.identificaNivelGamer());
 			
 			System.out.println(csGo);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", csGo.calculaMediaEstatisticaGamer()));
 			
-		} catch (ValorLimiteUltrapassadoException e) {
+		} catch (ValorLimiteUltrapassadoException | CampoVazioException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
 		try {
-			csGo.setPrecisao(5);
-			csGo.setAgressividade(4);
-			csGo.setTatica(3);
-			csGo.setTitulos(4);
+			csGo.setPrecisao("5");
+			csGo.setAgressividade("4");
+			csGo.setTatica("3");
+			csGo.setTitulos("4");
 			csGo.setMediaEstatistica(csGo.calculaMediaEstatisticaGamer());
 			csGo.setNivel(csGo.identificaNivelGamer());
 			
 			System.out.println(csGo);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", csGo.calculaMediaEstatisticaGamer()));
-		} catch (ValorLimiteUltrapassadoException e) {
+		} catch (ValorLimiteUltrapassadoException | CampoVazioException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 		
 		try {
-			csGo.setPrecisao(2);
-			csGo.setAgressividade(3);
-			csGo.setTatica(-1);
-			csGo.setTitulos(1);
+			csGo.setPrecisao("2");
+			csGo.setAgressividade("3");
+			csGo.setTatica("-1");
+			csGo.setTitulos("1");
 			csGo.setMediaEstatistica(csGo.calculaMediaEstatisticaGamer());
 			csGo.setNivel(csGo.identificaNivelGamer());
 			
 			System.out.println(csGo);
 			System.out.println("Média das estatísticas do gamer: " + String.format("%.2f", csGo.calculaMediaEstatisticaGamer()));
-		} catch (ValorLimiteUltrapassadoException e) {
+		} catch (ValorLimiteUltrapassadoException | CampoVazioException e) {
 			System.out.println("[ERRO] " + e.getMessage());
 		}
 	}

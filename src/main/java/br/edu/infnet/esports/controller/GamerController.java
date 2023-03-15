@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.domain.Gamer;
 import br.edu.infnet.esports.model.domain.Usuario;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
-import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 import br.edu.infnet.esports.model.service.GameService;
 import br.edu.infnet.esports.model.service.GamerService;
 import br.edu.infnet.esports.model.service.UsuarioService;
@@ -34,7 +34,7 @@ public class GamerController {
 	private String msg;
 
 	@GetMapping(value = "/gamer")
-	public String telaCadastro(Model model) {
+	public String telaCadastro(Model model, @SessionAttribute("user") Usuario usuario) {
 		model.addAttribute("usuarios", usuarioService.obterLista());
 		model.addAttribute("games", gameService.obterLista());
 		return "gamer/cadastro";
@@ -51,23 +51,28 @@ public class GamerController {
 
 	@PostMapping(value = "/gamer/incluir")
 	public String incluir(Model model, @RequestParam String nome, @RequestParam String email,
-			@RequestParam String usuarioId, @RequestParam String gameId, @SessionAttribute("user") Usuario usuario)
-			throws EmailInvalidoException, NumberFormatException, ValorLimiteUltrapassadoException {
-		List<Game> meusJogos = new ArrayList<Game>();
-//		Usuario user = usuarioService.obterUsuarioById(Integer.parseInt(usuarioId));
+			@RequestParam String perfil, @RequestParam(required = false) String gameId, @SessionAttribute("user") Usuario usuario) {
+		try {
+			
+			List<Game> meusJogos = new ArrayList<Game>();
+			if (gameId != null) {
+				for (String g : gameId.split(",")) {
+					meusJogos.add(gameService.obterGameById(Integer.parseInt(g)));
+				}
+			}
+			Gamer gamer = new Gamer();
+			gamer.setNome(nome);
+			gamer.setEmail(email);
+			gamer.setPerfil(perfil);
+			gamer.setUsuario(usuario);
+			gamer.setGames(meusJogos);
+			gamerService.incluir(gamer);
 
-		for (String g : gameId.split(",")) {
-			meusJogos.add(gameService.obterGameById(Integer.parseInt(g)));
+			return "redirect:/gamer/lista";
+		} catch (EmailInvalidoException | CampoVazioException e) {
+			model.addAttribute("mensagemError", e.getMessage());
 		}
-
-		Gamer gamer = new Gamer();
-		gamer.setNome(nome);
-		gamer.setEmail(email);
-		gamer.setUsuario(usuario);
-		gamer.setGames(meusJogos);
-
-		gamerService.incluir(gamer);
-		return "redirect:/gamer/lista";
+		return telaCadastro(model, usuario);
 	}
 
 	@GetMapping(value = "/gamer/{id}/excluir")

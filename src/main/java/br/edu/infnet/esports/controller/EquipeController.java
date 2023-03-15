@@ -1,8 +1,5 @@
 package br.edu.infnet.esports.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.edu.infnet.esports.model.auxiliar.Constante;
-import br.edu.infnet.esports.model.domain.CsGo;
-import br.edu.infnet.esports.model.domain.Dungeons;
 import br.edu.infnet.esports.model.domain.Equipe;
-import br.edu.infnet.esports.model.domain.Fifa;
-import br.edu.infnet.esports.model.domain.Game;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.service.EquipeService;
 import br.edu.infnet.esports.model.service.GameService;
 import br.edu.infnet.esports.model.service.GamerService;
@@ -51,18 +44,25 @@ public class EquipeController {
 	}
 
 	@PostMapping(value = "/equipe/incluir")
-	public String incluir(Model model, @RequestParam String nome, @RequestParam int limiteParticipantes,
+	public String incluir(Model model, @RequestParam String nome, @RequestParam String limiteParticipantes,
 			@RequestParam String game, @RequestParam String plataforma, @RequestParam String multiplataforma,
-			@RequestParam String nivel, @RequestParam String gamerId) {
+			@RequestParam String nivel, @RequestParam(required = false) String gamerId) {
 		try {
-			Equipe equipe = new Equipe(nome, limiteParticipantes, Boolean.parseBoolean(multiplataforma), nivel);
-
-//			Game gameSelecionado = gameService.obterGameByParams(game, nivel);
+			Equipe equipe = new Equipe();
 			
-//			equipe.setGame(gameService.obterGameById(Integer.parseInt(gamerId)));
+			equipe.setNome(nome);
+			equipe.setLimiteParticipantes(limiteParticipantes);
+			equipe.setPlataforma(plataforma);
+			equipe.setMultiPlataforma(Boolean.parseBoolean(multiplataforma));
+			equipe.setNivel(nivel);
 			equipe.setGame(gameService.obterGameByName(game));
-			for (String j : gamerId.split(",")) {
-				equipe.setGamers(gamerService.obterGamerById(Integer.parseInt(j)));
+			
+			if(gamerId != null) {
+				for (String j : gamerId.split(",")) {
+					equipe.setGamers(gamerService.obterGamerById(Integer.parseInt(j)));
+				}				
+			} else {
+				throw new CampoVazioException("O preenchimento do campo Gamers está inválido");
 			}
 
 			equipeService.incluir(equipe);

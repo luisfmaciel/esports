@@ -9,18 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.esports.model.domain.CsGo;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 import br.edu.infnet.esports.model.service.CsGoService;
-import br.edu.infnet.esports.model.service.GameService;
 
 @Controller
 public class CsGoController {
 	
 	@Autowired
 	private CsGoService csgoService;
-	@Autowired
-	private GameService gameService;
-
 	private String msg;
 
 	@GetMapping(value = "/game/csgo")
@@ -38,8 +35,8 @@ public class CsGoController {
 	}
 
 	@PostMapping(value = "/game/csgo/incluir")
-	public String incluir(Model model, @RequestParam String plataforma, @RequestParam int titulos,
-			@RequestParam float precisao, @RequestParam float agressividade, @RequestParam float tatica) {
+	public String incluir(Model model, @RequestParam String plataforma, @RequestParam String titulos,
+			@RequestParam String precisao, @RequestParam String agressividade, @RequestParam String tatica) {
 		try {
 			CsGo csgo = new CsGo(plataforma);
 			csgo.setTitulos(titulos);
@@ -50,11 +47,10 @@ public class CsGoController {
 			csgo.setNivel(csgo.identificaNivelGamer());
 			
 			csgoService.incluir(csgo);
-			gameService.incluir(csgo);
 			msg = "Estatísticas cadastradas com sucesso";
 
 			return "redirect:/game/csgo/lista";
-		} catch (ValorLimiteUltrapassadoException e) {
+		} catch (ValorLimiteUltrapassadoException | CampoVazioException e) {
 			model.addAttribute("mensagemError", e.getMessage());
 		}
 		
@@ -64,7 +60,6 @@ public class CsGoController {
 	@GetMapping(value = "/game/csgo/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		csgoService.excluir(id);
-		gameService.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 
 		return "redirect:/game/csgo/lista";

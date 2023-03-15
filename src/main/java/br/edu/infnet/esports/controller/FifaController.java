@@ -9,18 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.esports.model.domain.Fifa;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 import br.edu.infnet.esports.model.service.FifaService;
-import br.edu.infnet.esports.model.service.GameService;
 
 @Controller
 public class FifaController {
 	
 	@Autowired
 	private FifaService fifaService; 
-	@Autowired
-	private GameService gameService; 
-
 	private String msg;
 	
 	@GetMapping(value = "/game/fifa")
@@ -38,8 +35,8 @@ public class FifaController {
 	}
 
 	@PostMapping(value = "/game/fifa/incluir")
-	public String incluir(Model model, @RequestParam String plataforma, @RequestParam int titulos,
-			@RequestParam float finalizacao, @RequestParam float marcacao, @RequestParam float passe) {
+	public String incluir(Model model, @RequestParam String plataforma, @RequestParam String titulos,
+			@RequestParam String finalizacao, @RequestParam String marcacao, @RequestParam String passe) {
 		try {
 			Fifa fifa = new Fifa(plataforma);
 			fifa.setTitulos(titulos);
@@ -50,11 +47,10 @@ public class FifaController {
 			fifa.setNivel(fifa.identificaNivelGamer());
 			
 			fifaService.incluir(fifa);
-			gameService.incluir(fifa);
 			msg = "Estatísticas cadastradas com sucesso";
 
 			return "redirect:/game/fifa/lista";
-		} catch (ValorLimiteUltrapassadoException e) {
+		} catch (ValorLimiteUltrapassadoException | CampoVazioException e) {
 			model.addAttribute("mensagemError", e.getMessage());
 		}
 		
@@ -64,7 +60,6 @@ public class FifaController {
 	@GetMapping(value = "/game/fifa/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		fifaService.excluir(id);
-		gameService.excluir(id);
 		msg = "Estatísticas removidas com sucesso";
 	
 		return "redirect:/game/fifa/lista";

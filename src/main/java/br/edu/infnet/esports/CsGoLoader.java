@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.esports.model.domain.CsGo;
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.service.CsGoService;
-import br.edu.infnet.esports.model.service.GameService;
 
 @Component
 @Order(2)
@@ -20,13 +19,10 @@ public class CsGoLoader implements ApplicationRunner {
 
 	@Autowired
 	private CsGoService csgoService;
-	@Autowired
-	private GameService gameService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		try {
-			System.out.println("CSGO LOADER");
 			String arq = "massa.txt";
 
 			FileReader fileR;
@@ -43,15 +39,14 @@ public class CsGoLoader implements ApplicationRunner {
 					switch (campos[0].toUpperCase()) {
 					case "C": {
 						game = new CsGo(campos[1]);
-						game.setTitulos(Integer.parseInt(campos[2]));
-						((CsGo) game).setPrecisao(Integer.parseInt(campos[3]));
-						((CsGo) game).setAgressividade(Integer.parseInt(campos[4]));
-						((CsGo) game).setTatica(Integer.parseInt(campos[5]));
+						game.setTitulos(campos[2]);
+						((CsGo) game).setPrecisao(campos[3]);
+						((CsGo) game).setAgressividade(campos[4]);
+						((CsGo) game).setTatica(campos[5]);
 						game.setMediaEstatistica(game.calculaMediaEstatisticaGamer());
 						game.setNivel(game.identificaNivelGamer());
 						
 						csgoService.incluir((CsGo) game);
-						gameService.incluir((CsGo) game);
 						System.out.println("Inclusão do game" + game.getNome() + " realizada com sucesso!");
 						break;
 					}

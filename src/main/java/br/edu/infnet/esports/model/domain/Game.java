@@ -6,16 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.edu.infnet.esports.model.auxiliar.Constante;
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.ValorLimiteUltrapassadoException;
 
 @Entity
 @Table(name = "TGame")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Game {
 	
 	@Id
@@ -63,6 +67,8 @@ public abstract class Game {
 		sb.append(";");
 		sb.append(this.getMediaEstatistica());
 		sb.append(";");
+		sb.append(this.gamer);
+		sb.append(";");
 		
 		return sb.toString();	
 	}
@@ -70,21 +76,24 @@ public abstract class Game {
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
+	public void setNome(String nome) throws CampoVazioException {
+		if(nome.isBlank() || nome.isEmpty()) throw new CampoVazioException("O preenchimento do campo Nome está inválido");
 		this.nome = nome;
 	}
 	
 	public String getPlataforma() {
 		return plataforma;
 	}
-	public void setPlataforma(String plataforma) {
+	public void setPlataforma(String plataforma) throws CampoVazioException {
+		if(plataforma.isBlank() || plataforma.isEmpty()) throw new CampoVazioException("O preenchimento do campo Plataforma está inválido");
 		this.plataforma = plataforma;
 	}
 	
 	public String getNivel() {
 		return nivel;
 	}
-	public void setNivel(String nivel) {
+	public void setNivel(String nivel) throws CampoVazioException {
+		if(nivel.isBlank() || nivel.isEmpty()) throw new CampoVazioException("O preenchimento do campo Nível está inválido");
 		this.nivel = nivel;
 	}
 
@@ -100,9 +109,16 @@ public abstract class Game {
 		return titulos;
 	}
 
-	public void setTitulos(int titulos) throws ValorLimiteUltrapassadoException {
-		if(titulos < 0) throw new ValorLimiteUltrapassadoException("O número de titulos deve ser maior que 0!");
-		this.titulos = titulos;
+	public void setTitulos(String titulos) throws ValorLimiteUltrapassadoException, CampoVazioException {
+		Integer intTitulos;
+		try {
+			intTitulos = Integer.parseInt(titulos);
+		} catch (Exception e) {
+			throw new CampoVazioException("O preenchimento do campo Títulos está inválido");
+		} 
+		
+		if(intTitulos < 0) throw new ValorLimiteUltrapassadoException("O número de titulos deve ser maior que 0!");
+		this.titulos = intTitulos;
 	}
 
 	public Integer getId() {
@@ -117,7 +133,8 @@ public abstract class Game {
 		return gamer;
 	}
 
-	public void setGamer(Gamer gamer) {
+	public void setGamer(Gamer gamer) throws CampoVazioException {
+		if(gamer == null) throw new CampoVazioException("O preenchimento do campo Gamer está inválido");
 		this.gamer = gamer;
 	}
 

@@ -1,6 +1,5 @@
 package br.edu.infnet.esports.model.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
 
 @Entity
@@ -25,6 +25,7 @@ public class Gamer {
 	private String nome;
 	private String email;
 	private String username;
+	private String perfil;
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idGamer")
 	private List<Game> games;
@@ -57,7 +58,8 @@ public class Gamer {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome) throws CampoVazioException {
+		if(nome.isBlank() || nome.isEmpty()) throw new CampoVazioException("O preenchimento do campo Nome está inválido");
 		this.nome = nome;
 	}
 
@@ -65,9 +67,8 @@ public class Gamer {
 		return email;
 	}
 
-	public void setEmail(String email) throws EmailInvalidoException {
-		if (email.isBlank())
-			throw new EmailInvalidoException("E-mail inválido");
+	public void setEmail(String email) throws EmailInvalidoException, CampoVazioException {
+		if(email.isBlank() || email.isEmpty()) throw new CampoVazioException("O preenchimento do campo Email está inválido");
 
 		String username = email.substring(0, email.indexOf("@"));
 		String dominio = email.substring(email.indexOf("@") + 1);
@@ -113,4 +114,14 @@ public class Gamer {
 	public void setEquipe(List<Equipe> equipes) {
 		this.equipes = equipes;
 	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) throws CampoVazioException {
+		if(perfil.isBlank() || perfil.isEmpty()) throw new CampoVazioException("O preenchimento do campo Perfil está inválido");
+		this.perfil = perfil;
+	}
+	
 }

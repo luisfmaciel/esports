@@ -10,9 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.EquipeCompletaException;
 import br.edu.infnet.esports.model.exceptions.GameNaoEncontradoException;
 import br.edu.infnet.esports.model.exceptions.NivelDiferenteException;
@@ -28,6 +28,7 @@ public class Equipe {
 	private Integer id;
 	private String nome;
 	private int limiteParticipantes;
+	private String plataforma;
 	private boolean multiPlataforma;
 	private String nivel;
 	@ManyToOne
@@ -39,16 +40,10 @@ public class Equipe {
 	public Equipe() {
 	}
 
-	public Equipe(String nome, int limiteParticipantes, boolean multiPlataforma, String nivel)
-			throws ValorLimiteUltrapassadoException {
-		if (limiteParticipantes < 2)
-			throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no mínimo 2 gamers!");
-
-		if (limiteParticipantes > 12)
-			throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no máximo 12 gamers!");
-
+	public Equipe(String nome, String limiteParticipantes, boolean multiPlataforma, String nivel)
+			throws ValorLimiteUltrapassadoException, CampoVazioException {
 		this.nome = nome;
-		this.limiteParticipantes = limiteParticipantes;
+		this.setLimiteParticipantes(limiteParticipantes);
 		this.setMultiPlataforma(multiPlataforma);
 		this.nivel = nivel;
 	}
@@ -77,7 +72,8 @@ public class Equipe {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome) throws CampoVazioException {
+		if(nome.isBlank() || nome.isEmpty()) throw new CampoVazioException("O preenchimento do campo Nome está inválido");
 		this.nome = nome;
 	}
 
@@ -93,10 +89,21 @@ public class Equipe {
 		return limiteParticipantes;
 	}
 
-	public void setLimiteParticipantes(int limiteParticipantes) {
-		this.limiteParticipantes = limiteParticipantes;
-	}
+	public void setLimiteParticipantes(String limiteParticipantes) throws CampoVazioException, ValorLimiteUltrapassadoException {
+		Integer intLimite;
+		try {
+			intLimite = Integer.parseInt(limiteParticipantes);
+		} catch (Exception e) {
+			throw new CampoVazioException("O preenchimento do campo Limite Participantes está inválido");
+		} 
+		if (intLimite < 2)
+			throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no mínimo 2 gamers!");
 
+		if (intLimite > 12)
+			throw new ValorLimiteUltrapassadoException("Uma equipe deve ter no máximo 12 gamers!");
+		this.limiteParticipantes = intLimite;
+	}
+	
 	public List<Gamer> getGamers() {
 		return gamers;
 	}
@@ -109,9 +116,9 @@ public class Equipe {
 						"@" + gamer.getUsername() + ", você não possui o game: " + this.game.getNome()));
 
 		if (!this.multiPlataforma) {
-			if (!playerGame.getPlataforma().equalsIgnoreCase(this.game.getPlataforma()))
+			if (!playerGame.getPlataforma().equalsIgnoreCase(this.plataforma))
 				throw new PlatformaDiferenteException(
-						"Essa equipe é só para jogadores da plataforma: " + this.game.getPlataforma().toUpperCase());
+						"Essa equipe é só para jogadores da plataforma: " + this.plataforma.toUpperCase());
 		}
 
 		if (!playerGame.getNivel().equalsIgnoreCase(this.nivel))
@@ -148,5 +155,13 @@ public class Equipe {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getPlataforma() {
+		return plataforma;
+	}
+
+	public void setPlataforma(String plataforma) {
+		this.plataforma = plataforma;
 	}
 }
