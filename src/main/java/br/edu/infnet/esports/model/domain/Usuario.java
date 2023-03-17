@@ -27,6 +27,12 @@ public class Usuario {
 	@OneToMany
 	@JoinColumn(name = "idUsuario")
 	private List<Gamer> gamers;
+	@OneToMany
+	@JoinColumn(name = "idUsuario")
+	private List<Game> games;	
+	@OneToMany
+	@JoinColumn(name = "idUsuario")
+	private List<Equipe> equipes;
 	
 	public Usuario() {}
 
@@ -119,5 +125,19 @@ public class Usuario {
 
 	public void setGamers(List<Gamer> gamers) {
 		this.gamers = gamers;
+	}
+	public List<Game> getGames() {
+		return games;
+	}
+	
+	public void setGames(List<Game> games) {
+		this.games = games;
+	}
+	public List<Equipe> getEquipes() {
+		return equipes;
+	}
+
+	public void setEquipes(List<Equipe> equipes) {
+		this.equipes = equipes;
 	}
 }

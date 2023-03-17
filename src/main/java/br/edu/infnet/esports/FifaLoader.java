@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.esports.model.domain.Fifa;
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.service.FifaService;
+import br.edu.infnet.esports.model.service.UsuarioService;
 
 @Component
 @Order(2)
@@ -19,8 +20,8 @@ public class FifaLoader implements ApplicationRunner {
 
 	@Autowired
 	private FifaService fifaService;
-//	@Autowired
-//	private GameService gameService;
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -45,11 +46,11 @@ public class FifaLoader implements ApplicationRunner {
 						((Fifa) game).setFinalizacao(campos[3]);
 						((Fifa) game).setMarcacao(campos[4]);
 						((Fifa) game).setPasse(campos[5]);
+						game.setUsuario(usuarioService.obterUsuarioById(Integer.parseInt(campos[6])));
 						game.setMediaEstatistica(game.calculaMediaEstatisticaGamer());
 						game.setNivel(game.identificaNivelGamer());
 						
 						fifaService.incluir((Fifa) game);
-//						gameService.incluir((Fifa) game);
 						System.out.println("Inclusão do game" + game.getNome() + " realizada com sucesso!");
 						break;
 					}

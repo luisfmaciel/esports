@@ -13,6 +13,7 @@ import br.edu.infnet.esports.model.domain.Equipe;
 import br.edu.infnet.esports.model.service.EquipeService;
 import br.edu.infnet.esports.model.service.GameService;
 import br.edu.infnet.esports.model.service.GamerService;
+import br.edu.infnet.esports.model.service.UsuarioService;
 
 @Component
 @Order(4)
@@ -24,6 +25,8 @@ public class EquipeLoader implements ApplicationRunner {
 	private GamerService gamerService;
 	@Autowired
 	private GameService gameService;
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -38,19 +41,20 @@ public class EquipeLoader implements ApplicationRunner {
 
 				while (linha != null) {
 					String[] campos = linha.split(";");
-					
+
 					switch (campos[0].toUpperCase()) {
 					case "E": {
 						Equipe equipe = new Equipe();
 						equipe.setNome(campos[1]);
 						equipe.setLimiteParticipantes(campos[2]);
 						equipe.setMultiPlataforma(Boolean.parseBoolean(campos[3]));
-						equipe.setNivel(campos[4]);
-						equipe.setGame(gameService.obterGameById(Integer.parseInt(campos[5])));
-						for(String id : campos[6].split(",")) {
+						equipe.setGame(gameService.obterGameById(Integer.parseInt(campos[4])));
+						equipe.setNivel(gameService.obterGameById(Integer.parseInt(campos[4])).getNivel());
+						equipe.setPlataforma(gameService.obterGameById(Integer.parseInt(campos[4])).getPlataforma());
+						for(String id : campos[5].split(",")) {
 							equipe.setGamers(gamerService.obterGamerById(Integer.parseInt(id)));							
 						}
-						equipe.setPlataforma(campos[7]);
+						equipe.setUsuario(usuarioService.obterUsuarioById(Integer.parseInt(campos[6])));
 						
 						equipeService.incluir(equipe);
 						System.out.println("Inclusão da equipe " + equipe.getNome() + " realizada com sucesso!");

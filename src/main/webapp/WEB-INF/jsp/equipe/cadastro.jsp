@@ -37,7 +37,7 @@
 					id="floatingInput" placeholder="Limite Participantes"> <label
 					for="floatingInput">Limite Participantes</label>
 			</div>
-			<div class="w-25 mb-3">
+			<!-- <div class="w-25 mb-3">
 				<label class="mb-1">Nível:</label> <select class="form-select"
 					name="nivel" aria-label="Default select example">
 					<option value="iniciante">Iniciante</option>
@@ -45,32 +45,32 @@
 					<option value="profissional">Profissional</option>
 					<option value="lendario">Lendário</option>
 				</select>
-			</div>
-			<div class="w-25 mb-3">
+			</div> -->
+			<!-- <div class="w-25 mb-3">
 				<label class="mb-1">Game:</label> <select class="form-select"
 					name="game" aria-label="Default select example">
 					<option value="CSGO">CS:GO</option>
 					<option value="FIFA">FIFA 23</option>
 					<option value="DUNGEONS">DUNGEONS</option>
 				</select>
-			</div>
-			<%-- <div class="w-25 mb-3">
-				<label class="mb-1">Games 1:</label> 
+			</div> -->
+			<div class="w-25 mb-3">
+				<label class="mb-1">Games:</label> 
 					<select class="form-select"
 						name="gameId" aria-label="Default select example">
 						<c:forEach var="g" items="${games}">
-							<option value="${g.id}">${g.nome} - ${g.plataforma} - ${g.nivel} - ${g.mediaEstatistica}</option>
+							<option value="${g.id}">ID: ${g.id} - ${g.nome} - ${g.plataforma} - ${g.nivel} - ${g.mediaEstatistica}</option>
 						</c:forEach>
 					</select>
-			</div> --%>
-			<div class="w-25 mb-3">
+			</div>
+			<!-- <div class="w-25 mb-3">
 				<label class="mb-1">Plataforma principal:</label> <select class="form-select"
 					name="plataforma" aria-label="Default select example">
 					<option value="PC">PC</option>
 					<option value="Xbox One">Xbox One</option>
 					<option value="PS5">PS5</option>
 				</select>
-			</div>
+			</div> -->
 
 			<div class="w-25 mb-3">
 				<span>Multiplataforma: </span>

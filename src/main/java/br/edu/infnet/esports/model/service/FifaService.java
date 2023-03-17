@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.esports.model.domain.Fifa;
+import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.repository.FifaRepository;
 
 @Service
@@ -24,5 +25,9 @@ public class FifaService {
 	
 	public Collection<Fifa> obterLista() {
 		return (Collection<Fifa>) fifaRepository.findAll();
+	}
+	
+	public Collection<Fifa> obterLista(Usuario usuario) {
+		return (Collection<Fifa>) fifaRepository.obterLista(usuario.getId());
 	}
 }

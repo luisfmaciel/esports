@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.esports.model.domain.Equipe;
+import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.repository.EquipeRepository;
 
 @Service
@@ -24,5 +25,9 @@ public class EquipeService {
 	
 	public Collection<Equipe> obterLista() {
 		return (Collection<Equipe>) equipeRepository.findAll();
+	}
+	
+	public Collection<Equipe> obterLista(Usuario usuario) {
+		return (Collection<Equipe>) equipeRepository.obterLista(usuario.getId());
 	}
 }

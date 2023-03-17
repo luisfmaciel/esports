@@ -45,6 +45,7 @@
 							<th scope="col">Username</th>
 							<th scope="col">Perfil</th>
 							<th scope="col">Gamers</th>
+							<th scope="col">Games</th>
 							<th scope="col"></th>
 						</tr>
 					</thead>
@@ -61,6 +62,13 @@
 									<div class="d-flex flex-column">
 										<c:forEach var="g" items="${u.gamers}">
 											<span class="ms-2">@${g.username}</span>
+										</c:forEach>
+									</div>
+								</td>
+								<td>
+									<div class="d-flex flex-column">
+										<c:forEach var="g" items="${u.games}">
+											<span class="ms-2">@${g.nome}</span>
 										</c:forEach>
 									</div>
 								</td>

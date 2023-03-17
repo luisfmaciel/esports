@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.esports.model.domain.Dungeons;
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.service.DungeonsService;
+import br.edu.infnet.esports.model.service.UsuarioService;
 
 @Component
 @Order(2)
@@ -19,6 +20,8 @@ public class DungeonsLoader implements ApplicationRunner {
 
 	@Autowired
 	private DungeonsService dungeonsService;
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -43,6 +46,7 @@ public class DungeonsLoader implements ApplicationRunner {
 						((Dungeons) game).setDano(campos[3]);
 						((Dungeons) game).setSabedoria(campos[4]);
 						((Dungeons) game).setVelocidade(campos[5]);
+						game.setUsuario(usuarioService.obterUsuarioById(Integer.parseInt(campos[6])));
 						game.setMediaEstatistica(game.calculaMediaEstatisticaGamer());
 						game.setNivel(game.identificaNivelGamer());
 						

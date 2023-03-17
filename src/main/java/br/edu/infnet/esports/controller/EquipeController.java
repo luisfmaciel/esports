@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.esports.model.domain.Equipe;
+import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.service.EquipeService;
 import br.edu.infnet.esports.model.service.GameService;
@@ -27,17 +29,17 @@ public class EquipeController {
 	private String msg;
 
 	@GetMapping(value = "/equipe")
-	public String telaCadastro(Model model) {
-	
-		model.addAttribute("gamers", gamerService.obterLista());
-		model.addAttribute("games", gameService.obterLista());
+	public String telaCadastro(Model model, @SessionAttribute("user") Usuario usuario) {
+
+		model.addAttribute("gamers", gamerService.obterLista(usuario));
+		model.addAttribute("games", gameService.obterLista(usuario));
 		return "equipe/cadastro";
 	}
 
 	@GetMapping(value = "/equipe/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 
-		model.addAttribute("equipes", equipeService.obterLista());
+		model.addAttribute("equipes", equipeService.obterLista(usuario));
 		model.addAttribute("mensagem", msg);
 		msg = null;
 		return "equipe/lista";
@@ -45,22 +47,22 @@ public class EquipeController {
 
 	@PostMapping(value = "/equipe/incluir")
 	public String incluir(Model model, @RequestParam String nome, @RequestParam String limiteParticipantes,
-			@RequestParam String game, @RequestParam String plataforma, @RequestParam String multiplataforma,
-			@RequestParam String nivel, @RequestParam(required = false) String gamerId) {
+			@RequestParam String gameId, @RequestParam String multiplataforma,
+			@RequestParam(required = false) String gamerId, @SessionAttribute("user") Usuario usuario) {
 		try {
 			Equipe equipe = new Equipe();
-			
+			equipe.setUsuario(usuario);
 			equipe.setNome(nome);
 			equipe.setLimiteParticipantes(limiteParticipantes);
-			equipe.setPlataforma(plataforma);
+			equipe.setNivel(gameService.obterGameById(Integer.parseInt(gameId)).getNivel());
+			equipe.setPlataforma(gameService.obterGameById(Integer.parseInt(gameId)).getPlataforma());
 			equipe.setMultiPlataforma(Boolean.parseBoolean(multiplataforma));
-			equipe.setNivel(nivel);
-			equipe.setGame(gameService.obterGameByName(game));
-			
-			if(gamerId != null) {
+			equipe.setGame(gameService.obterGameById(Integer.parseInt(gameId)));
+
+			if (gamerId != null) {
 				for (String j : gamerId.split(",")) {
 					equipe.setGamers(gamerService.obterGamerById(Integer.parseInt(j)));
-				}				
+				}
 			} else {
 				throw new CampoVazioException("O preenchimento do campo Gamers está inválido");
 			}
@@ -72,7 +74,7 @@ public class EquipeController {
 			model.addAttribute("mensagemError", e.getMessage());
 			System.out.println(e.getMessage());
 		}
-		return telaCadastro(model);
+		return "redirect:/equipe";
 	}
 
 	@GetMapping(value = "/equipe/{id}/excluir")

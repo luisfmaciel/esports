@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.esports.model.domain.CsGo;
+import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.repository.CsGoRepository;
 
 @Service
@@ -24,5 +25,9 @@ public class CsGoService {
 	
 	public Collection<CsGo> obterLista() {
 		return (Collection<CsGo>) csgoRepository.findAll();
+	}
+	
+	public Collection<CsGo> obterLista(Usuario usuario) {
+		return (Collection<CsGo>) csgoRepository.obterLista(usuario.getId());
 	}
 }

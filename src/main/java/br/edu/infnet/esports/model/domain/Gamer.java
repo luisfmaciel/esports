@@ -26,12 +26,12 @@ public class Gamer {
 	private String email;
 	private String username;
 	private String perfil;
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "idGamer")
-	private List<Game> games;
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idGamer")
+	private List<Game> games;
 	@ManyToMany(mappedBy = "gamers")
 	private List<Equipe> equipes;
 

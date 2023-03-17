@@ -1,7 +1,5 @@
 package br.edu.infnet.esports.model.domain;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +8,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.edu.infnet.esports.model.auxiliar.Constante;
@@ -31,11 +29,14 @@ public abstract class Game {
 	private int titulos;
 	private float mediaEstatistica;
 	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+	@ManyToOne
 	@JoinColumn(name = "idGamer")
 	private Gamer gamer;
-	@OneToMany
+	@OneToOne
 	@JoinColumn(name = "idGame")
-	private List<Equipe> equipes;	
+	private Equipe equipe;	
 	
 	public Game() {}
 	
@@ -138,12 +139,20 @@ public abstract class Game {
 		this.gamer = gamer;
 	}
 
-	public List<Equipe> getEquipes() {
-		return equipes;
+	public Equipe getEquipe() {
+		return equipe;
 	}
 
-	public void setEquipes(List<Equipe> equipes) {
-		this.equipes = equipes;
+	public void setEquipes(Equipe equipe) {
+		this.equipe = equipe;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 }

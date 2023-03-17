@@ -41,6 +41,7 @@
 							<th scope="col">Nome</th>
 							<th scope="col">Game</th>
 							<th scope="col">Nível</th>
+							<th scope="col">Plataforma</th>
 							<th scope="col">Limite de Participantes</th>
 							<th scope="col">Multiplaforma</th>
 							<th scope="col">Gamers</th>
@@ -53,6 +54,7 @@
 								<td>${e.nome}</td>
 								<td>${e.game.nome}</td>
 								<td>${e.nivel}</td>
+								<td>${e.plataforma}</td>
 								<td>${e.limiteParticipantes}</td>
 								<td>${e.multiPlataforma}</td>
 								<td>

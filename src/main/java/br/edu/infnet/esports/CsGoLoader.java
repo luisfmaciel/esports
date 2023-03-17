@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.esports.model.domain.CsGo;
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.service.CsGoService;
+import br.edu.infnet.esports.model.service.UsuarioService;
 
 @Component
 @Order(2)
@@ -19,6 +20,8 @@ public class CsGoLoader implements ApplicationRunner {
 
 	@Autowired
 	private CsGoService csgoService;
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -43,6 +46,7 @@ public class CsGoLoader implements ApplicationRunner {
 						((CsGo) game).setPrecisao(campos[3]);
 						((CsGo) game).setAgressividade(campos[4]);
 						((CsGo) game).setTatica(campos[5]);
+						game.setUsuario(usuarioService.obterUsuarioById(Integer.parseInt(campos[6])));
 						game.setMediaEstatistica(game.calculaMediaEstatisticaGamer());
 						game.setNivel(game.identificaNivelGamer());
 						

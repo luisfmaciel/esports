@@ -36,7 +36,7 @@ public class GamerController {
 	@GetMapping(value = "/gamer")
 	public String telaCadastro(Model model, @SessionAttribute("user") Usuario usuario) {
 		model.addAttribute("usuarios", usuarioService.obterLista());
-		model.addAttribute("games", gameService.obterLista());
+		model.addAttribute("games", gameService.obterLista(usuario));
 		return "gamer/cadastro";
 	}
 

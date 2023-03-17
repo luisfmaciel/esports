@@ -3,6 +3,7 @@ package br.edu.infnet.esports.model.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.edu.infnet.esports.model.exceptions.CampoVazioException;
@@ -31,11 +33,14 @@ public class Equipe {
 	private String plataforma;
 	private boolean multiPlataforma;
 	private String nivel;
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "idGame")
 	private Game game;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.DETACH)
 	private List<Gamer> gamers = new ArrayList<Gamer>();
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
 
 	public Equipe() {
 	}
@@ -163,5 +168,13 @@ public class Equipe {
 
 	public void setPlataforma(String plataforma) {
 		this.plataforma = plataforma;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }
