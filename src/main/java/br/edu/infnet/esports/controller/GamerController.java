@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import br.edu.infnet.esports.model.domain.Endereco;
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.domain.Gamer;
 import br.edu.infnet.esports.model.domain.Usuario;
@@ -51,7 +52,7 @@ public class GamerController {
 
 	@PostMapping(value = "/gamer/incluir")
 	public String incluir(Model model, @RequestParam String nome, @RequestParam String email,
-			@RequestParam String perfil, @RequestParam(required = false) String gameId, @SessionAttribute("user") Usuario usuario) {
+			@RequestParam String perfil, Endereco endereco, @RequestParam(required = false) String gameId, @SessionAttribute("user") Usuario usuario) {
 		try {
 			
 			List<Game> meusJogos = new ArrayList<Game>();
@@ -65,6 +66,7 @@ public class GamerController {
 			gamer.setEmail(email);
 			gamer.setPerfil(perfil);
 			gamer.setUsuario(usuario);
+			gamer.setEndereco(endereco);
 			gamer.setGames(meusJogos);
 			gamerService.incluir(gamer);
 

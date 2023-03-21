@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.edu.infnet.esports.model.domain.Endereco;
 import br.edu.infnet.esports.model.domain.Usuario;
 import br.edu.infnet.esports.model.exceptions.CampoVazioException;
 import br.edu.infnet.esports.model.exceptions.EmailInvalidoException;
@@ -41,10 +42,12 @@ public class UsuarioController {
 			@RequestParam String nome,
 			@RequestParam String email, 
 			@RequestParam String senha, 
-			@RequestParam String perfil
+			@RequestParam String perfil,
+			Endereco endereco
 	) throws EmailInvalidoException {
 		try {			
 			Usuario usuario = new Usuario(nome, email, senha, perfil);
+			usuario.setEndereco(endereco);
 			usuarioService.incluir(usuario);
 			msg = "Usuário " + usuario.getNome() + " cadastrado com sucesso";
 			

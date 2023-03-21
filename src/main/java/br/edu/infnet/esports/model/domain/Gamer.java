@@ -2,6 +2,7 @@ package br.edu.infnet.esports.model.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.edu.infnet.esports.model.exceptions.CampoVazioException;
@@ -34,6 +36,9 @@ public class Gamer {
 	private List<Game> games;
 	@ManyToMany(mappedBy = "gamers")
 	private List<Equipe> equipes;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idEndereco")
+	private Endereco endereco;
 
 	public Gamer() {
 	}
@@ -111,7 +116,7 @@ public class Gamer {
 		return equipes;
 	}
 
-	public void setEquipe(List<Equipe> equipes) {
+	public void setEquipes(List<Equipe> equipes) {
 		this.equipes = equipes;
 	}
 
@@ -123,5 +128,13 @@ public class Gamer {
 		if(perfil.isBlank() || perfil.isEmpty()) throw new CampoVazioException("O preenchimento do campo Perfil está inválido");
 		this.perfil = perfil;
 	}
-	
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 }

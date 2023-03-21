@@ -60,6 +60,9 @@
 						</div>
 					</c:forEach>
 				</div>
+				
+				<c:import url="/WEB-INF/jsp/endereco/cadastro.jsp" />
+				
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 		</div>
