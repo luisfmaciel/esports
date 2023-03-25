@@ -3,6 +3,8 @@ package br.edu.infnet.esports.model.service;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.domain.Usuario;
@@ -27,6 +29,6 @@ public class GameService {
 	}
 	
 	public Collection<Game> obterLista(Usuario usuario) {
-		return (Collection<Game>) gameRepository.obterLista(usuario.getId());
+		return (Collection<Game>) gameRepository.obterLista(usuario.getId(), Sort.by(Direction.DESC, "mediaEstatistica"));
 	}
 }

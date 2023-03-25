@@ -33,17 +33,17 @@
 				
 				<div class="form-floating mb-3">
 					<input type="number" name="precisao" class="form-control"
-						id="floatingInput" placeholder="Precisão"> <label
+						id="floatingInput" placeholder="Precisão" value="2"> <label
 						for="floatingInput">Precisão</label>
 				</div>
 				<div class="form-floating mb-3">
 					<input type="number" name="agressividade" class="form-control"
-						id="floatingInput" placeholder="Agressividade"> <label
+						id="floatingInput" placeholder="Agressividade" value="2"> <label
 						for="floatingInput">Agressividade</label>
 				</div>
 				<div class="form-floating mb-3">
 					<input type="number" name="tatica" class="form-control"
-						id="floatingInput" placeholder="Tática"> <label
+						id="floatingInput" placeholder="Tática" value="2"> <label
 						for="floatingInput">Tática</label>
 				</div>
 				<button type="submit" class="btn btn-primary">Submit</button>

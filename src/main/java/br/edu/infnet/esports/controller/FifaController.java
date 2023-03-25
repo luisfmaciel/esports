@@ -63,8 +63,14 @@ public class FifaController {
 
 	@GetMapping(value = "/game/fifa/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
-		fifaService.excluir(id);
-		msg = "Estatísticas removidas com sucesso";
+		Fifa fifa = fifaService.obterGameById(id);
+
+		try {
+			fifaService.excluir(id);
+			msg = "O Game " + fifa.getNome() + " - ID: " + fifa.getId() + " - foi removido com sucesso";
+		} catch (Exception e) {
+			msg = "Impossível realizar a exclusão do game: " + fifa.getNome() + " - ID: " + fifa.getId();
+		}
 
 		return "redirect:/game/fifa/lista";
 	}

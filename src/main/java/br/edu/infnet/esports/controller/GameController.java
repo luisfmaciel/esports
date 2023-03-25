@@ -32,9 +32,12 @@ public class GameController {
 	@GetMapping(value = "/game/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		Game game = gameService.obterGameById(id);
-		
-		gameService.excluir(id);
-		msg = "O Game " + game.getNome() + " - ID: " + game.getId() + " - foi removido com sucesso";
+		try {
+			gameService.excluir(id);
+			msg = "O Game " + game.getNome() + " - ID: " + game.getId() + " - foi removido com sucesso";
+		} catch (Exception e) {
+			msg = "Impossível realizar a exclusão do game: " + game.getNome() + " - ID: " + game.getId();
+		}
 
 		return "redirect:/game";
 	}

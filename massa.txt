@@ -1,6 +1,6 @@
-U;Felipe;felipe@admin.esports.com;felipe123;admin;
-U;Luis;luis@admin.esports.com;luis123;admin;
-U;Hugo;hugo@admin.esports.com;hugo123;admin;
+U;Felipe;felipe@esports.com;felipe123;admin;true;
+U;Luis;luis@esports.com;luis123;empresario;false;
+U;Hugo;hugo@esports.com;hugo123;admin;true;
 C;PC;0;2;1;2;1;
 C;PC;0;1;2;2;2;
 C;PC;8;7;8;7;3;

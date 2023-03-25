@@ -63,9 +63,16 @@ public class CsGoController {
 
 	@GetMapping(value = "/game/csgo/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
-		csgoService.excluir(id);
-		msg = "Estatísticas removidas com sucesso";
-
+		
+		CsGo csgo = csgoService.obterGameById(id);
+		
+		try {
+			csgoService.excluir(id);
+			msg = "O Game " + csgo.getNome() + " - ID: " + csgo.getId() + " - foi removido com sucesso";
+		} catch (Exception e) {
+			msg = "Impossível realizar a exclusão do game: " + csgo.getNome() + " - ID: " + csgo.getId();
+		}
+		
 		return "redirect:/game/csgo/lista";
 	}
 

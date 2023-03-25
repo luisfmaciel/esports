@@ -26,13 +26,14 @@ public class Usuario {
 	private String username;
 	private String senha;
 	private String perfil;
-	@OneToMany
+	private boolean admin;
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idUsuario")
 	private List<Gamer> gamers;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idUsuario")
 	private List<Game> games;	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idUsuario")
 	private List<Equipe> equipes;
 	@OneToOne(cascade = CascadeType.PERSIST)
@@ -91,7 +92,7 @@ public class Usuario {
 		String username = email.substring(0, email.indexOf("@"));
 		String dominio = email.substring(email.indexOf("@")+1);
 		
-		if(!dominio.equalsIgnoreCase("admin.esports.com")) throw new EmailInvalidoException("O domínio deve ser igual a \"admin.esports.com\"");
+		if(!"esports.com".equalsIgnoreCase(dominio)) throw new EmailInvalidoException("O domínio deve ser igual a \"esports.com\"");
 		if(!email.contains("@") || username.isEmpty() || username.isBlank()) throw new EmailInvalidoException("E-mail inválido");
 		
 		setUsername(username);
@@ -153,5 +154,12 @@ public class Usuario {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 }

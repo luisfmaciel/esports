@@ -11,6 +11,6 @@
 </div>
 <div class="form-floating mb-3">
 	<input type="number" name="titulos" class="form-control"
-		id="floatingInput" placeholder="Títulos"> <label
+		id="floatingInput" placeholder="Títulos" value="2"> <label
 		for="floatingInput">Títulos</label>
 </div>

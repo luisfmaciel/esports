@@ -42,6 +42,7 @@ public class UsuarioLoader implements ApplicationRunner {
 						usuario.setEmail(campos[2]);
 						usuario.setSenha(campos[3]);
 						usuario.setPerfil(campos[4]);
+						usuario.setAdmin(Boolean.parseBoolean(campos[5]));
 						
 						usuarioService.incluir(usuario);
 						System.out.println("Inclusão do usuário @" + usuario.getUsername() + " realizada com sucesso!");

@@ -31,7 +31,7 @@ public class Gamer {
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idGamer")
 	private List<Game> games;
 	@ManyToMany(mappedBy = "gamers")

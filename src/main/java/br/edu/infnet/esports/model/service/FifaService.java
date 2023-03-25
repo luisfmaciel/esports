@@ -3,6 +3,8 @@ package br.edu.infnet.esports.model.service;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.esports.model.domain.Fifa;
@@ -23,11 +25,15 @@ public class FifaService {
 		fifaRepository.deleteById(key);
 	}
 	
+	public Fifa obterGameById(Integer key) {
+		return fifaRepository.findById(key).get();
+	}
+	
 	public Collection<Fifa> obterLista() {
 		return (Collection<Fifa>) fifaRepository.findAll();
 	}
 	
 	public Collection<Fifa> obterLista(Usuario usuario) {
-		return (Collection<Fifa>) fifaRepository.obterLista(usuario.getId());
+		return (Collection<Fifa>) fifaRepository.obterLista(usuario.getId(), Sort.by(Direction.DESC, "mediaEstatistica"));
 	}
 }

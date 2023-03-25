@@ -63,8 +63,14 @@ public class DungeonsController {
 
 	@GetMapping(value = "/game/dungeons/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
-		dungeonsService.excluir(id);
-		msg = "Estatísticas removidas com sucesso";
+		Dungeons dungeons = dungeonsService.obterGameById(id);
+
+		try {
+			dungeonsService.excluir(id);
+			msg = "O Game " + dungeons.getNome() + " - ID: " + dungeons.getId() + " - foi removido com sucesso";
+		} catch (Exception e) {
+			msg = "Impossível realizar a exclusão do game: " + dungeons.getNome() + " - ID: " + dungeons.getId();
+		}
 
 		return "redirect:/game/dungeons/lista";
 	}

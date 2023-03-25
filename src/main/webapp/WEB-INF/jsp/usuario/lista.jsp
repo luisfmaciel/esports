@@ -22,14 +22,14 @@
 
 			<h3>Listagem de Usuarios</h3>
 
-			<%-- <c:if test="${not empty mensagem}">
+			<c:if test="${empty usuarios}">
+				<h5>Não existem usuários cadastrados!</h5>
+			</c:if>
+			
+			<c:if test="${not empty mensagem}">
 				<div class="alert alert-success my-2" role="alert">
 					<strong>Atenção</strong> ${mensagem}
 				</div>
-			</c:if> --%>
-
-			<c:if test="${empty usuarios}">
-				<h5>Não existem usuários cadastrados!</h5>
 			</c:if>
 
 			<c:if test="${not empty usuarios}">
@@ -44,9 +44,13 @@
 							<th scope="col">E-mail</th>
 							<th scope="col">Username</th>
 							<th scope="col">Perfil</th>
+							<th scope="col">Admin</th>
+							<th scope="col">Endereço</th>
 							<th scope="col">Gamers</th>
 							<th scope="col">Games</th>
-							<th scope="col"></th>
+							<c:if test="${user.admin}">
+								<th scope="col"></th>
+							</c:if>
 						</tr>
 					</thead>
 					<tbody>
@@ -58,6 +62,8 @@
 								<td>${u.email}</td>
 								<td>${u.username}</td>
 								<td>${u.perfil}</td>
+								<td>${u.admin}</td>
+								<td>${u.endereco}</td>
 								<td>
 									<div class="d-flex flex-column">
 										<c:forEach var="g" items="${u.gamers}">
@@ -68,11 +74,13 @@
 								<td>
 									<div class="d-flex flex-column">
 										<c:forEach var="g" items="${u.games}">
-											<span class="ms-2">@${g.nome}</span>
+											<span class="ms-2">${g.nome}</span>
 										</c:forEach>
 									</div>
 								</td>
-								<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
+								<c:if test="${user.admin}">
+									<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
+								</c:if> 
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -74,7 +74,7 @@ public class EquipeController {
 			model.addAttribute("mensagemError", e.getMessage());
 			System.out.println(e.getMessage());
 		}
-		return "redirect:/equipe";
+		return telaCadastro(model, usuario);
 	}
 
 	@GetMapping(value = "/equipe/{id}/excluir")

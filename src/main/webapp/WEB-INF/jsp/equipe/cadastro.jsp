@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,8 @@
 <title>E-sports</title>
 </head>
 <body style="background-color: #f5f5f5;">
+	<c:set var="botao" value="none" />
+
 	<header>
 		<c:import url="/WEB-INF/jsp/menu.jsp" />
 	</header>
@@ -29,49 +32,30 @@
 
 			<div class="form-floating mb-3">
 				<input type="text" name="nome" class="form-control"
-					id="floatingInput" placeholder="Nome"> <label
+					id="floatingInput" placeholder="Nome" value="Super Equipe"> <label
 					for="floatingInput">Nome</label>
 			</div>
 			<div class="form-floating mb-3">
 				<input type="number" name="limiteParticipantes" class="form-control"
-					id="floatingInput" placeholder="Limite Participantes"> <label
+					id="floatingInput" placeholder="Limite Participantes" value="2"> <label
 					for="floatingInput">Limite Participantes</label>
 			</div>
-			<!-- <div class="w-25 mb-3">
-				<label class="mb-1">Nível:</label> <select class="form-select"
-					name="nivel" aria-label="Default select example">
-					<option value="iniciante">Iniciante</option>
-					<option value="semipro">Semipro</option>
-					<option value="profissional">Profissional</option>
-					<option value="lendario">Lendário</option>
-				</select>
-			</div> -->
-			<!-- <div class="w-25 mb-3">
-				<label class="mb-1">Game:</label> <select class="form-select"
-					name="game" aria-label="Default select example">
-					<option value="CSGO">CS:GO</option>
-					<option value="FIFA">FIFA 23</option>
-					<option value="DUNGEONS">DUNGEONS</option>
-				</select>
-			</div> -->
 			<div class="w-25 mb-3">
-				<label class="mb-1">Games:</label> 
-					<select class="form-select"
-						name="gameId" aria-label="Default select example">
+				<c:if test="${not empty games}">
+					<label class="mb-1">Games:</label>
+					<select class="form-select" name="gameId"
+						aria-label="Default select example">
 						<c:forEach var="g" items="${games}">
-							<option value="${g.id}">ID: ${g.id} - ${g.nome} - ${g.plataforma} - ${g.nivel} - ${g.mediaEstatistica}</option>
+							<option value="${g.id}">ID: ${g.id} - ${g.nome} -
+								${g.plataforma} - ${g.nivel} - ${g.mediaEstatistica}</option>
 						</c:forEach>
 					</select>
+				</c:if>
+				<c:if test="${empty games}">
+					<c:set var="botao" value="disabled" />
+					<label class="mb-1">Não existem games cadastrados!</label>
+				</c:if>
 			</div>
-			<!-- <div class="w-25 mb-3">
-				<label class="mb-1">Plataforma principal:</label> <select class="form-select"
-					name="plataforma" aria-label="Default select example">
-					<option value="PC">PC</option>
-					<option value="Xbox One">Xbox One</option>
-					<option value="PS5">PS5</option>
-				</select>
-			</div> -->
-
 			<div class="w-25 mb-3">
 				<span>Multiplataforma: </span>
 				<div class="form-check">
@@ -86,16 +70,22 @@
 				</div>
 			</div>
 			<div class="mb-3 form-check">
-				<span>Gamers:</span>
-				<c:forEach var="g" items="${gamers}">
-					<div>
-						<input type="checkbox" name="gamerId" value="${g.id}"
-							class="form-check-input" id="${g.id}"> <label
-							class="form-check-label" for="${g.id}">@${g.username}</label>
-					</div>
-				</c:forEach>
+				<c:if test="${not empty gamers}">
+					<label class="mb-1">Gamers:</label>
+					<c:forEach var="g" items="${gamers}">
+						<div>
+							<input type="checkbox" name="gamerId" value="${g.id}"
+								class="form-check-input" id="${g.id}" checked> <label
+								class="form-check-label" for="${g.id}">@${g.username}</label>
+						</div>
+					</c:forEach>
+				</c:if>
+				<c:if test="${empty gamers}">
+					<c:set var="botao" value="disabled" />
+					<label class="mb-1">Não existem gamers cadastrados!</label>
+				</c:if>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary" ${botao}>Submit</button>
 		</form>
 	</div>
 	<script
