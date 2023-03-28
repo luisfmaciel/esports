@@ -28,6 +28,7 @@ public abstract class Game {
 	private String nivel;
 	private int titulos;
 	private float mediaEstatistica;
+	private String imagemUrl;
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
@@ -143,7 +144,7 @@ public abstract class Game {
 		return equipe;
 	}
 
-	public void setEquipes(Equipe equipe) {
+	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
 
@@ -153,6 +154,14 @@ public abstract class Game {
 	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getImagemUrl() {
+		return imagemUrl;
+	}
+
+	public void setImagemUrl(String imagemUrl) {
+		this.imagemUrl = imagemUrl;
 	}
 	
 }
