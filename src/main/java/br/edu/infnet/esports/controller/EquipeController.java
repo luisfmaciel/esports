@@ -47,7 +47,7 @@ public class EquipeController {
 
 	@PostMapping(value = "/equipe/incluir")
 	public String incluir(Model model, @RequestParam String nome, @RequestParam String limiteParticipantes,
-			@RequestParam String gameId, @RequestParam String multiplataforma,
+			@RequestParam String gameId, @RequestParam String multiplataforma, @RequestParam String imagemUrl,
 			@RequestParam(required = false) String gamerId, @SessionAttribute("user") Usuario usuario) {
 		try {
 			Equipe equipe = new Equipe();
@@ -57,6 +57,7 @@ public class EquipeController {
 			equipe.setNivel(gameService.obterGameById(Integer.parseInt(gameId)).getNivel());
 			equipe.setPlataforma(gameService.obterGameById(Integer.parseInt(gameId)).getPlataforma());
 			equipe.setMultiPlataforma(Boolean.parseBoolean(multiplataforma));
+			equipe.setImagemUrl(imagemUrl);
 			equipe.setGame(gameService.obterGameById(Integer.parseInt(gameId)));
 
 			if (gamerId != null) {

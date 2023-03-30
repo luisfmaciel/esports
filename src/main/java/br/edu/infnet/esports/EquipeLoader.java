@@ -51,6 +51,7 @@ public class EquipeLoader implements ApplicationRunner {
 						equipe.setGame(gameService.obterGameById(Integer.parseInt(campos[4])));
 						equipe.setNivel(gameService.obterGameById(Integer.parseInt(campos[4])).getNivel());
 						equipe.setPlataforma(gameService.obterGameById(Integer.parseInt(campos[4])).getPlataforma());
+						equipe.setImagemUrl(campos[7]);
 						for(String id : campos[5].split(",")) {
 							equipe.setGamers(gamerService.obterGamerById(Integer.parseInt(id)));							
 						}

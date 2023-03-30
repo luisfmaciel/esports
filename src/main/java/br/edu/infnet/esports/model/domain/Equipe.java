@@ -33,6 +33,7 @@ public class Equipe {
 	private String plataforma;
 	private boolean multiPlataforma;
 	private String nivel;
+	private String imagemUrl;
 	@OneToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "idGame")
 	private Game game;
@@ -176,5 +177,13 @@ public class Equipe {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getImagemUrl() {
+		return imagemUrl;
+	}
+
+	public void setImagemUrl(String imagemUrl) {
+		this.imagemUrl = imagemUrl;
 	}
 }

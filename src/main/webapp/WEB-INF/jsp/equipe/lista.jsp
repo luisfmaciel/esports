@@ -45,6 +45,7 @@
 							<th scope="col">Limite de Participantes</th>
 							<th scope="col">Multiplaforma</th>
 							<th scope="col">Gamers</th>
+							<th scope="col">Logo</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -63,6 +64,11 @@
 											<span class="ms-2">@${g.username}</span>
 										</c:forEach>
 									</div>
+								</td>
+								<td>
+									<div class="d-flex align-items-center justify-content-center">
+										<img width="80px" src="${e.imagemUrl}">
+									</div>									
 								</td>
 								<td><a href="/equipe/${e.id}/excluir">excluir</a></td>
 							</tr>

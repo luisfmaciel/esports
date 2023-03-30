@@ -32,13 +32,13 @@
 
 			<div class="form-floating mb-3">
 				<input type="text" name="nome" class="form-control"
-					id="floatingInput" placeholder="Nome" value="Super Equipe"> <label
-					for="floatingInput">Nome</label>
+					id="floatingInput" placeholder="Nome" value="Super Equipe">
+				<label for="floatingInput">Nome</label>
 			</div>
 			<div class="form-floating mb-3">
 				<input type="number" name="limiteParticipantes" class="form-control"
-					id="floatingInput" placeholder="Limite Participantes" value="2"> <label
-					for="floatingInput">Limite Participantes</label>
+					id="floatingInput" placeholder="Limite Participantes" value="2">
+				<label for="floatingInput">Limite Participantes</label>
 			</div>
 			<div class="w-25 mb-3">
 				<c:if test="${not empty games}">
@@ -84,6 +84,12 @@
 					<c:set var="botao" value="disabled" />
 					<label class="mb-1">Não existem gamers cadastrados!</label>
 				</c:if>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="text" name="imagemUrl" class="form-control"
+					id="floatingInput" placeholder="Imagem URL"
+					value="https://static-cdn.jtvnw.net/ttv-boxart/498861_IGDB-144x192.jpg">
+				<label for="floatingInput">Imagem URL</label>
 			</div>
 			<button type="submit" class="btn btn-primary" ${botao}>Submit</button>
 		</form>
