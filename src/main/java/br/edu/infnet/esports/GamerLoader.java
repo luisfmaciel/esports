@@ -11,9 +11,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.esports.model.domain.Endereco;
 import br.edu.infnet.esports.model.domain.Game;
 import br.edu.infnet.esports.model.domain.Gamer;
 import br.edu.infnet.esports.model.domain.Usuario;
+import br.edu.infnet.esports.model.service.EnderecoService;
 import br.edu.infnet.esports.model.service.GameService;
 import br.edu.infnet.esports.model.service.GamerService;
 import br.edu.infnet.esports.model.service.UsuarioService;
@@ -28,6 +30,8 @@ public class GamerLoader implements ApplicationRunner {
 	private GameService gameService;	
 	@Autowired
 	private UsuarioService usuarioService;
+	@Autowired
+	private EnderecoService enderecoService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -54,6 +58,9 @@ public class GamerLoader implements ApplicationRunner {
 						Usuario usuario = usuarioService.obterUsuarioById(Integer.parseInt(campos[3]));
 						
 						gamer.setUsuario(usuario);
+						
+						Endereco endereco = enderecoService.buscaPorCep(campos[6]);
+						gamer.setEndereco(endereco);
 						
 						for(String idGame : campos[4].split(",")) {
 							meusJogos.add(gameService.obterGameById(Integer.parseInt(idGame)));

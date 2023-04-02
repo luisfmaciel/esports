@@ -47,6 +47,7 @@ public class UsuarioController {
 	) throws EmailInvalidoException {
 		try {			
 			Usuario usuario = new Usuario(nome, email, senha, perfil);
+			if("admin".equalsIgnoreCase(perfil)) usuario.setAdmin(true);
 			usuario.setEndereco(endereco);
 			usuarioService.incluir(usuario);
 			msg = "Usuário " + usuario.getNome() + " cadastrado com sucesso";
